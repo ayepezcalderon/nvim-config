@@ -137,6 +137,7 @@ local plugins = {
       "nvim-telescope/telescope.nvim"
     }
   },
+
   {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
