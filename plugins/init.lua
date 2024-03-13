@@ -142,11 +142,9 @@ local plugins = {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     ft = {'python', 'lua'},
-    config = function (_, opts)
-      require("trouble").setup(opts)
-      require("core.utils").load_mappings("trouble")
-    end
+    config = true
   },
+
   {
     "nvim-telescope/telescope.nvim",
     opts = function ()
