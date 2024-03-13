@@ -35,7 +35,6 @@ local plugins = {
   },
 
   {
-    -- snippet plugin
     "L3MON4D3/LuaSnip",
     dependencies = "rafamadriz/friendly-snippets",
     opts = function ()
@@ -43,6 +42,17 @@ local plugins = {
     end,
     config = function(_, opts)
       require("plugins.luasnip.setup").setup(opts)
+    end,
+  },
+
+  {
+    "windwp/nvim-autopairs",
+    opts = function ()
+      return require("plugins.autopairs.opts")
+    end,
+    config = function(_, opts)
+      require("nvim-autopairs").setup(opts)
+      require("plugins.autopairs.opts").setup()
     end,
   },
 
