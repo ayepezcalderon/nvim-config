@@ -164,11 +164,12 @@ local plugins = {
   },
 
   {
-    "tpope/vim-fugitive",
-  },
-  {
     "tpope/vim-repeat",
     lazy = false,
+  },
+
+  {
+    "tpope/vim-fugitive",
   },
   {
     "lewis6991/gitsigns.nvim",
