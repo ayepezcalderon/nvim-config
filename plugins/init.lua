@@ -122,6 +122,7 @@ local plugins = {
       })
     end
   },
+
   {
     "jackMort/ChatGPT.nvim",
     event = "VeryLazy",
