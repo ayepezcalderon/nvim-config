@@ -26,11 +26,11 @@ local plugins = {
       "rcarriga/cmp-dap",
     },
     opts = function ()
-      require("plugins.cmp.opts")
+      return require("plugins.cmp.opts")
     end,
     config = function (_, opts)
       require("cmp").setup(opts)
-      require("plugins.cmp.setup")
+      require("plugins.cmp.setup").setup()
     end
   },
 
@@ -38,9 +38,11 @@ local plugins = {
     -- snippet plugin
     "L3MON4D3/LuaSnip",
     dependencies = "rafamadriz/friendly-snippets",
-    opts = { history = true, updateevents = "TextChanged,TextChangedI" },
+    opts = function ()
+      return require("plugins.luasnip.opts")
+    end,
     config = function(_, opts)
-      require("plugins.configs.others").luasnip(opts)
+      require("plugins.luasnip.setup").setup(opts)
     end,
   },
 
