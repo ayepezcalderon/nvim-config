@@ -172,7 +172,7 @@ local plugins = {
 
   {
     "lewis6991/gitsigns.nvim",
-    dependencies = "tpope/vim-fugitive",
+    dependencies = { "tpope/vim-fugitive" },
     ft = { "gitcommit", "diff" },
     init = function ()
       require("plugins.gitsigns._init").init()
@@ -183,10 +183,6 @@ local plugins = {
     config = function(_, opts)
       require("gitsigns").setup(opts)
     end,
-  },
-
-  {
-    "tpope/vim-fugitive",
   },
 
   {{
