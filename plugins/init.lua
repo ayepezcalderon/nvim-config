@@ -142,7 +142,9 @@ local plugins = {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     ft = {'python', 'lua'},
-    config = true
+    config = function (_, opts)
+      require("trouble").setup(opts)
+    end
   },
 
   {
@@ -150,7 +152,7 @@ local plugins = {
     dependencies = { "nvim-treesitter/nvim-treesitter", { "nvim-telescope/telescope-fzf-native.nvim", build = "make" } },
     cmd = "Telescope",
     opts = function ()
-      require("plugins.telescope")
+      return require("plugins.telescope")
     end,
     config = function(_, opts)
       local telescope = require("telescope")
@@ -169,12 +171,24 @@ local plugins = {
   },
 
   {
-    "tpope/vim-fugitive",
-  },
-  {
     "lewis6991/gitsigns.nvim",
     dependencies = "tpope/vim-fugitive",
+    ft = { "gitcommit", "diff" },
+    init = function ()
+      require("plugins.gitsigns._init").init()
+    end,
+    opts = function ()
+      return require("plugins.gitsigns.opts")
+    end,
+    config = function(_, opts)
+      require("gitsigns").setup(opts)
+    end,
   },
+
+  {
+    "tpope/vim-fugitive",
+  },
+
   {{
     "RRethy/vim-illuminate",
     lazy = false,
