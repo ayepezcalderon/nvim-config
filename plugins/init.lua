@@ -147,14 +147,22 @@ local plugins = {
 
   {
     "nvim-telescope/telescope.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter", { "nvim-telescope/telescope-fzf-native.nvim", build = "make" } },
+    cmd = "Telescope",
     opts = function ()
-      return vim.tbl_deep_extend(
-        "force",
-        require("plugins.configs.telescope"),
-        require("custom.configs.telescope")
-      )
-    end
+      require("plugins.telescope")
+    end,
+    config = function(_, opts)
+      local telescope = require("telescope")
+      telescope.setup(opts)
+
+      -- load extensions
+      for _, ext in ipairs(opts.extensions_list) do
+        telescope.load_extension(ext)
+      end
+    end,
   },
+
   {
     "tpope/vim-fugitive",
   },
