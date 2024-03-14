@@ -1,4 +1,7 @@
-local opts = {
+local M = {}
+
+-------- OPTS --------
+M.opts = {
   filetypes = {
     markdown = true,
     python = true,
@@ -24,4 +27,4 @@ local opts = {
   },
 }
 
-return opts
+return M

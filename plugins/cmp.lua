@@ -1,3 +1,6 @@
+local M = {}
+
+---------------- OPTS ------------------
 local cmp = require "cmp"
 
 dofile(vim.g.base46_cache .. "cmp")
@@ -53,7 +56,7 @@ local function border(hl_name)
   }
 end
 
-local options = {
+M.opts = {
   completion = {
     completeopt = "menu,menuone",
   },
@@ -125,7 +128,17 @@ local options = {
 }
 
 if cmp_style ~= "atom" and cmp_style ~= "atom_colored" then
-  options.window.completion.border = border "CmpBorder"
+  M.opts.window.completion.border = border "CmpBorder"
 end
 
-return options
+---------------- SETUP ------------------
+M.setup = function(_, opts)
+  require("cmp").setup(opts)
+  require("cmp").setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
+    sources = {
+      { name = "dap" },
+    },
+  })
+end
+
+return M

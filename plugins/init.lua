@@ -4,7 +4,7 @@ local plugins = {
     'rmagatti/auto-session',
     lazy = false,
     opts = function()
-      return require("plugins.auto-session")
+      return require("plugins.auto-session").opts
     end,
   },
 
@@ -26,11 +26,10 @@ local plugins = {
       "rcarriga/cmp-dap",
     },
     opts = function ()
-      return require("plugins.cmp.opts")
+      return require("plugins.cmp").opts
     end,
     config = function (_, opts)
-      require("cmp").setup(opts)
-      require("plugins.cmp.setup").setup()
+      require("plugins.cmp").setup(_, opts)
     end
   },
 
@@ -38,21 +37,20 @@ local plugins = {
     "L3MON4D3/LuaSnip",
     dependencies = "rafamadriz/friendly-snippets",
     opts = function ()
-      return require("plugins.luasnip.opts")
+      return require("plugins.luasnip").opts
     end,
     config = function(_, opts)
-      require("plugins.luasnip.setup").setup(opts)
+      require("plugins.luasnip").setup(_, opts)
     end,
   },
 
   {
     "windwp/nvim-autopairs",
     opts = function ()
-      return require("plugins.autopairs.opts")
+      return require("plugins.autopairs").opts
     end,
     config = function(_, opts)
-      require("nvim-autopairs").setup(opts)
-      require("plugins.autopairs.opts").setup()
+      require("plugins.autopairs").setup(_, opts)
     end,
   },
 
@@ -61,7 +59,7 @@ local plugins = {
     event = "InsertEnter",
     build = ":Copilot auth",
     opts = function ()
-      return require("plugins.copilot")
+      return require("plugins.copilot").opts
     end
   },
 
@@ -71,10 +69,8 @@ local plugins = {
     dependencies = {
       "mfussenegger/nvim-dap",
     },
-    config = function ()
-      local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
-      require("dap-python").setup(path)
-      require("plugins.dap-python")
+    config = function (_, opts)
+      require("plugins.dap-python").setup(_, opts)
     end,
   },
 
@@ -85,30 +81,29 @@ local plugins = {
       "theHamsta/nvim-dap-virtual-text",
       "nvim-telescope/telescope-dap.nvim",
     },
-    config = function ()
-      require("custom.dap").color_hls()
+    config = function (_, opts)
+      require("plugins.dap").setup(_, opts)
     end,
   },
 
   {
     "rcarriga/nvim-dap-ui",
     -- dependencies = "mfussenegger/nvim-dap",
-    config = function ()
-      require("dapui").setup()
-      require("plugins.dapui").load_repl_controls(true, false)
+    config = function (_, opts)
+      require("plugins.dapui").setup(_, opts)
     end,
   },
 
   {
     "theHamsta/nvim-dap-virtual-text",
-    opts = {},
+    config = true,
   },
 
   {
     "ggandor/leap.nvim",
     lazy = false,
-    config = function ()
-      require("plugins.leap")
+    config = function (_, opts)
+      require("plugins.leap").setup(_, opts)
     end,
   },
 
@@ -152,16 +147,10 @@ local plugins = {
     dependencies = { "nvim-treesitter/nvim-treesitter", { "nvim-telescope/telescope-fzf-native.nvim", build = "make" } },
     cmd = "Telescope",
     opts = function ()
-      return require("plugins.telescope")
+      return require("plugins.telescope").opts
     end,
     config = function(_, opts)
-      local telescope = require("telescope")
-      telescope.setup(opts)
-
-      -- load extensions
-      for _, ext in ipairs(opts.extensions_list) do
-        telescope.load_extension(ext)
-      end
+      require("plugins.telescope").setup(_, opts)
     end,
   },
 
@@ -175,10 +164,10 @@ local plugins = {
     dependencies = { "tpope/vim-fugitive" },
     ft = { "gitcommit", "diff" },
     init = function ()
-      require("plugins.gitsigns._init").init()
+      require("plugins.gitsigns").init()
     end,
     opts = function ()
-      return require("plugins.gitsigns.opts")
+      return require("plugins.gitsigns").opts
     end,
     config = function(_, opts)
       require("gitsigns").setup(opts)

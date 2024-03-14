@@ -1,6 +1,13 @@
 local M = {}
 
-M.setup = function(opts)
+------------ OPTS ---------
+M.opts = {
+  history = true,
+  updateevents = "TextChanged,TextChangedI",
+}
+
+------------ SETUP ---------
+M.setup = function(_, opts)
   require("luasnip").config.set_config(opts)
 
   -- vscode format
