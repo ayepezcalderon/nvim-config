@@ -188,10 +188,12 @@ local plugins = {
     --   { "[[", desc = "Prev Reference" },
     -- },
   },
+
   {
     "christoomey/vim-tmux-navigator",
     lazy = false,
   },
+
   {
     "nvim-telescope/telescope-dap.nvim",
     config = function ()
