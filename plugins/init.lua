@@ -174,50 +174,19 @@ local plugins = {
     end,
   },
 
-  {{
+  {
     "RRethy/vim-illuminate",
     lazy = false,
-    opts = {
-      delay = 100,
-      large_file_cutoff = 2000,
-      large_file_overrides = {
-        providers = { "lsp" },
-      },
-    },
+    opts = function ()
+      return require("plugins.vim-illuminate").opts
+    end,
     config = function(_, opts)
-      require("illuminate").configure(opts)
-
-      local function map(key, dir, buffer)
-        vim.keymap.set("n", key, function()
-          require("illuminate")["goto_" .. dir .. "_reference"](false)
-        end, { desc = dir:sub(1, 1):upper() .. dir:sub(2) .. " Reference", buffer = buffer })
-      end
-
-      map("]]", "next")
-      map("[[", "prev")
-
-      -- also set it after loading ftplugins, since a lot overwrite [[ and ]]
-      vim.api.nvim_create_autocmd("FileType", {
-        callback = function()
-          local buffer = vim.api.nvim_get_current_buf()
-          map("]]", "next", buffer)
-          map("[[", "prev", buffer)
-        end,
-      })
+      require("plugins.vim-illuminate").setup(_, opts)
     end,
     -- keys = {
     --   { "]]", desc = "Next Reference" },
     --   { "[[", desc = "Prev Reference" },
     -- },
-  },
-    "RRethy/vim-illuminate",
-    ft = {"python", "lua"},
-    -- config = function()
-    --   -- Use highlight set by by LSP instead of the default 'underline'
-    --   vim.api.nvim_set_hl(0, "IlluminatedWordText", { link = "LspReferenceText" })
-    --   vim.api.nvim_set_hl(0, "IlluminatedWordRead", { link = "LspReferenceRead" })
-    --   vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { link = "LspReferenceWrite" })
-    -- end
   },
   {
     "christoomey/vim-tmux-navigator",
