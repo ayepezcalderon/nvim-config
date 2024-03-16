@@ -198,15 +198,17 @@ local plugins = {
     "nvimtools/none-ls.nvim",
     ft = {"python", "tex", "plaintex", "bib"},
     opts = function()
-      return require "custom.configs.null-ls"
+      return require("plugins.null-ls").opts
     end,
   },
+
   {
     "williamboman/mason.nvim",
     opts = function ()
-      return require("custom.configs.mason")
+      return require("plugins.mason").opts
     end
   },
+
   {
     "neovim/nvim-lspconfig",
     config = function ()

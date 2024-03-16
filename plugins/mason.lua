@@ -1,4 +1,5 @@
-local opts = {
+local M = {}
+M.opts = {
   ensure_installed = {
     "pyright",
     "debugpy",
@@ -10,4 +11,4 @@ local opts = {
   },
 }
 
-return opts
+return M
