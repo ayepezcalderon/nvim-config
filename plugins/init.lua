@@ -250,15 +250,15 @@ local plugins = {
     dependencies = "nvim-treesitter/nvim-treesitter",
     ft = {"python", "lua"},
     opts = function()
-      return require "custom.configs.neogen"
+      return require("plugins.neogen").opts
     end,
     config = function (_, opts)
       require("neogen").setup(opts)
-      require("core.utils").load_mappings("neogen")
     end
     -- Uncomment next line if you want to follow only stable versions
     -- version = "*" 
   },
+
   {
     "lervag/vimtex",
     lazy = false,

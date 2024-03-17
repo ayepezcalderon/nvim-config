@@ -1,4 +1,7 @@
-local opts = {
+local M = {}
+
+---------- OPTS ----------
+M.opts = {
   snippet_engine = "luasnip",
 
   languages = {
@@ -10,4 +13,4 @@ local opts = {
   },
 }
 
-return opts
+return M
