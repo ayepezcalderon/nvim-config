@@ -263,9 +263,10 @@ local plugins = {
     "lervag/vimtex",
     lazy = false,
     init = function()
-      require("custom.configs.vimtex")
+      require("plugins.vimtex").init()
     end
   },
+
   {
     "gbprod/yanky.nvim",
     lazy = false,
