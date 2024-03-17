@@ -1,4 +1,7 @@
-local opts = {
+local M = {}
+
+---------- OPTS ----------
+M.opts = {
   highlight = {
     on_put = false,
     on_yank = false,
@@ -12,4 +15,4 @@ local opts = {
   },
 }
 
-return opts
+return M
