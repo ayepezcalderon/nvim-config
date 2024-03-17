@@ -232,14 +232,19 @@ local plugins = {
 
   {
     "nvim-treesitter/nvim-treesitter",
+    init = function()
+      require("plugins._utils._general").lazy_load("nvim-treesitter")
+    end,
+    cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
+    build = ":TSUpdate",
     opts = function ()
-      return vim.tbl_deep_extend(
-        "force",
-        require("plugins.configs.treesitter"),
-        require("custom.configs.treesitter")
-      )
-    end
+      return require("plugins.treesitter").opts
+    end,
+    config = function(_, opts)
+      require("nvim-treesitter.configs").setup(opts)
+    end,
   },
+
   {
     "danymat/neogen",
     dependencies = "nvim-treesitter/nvim-treesitter",

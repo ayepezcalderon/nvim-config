@@ -1,4 +1,7 @@
-local opts = {
+local M = {}
+
+---------- OPTS -----------
+M.opts = {
   ensure_installed = {
     -- defaults 
     "vim",
@@ -41,6 +44,7 @@ local opts = {
     -- regex
     "regex",
   },
+
   highlight = {
     enable = true,
     use_languagetree = true,
@@ -48,6 +52,8 @@ local opts = {
       "latex",
     },
   },
+
+  indent = { enable = true },
 }
 
-return opts
+return M
