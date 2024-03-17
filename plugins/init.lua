@@ -222,11 +222,14 @@ local plugins = {
 
   {
     "neovim/nvim-lspconfig",
-    config = function ()
-      require "plugins.configs.lspconfig"
-      require "custom.configs.lspconfig"
+    init = function()
+      require("plugins._utils._general").lazy_load("nvim-lspconfig")
+    end,
+    config = function(_, opts)
+      require("plugins.lspconfig").setup(_, opts)
     end,
   },
+
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function ()
