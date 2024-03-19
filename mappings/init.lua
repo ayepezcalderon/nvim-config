@@ -1,3 +1,5 @@
+local dap_utils = require("mappings._utils.dap")
+
 local map = vim.keymap.set
 
 ------- COMMENT -------
@@ -104,7 +106,7 @@ map(
   "<Leader>dr",
   function()
     require('dapui').close()
-    utils.custom_dap_repl_toggle(false)
+    dap_utils.custom_dap_repl_toggle(false)
   end,
   {desc="dap repl toggle"}
 )
@@ -186,7 +188,7 @@ map(
   function()
     local widgets = require('dap.ui.widgets')
     widgets.centered_float(widgets.scopes)
-    utils.set_buf_easy_close_mappings()
+    dap_utils.set_buf_easy_close_mappings()
   end,
   {desc="dap scopes"}
 )
@@ -201,7 +203,7 @@ map(
   "<Leader>dh",
   function()
     require('dap.ui.widgets').hover()
-    utils.set_buf_easy_close_mappings()
+    dap_utils.set_buf_easy_close_mappings()
   end,
   {desc="dap hover"}
 )
@@ -476,7 +478,7 @@ map(
   function()
     require('dap').repl.close()
     require("dapui").toggle()
-    utils.delayed_dap_controls_refresh()
+    dap_utils.delayed_dap_controls_refresh()
   end,
   {desc="dapui toggle"}
 )

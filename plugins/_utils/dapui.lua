@@ -2,7 +2,17 @@ local M = {}
 
 local dapui = require("dapui")
 local dap = require("dap")
-local utils = require("custom.utils")
+
+--- Refreshes the controls of the dapui repl with a delay. Default delay is 1ms.
+local function delayed_dap_controls_refresh(delay)
+  local _delay = delay or 1
+
+  vim.defer_fn(
+  function()
+    require('dapui.controls').refresh_control_panel()
+  end,
+  _delay)
+end
 
 --- Closes the (possibly) open ui
 ---@param close_repl boolean wether repl should be closed.
@@ -34,7 +44,7 @@ function M.load_dapui(close_repl, close_dapui)
   dap.listeners.after.event_initialized["dapui_config"] = function ()
     dap.repl.close()
     dapui.open()
-    utils.delayed_dap_controls_refresh()
+    delayed_dap_controls_refresh()
   end
   _close_ui(close_repl, close_dapui)
 end
