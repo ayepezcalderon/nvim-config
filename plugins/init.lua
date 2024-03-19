@@ -40,6 +40,17 @@ local plugins = {
   },
 
   {
+    "nvim-tree/nvim-tree.lua",
+    cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+    opts = function()
+      return require("plugins.nvimtree").opts
+    end,
+    config = function(_, opts)
+      require("nvim-tree").setup(opts)
+    end,
+  },
+
+  {
     'rmagatti/auto-session',
     lazy = false,
     opts = function()
