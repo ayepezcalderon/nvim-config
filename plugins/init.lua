@@ -3,6 +3,13 @@ local plugins = {
   { "nvim-lua/plenary.nvim" },
 
   {
+    "nvim-tree/nvim-web-devicons",
+    config = function(_, opts)
+      require("nvim-web-devicons").setup(opts)
+    end,
+  },
+
+  {
     'rmagatti/auto-session',
     lazy = false,
     opts = function()
