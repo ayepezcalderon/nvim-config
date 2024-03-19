@@ -38,7 +38,7 @@ M.load = function (bufnr)
   map('n', '<leader>ph', gs.preview_hunk, {
       desc = "Preview hunk",
   })
-  map('n', '<leader>hb', function() gs.blame_line() end, {
+  map('n', '<leader>gb', function() gs.blame_line() end, {
     desc = "Blame line",
   })
   map('n', '<leader>td', gs.toggle_deleted, {

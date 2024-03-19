@@ -10,7 +10,9 @@ map(
 map(
   {"n"},
   "<leader>/",
-  112,
+  function()
+    require("Comment.api").toggle.linewise.current()
+  end,
   {desc="Toggle comment"}
 )
 
@@ -18,37 +20,49 @@ map(
 map(
   {"n"},
   "<leader>tw",
-  46,
+  function()
+    require("trouble").toggle("workspace_diagnostics")
+  end,
   {desc="Toggle workspace diagnostics"}
 )
 map(
   {"n"},
   "<leader>tg",
-  52,
+  function()
+    require("trouble").toggle("document_diagnostics")
+  end,
   {desc="Toggle document diagnostics"}
 )
 map(
   {"n"},
   "<leader>tq",
-  58,
+  function()
+    require("trouble").toggle("quickfix")
+  end,
   {desc="Toggle quickfix"}
 )
 map(
   {"n"},
   "<leader>tl",
-  64,
+  function()
+    require("trouble").toggle("loclist")
+  end,
   {desc="Toggle loclist"}
 )
 map(
   {"n"},
   "<leader>tx",
-  40,
+  function()
+    require("trouble").toggle()
+  end,
   {desc="Toggle trouble"}
 )
 map(
   {"n"},
   "<leader>tr",
-  70,
+  function()
+    require("trouble").toggle("lsp_references")
+  end,
   {desc="Toggle LSP references"}
 )
 
@@ -70,137 +84,42 @@ map(
 map(
   {"n"},
   "<leader>dpr",
-  221,
+  function ()
+    require('dap-python').test_method()
+  end,
   {desc="Debug python run"}
-)
-
-------- LSPCONFIG -------
-map(
-  {"v"},
-  "<leader>ca",
-  248,
-  {desc="LSP code action"}
-)
-map(
-  {"n"},
-  "<leader>D",
-  169,
-  {desc="LSP definition type"}
-)
-map(
-  {"n"},
-  "<leader>wl",
-  239,
-  {desc="List workspace folders"}
-)
-map(
-  {"n"},
-  "[d",
-  204,
-  {desc="Goto prev"}
-)
-map(
-  {"n"},
-  "gr",
-  190,
-  {desc="LSP references"}
-)
-map(
-  {"n"},
-  "<leader>wa",
-  225,
-  {desc="Add workspace folder"}
-)
-map(
-  {"n"},
-  "<leader>ra",
-  176,
-  {desc="LSP rename"}
-)
-map(
-  {"n"},
-  "gd",
-  141,
-  {desc="LSP definition"}
-)
-map(
-  {"n"},
-  "<leader>wr",
-  232,
-  {desc="Remove workspace folder"}
-)
-map(
-  {"n"},
-  "<leader>q",
-  218,
-  {desc="Diagnostic setloclist"}
-)
-map(
-  {"n"},
-  "]d",
-  211,
-  {desc="Goto next"}
-)
-map(
-  {"n"},
-  "K",
-  148,
-  {desc="LSP hover"}
-)
-map(
-  {"n"},
-  "<leader>lf",
-  197,
-  {desc="Floating diagnostic"}
-)
-map(
-  {"n"},
-  "<leader>ca",
-  183,
-  {desc="LSP code action"}
-)
-map(
-  {"n"},
-  "gi",
-  155,
-  {desc="LSP implementation"}
-)
-map(
-  {"n"},
-  "gD",
-  134,
-  {desc="LSP declaration"}
-)
-map(
-  {"n"},
-  "<leader>ls",
-  162,
-  {desc="LSP signature help"}
 )
 
 ------- DAP -------
 map(
   {"n"},
   "<leader>dB",
-  108,
+  function()
+    require("dap").set_breakpoint(vim.fn.input('Breakpoint condition: '))
+  end,
   {desc="Breakpoint condition"}
 )
 map(
   {"n"},
   "<Leader>dr",
-  120,
+  function()
+    require('dapui').close()
+    utils.custom_dap_repl_toggle(false)
+  end,
   {desc="dap repl toggle"}
 )
 map(
   {"n"},
   "<F2>",
-  140,
+  function() require('dap').down() end,
   {desc="dap down"}
 )
 map(
   {"n"},
   "<Leader>dp",
-  158,
+  function()
+    require('dap.ui.widgets').preview()
+  end,
   {desc="dap preview"}
 )
 map(
@@ -212,137 +131,105 @@ map(
 map(
   {"n"},
   "<F9>",
-  146,
+  function() require('dap').step_out() end,
   {desc="dap step out"}
 )
 map(
   {"n"},
   "<Leader>lp",
-  114,
+  function()
+    require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))
+  end,
   {desc="Log point"}
 )
 map(
   {"n"},
   "<F5>",
-  143,
+  function() require('dap').continue() end,
   {desc="dap continue"}
 )
 map(
   {"n"},
   "<Leader>dcb",
-  127,
+  function()
+    require('dap').clear_breakpoints()
+  end,
   {desc="dap clear breakpoints"}
 )
 map(
   {"n"},
   "<F8>",
-  145,
+  function() require('dap').step_into() end,
   {desc="dap step into"}
 )
 map(
   {"n"},
   "<F12>",
-  147,
+  function() require('dap').terminate() end,
   {desc="dap terminate"}
 )
 map(
   {"n"},
   "<F4>",
-  142,
+  function() require('dap').run_last() end,
   {desc="dap run last"}
 )
 map(
   {"n"},
   "<F7>",
-  144,
+  function() require('dap').step_over() end,
   {desc="dap step over"}
 )
 map(
   {"n"},
   "<Leader>ds",
-  173,
+  function()
+    local widgets = require('dap.ui.widgets')
+    widgets.centered_float(widgets.scopes)
+    utils.set_buf_easy_close_mappings()
+  end,
   {desc="dap scopes"}
 )
 map(
   {"n"},
   "<F3>",
-  141,
+  function() require('dap').up() end,
   {desc="dap up"}
 )
 map(
   {"n"},
   "<Leader>dh",
-  151,
+  function()
+    require('dap.ui.widgets').hover()
+    utils.set_buf_easy_close_mappings()
+  end,
   {desc="dap hover"}
 )
 map(
   {"n"},
   "<Leader>dtc",
-  133,
+  function()
+    require('dap').run_to_cursor()
+  end,
   {desc="dap run to cursor"}
-)
-
-------- NVTERM -------
-map(
-  {"t"},
-  "<A-h>",
-  308,
-  {desc="Toggle horizontal term"}
-)
-map(
-  {"t"},
-  "<A-i>",
-  301,
-  {desc="Toggle floating term"}
-)
-map(
-  {"t"},
-  "<A-v>",
-  315,
-  {desc="Toggle vertical term"}
-)
-map(
-  {"n"},
-  "<A-h>",
-  332,
-  {desc="Toggle horizontal term"}
-)
-map(
-  {"n"},
-  "<leader>v",
-  354,
-  {desc="New vertical term"}
-)
-map(
-  {"n"},
-  "<leader>h",
-  347,
-  {desc="New horizontal term"}
-)
-map(
-  {"n"},
-  "<A-i>",
-  325,
-  {desc="Toggle floating term"}
-)
-map(
-  {"n"},
-  "<A-v>",
-  339,
-  {desc="Toggle vertical term"}
 )
 
 ------- WHICHKEY -------
 map(
   {"n"},
   "<leader>wk",
-  373,
+  function()
+    local input = vim.fn.input "WhichKey: "
+    vim.cmd("WhichKey " .. input)
+  end,
   {desc="Which-key query lookup"}
 )
 map(
   {"n"},
   "<leader>wK",
-  367,
+  function()
+    vim.cmd "WhichKey"
+  end,
   {desc="Which-key all keymaps"}
 )
 
@@ -350,21 +237,27 @@ map(
 map(
   {"n"},
   "<leader>cd",
-  92,
-  {desc="Class docstring"}
+  function ()
+    require("neogen").generate({ type = 'class' })
+  end,
+  {desc="Class docstring", noremap = true, silent = true}
 )
 map(
   {"n"},
   "<leader>fd",
-  84,
-  {desc="Function docstring"}
+  function ()
+    require("neogen").generate({ type = 'func' })
+  end,
+  {desc="Function docstring", noremap = true, silent = true}
 )
 
 ------- AUTO_SESSION -------
 map(
   {"n"},
   "<leader>fs",
-  257,
+  function ()
+    require("auto-session.session-lens").search_session()
+  end,
   {desc="Find session"}
 )
 
@@ -396,7 +289,9 @@ map(
 map(
   {"x"},
   "<M-y>",
-  309,
+  function()
+    require("yanky.textobj").last_put()
+  end,
   {desc="Last put text object"}
 )
 map(
@@ -456,7 +351,9 @@ map(
 map(
   {"n"},
   "<M-y>",
-  293,
+  function()
+    require("yanky.textobj").last_put()
+  end,
   {desc="Last put text object"}
 )
 map(
@@ -512,44 +409,6 @@ map(
   "P",
   '<Plug>(YankyPutBefore)',
   {desc="Put before"}
-)
-
-------- GITSIGNS -------
-map(
-  {"n"},
-  "<leader>gb",
-  453,
-  {desc="Blame line"}
-)
-map(
-  {"n"},
-  "[c",
-  424,
-  {desc="Jump to prev hunk"}
-)
-map(
-  {"n"},
-  "<leader>rh",
-  439,
-  {desc="Reset hunk"}
-)
-map(
-  {"n"},
-  "]c",
-  410,
-  {desc="Jump to next hunk"}
-)
-map(
-  {"n"},
-  "<leader>td",
-  460,
-  {desc="Toggle deleted"}
-)
-map(
-  {"n"},
-  "<leader>ph",
-  446,
-  {desc="Preview hunk"}
 )
 
 ------- TELESCOPE -------
@@ -632,63 +491,31 @@ map(
   {desc="Yank history"}
 )
 
-------- BLACK -------
-map(
-  {"n"},
-  "<leader>kf",
-  327,
-  {desc="black-> # fmt: off"}
-)
-map(
-  {"n"},
-  "<leader>ks",
-  334,
-  {desc="black-> # fmt: skip"}
-)
-map(
-  {"n"},
-  "<leader>kn",
-  320,
-  {desc="black-> # fmt: on"}
-)
-
-------- TABUFLINE -------
-map(
-  {"n"},
-  "<tab>",
-  83,
-  {desc="Goto next buffer"}
-)
-map(
-  {"n"},
-  "<S-tab>",
-  90,
-  {desc="Goto prev buffer"}
-)
-map(
-  {"n"},
-  "<leader>x",
-  98,
-  {desc="Close buffer"}
-)
-
 ------- DAPUI -------
 map(
   {"n"},
   "<leader>dco",
-  202,
+  function()
+    require("dapui").float_element('console')
+  end,
   {desc="dapui console"}
 )
 map(
   {"n"},
   "<leader>dw",
-  196,
+  function()
+    require("dapui").float_element('watches')
+  end,
   {desc="dapui watches"}
 )
 map(
   {"n"},
   "<leader>dui",
-  188,
+  function()
+    require('dap').repl.close()
+    require("dapui").toggle()
+    utils.delayed_dap_controls_refresh()
+  end,
   {desc="dapui toggle"}
 )
 
@@ -748,12 +575,6 @@ map(
   {desc="Move down"}
 )
 map(
-  {"t"},
-  "<C-x>",
-  58,
-  {desc="Escape terminal mode"}
-)
-map(
   {"n"},
   "<C-k>",
   '<cmd> TmuxNavigateUp<CR>',
@@ -809,12 +630,6 @@ map(
 )
 map(
   {"n"},
-  "<leader>tt",
-  14,
-  {desc="toggle transparency"}
-)
-map(
-  {"n"},
   "<leader>rn",
   '<cmd> set rnu! <CR>',
   {desc="Toggle relative number"}
@@ -856,15 +671,11 @@ map(
   {desc="Copy whole file"}
 )
 map(
-  {"n"},
+  {"n", "v"},
   "<leader>fm",
-  50,
-  {desc="LSP formatting"}
-)
-map(
-  {"v"},
-  "<leader>fm",
-  25,
+  function()
+    vim.lsp.buf.format { async = true }
+  end,
   {desc="LSP formatting"}
 )
 map(
@@ -896,7 +707,17 @@ map(
 map(
   {"n"},
   "<leader>cc",
-  387,
+  function()
+    local ok, start = require("indent_blankline.utils").get_current_context(
+      vim.g.indent_blankline_context_patterns,
+      vim.g.indent_blankline_use_treesitter_scope
+    )
+
+    if ok then
+      vim.api.nvim_win_set_cursor(vim.api.nvim_get_current_win(), { start, 0 })
+      vim.cmd [[normal! _]]
+    end
+  end,
   {desc="Jump to current context"}
 )
 
@@ -904,13 +725,17 @@ map(
 map(
   {"n"},
   "<leader>dlb",
-  233,
+  function()
+    require'telescope'.extensions.dap.list_breakpoints{}
+  end,
   {desc="List breakpoints"}
 )
 map(
   {"n"},
   "<Leader>df",
-  239,
+  function()
+    require'telescope'.extensions.dap.frames{}
+  end,
   {desc="dap frames"}
 )
 

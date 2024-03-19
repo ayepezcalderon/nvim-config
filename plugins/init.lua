@@ -343,7 +343,6 @@ local plugins = {
 -- LAZY OPTS
 local lazy_opts = {
   defaults = { lazy = true },
-  install = { colorscheme = { "nvchad" } },
 
   ui = {
     icons = {
