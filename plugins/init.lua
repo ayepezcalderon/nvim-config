@@ -1,5 +1,7 @@
 --- @type LazySpec
 local plugins = {
+  { "nvim-lua/plenary.nvim" },
+
   {
     'rmagatti/auto-session',
     lazy = false,
