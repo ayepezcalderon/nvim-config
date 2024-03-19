@@ -263,45 +263,7 @@ map(
 
 ------- YANKY -------
 map(
-  {"x"},
-  "y",
-  '<Plug>(YankyYank)',
-  {desc="Yank"}
-)
-map(
-  {"x"},
-  "p",
-  '<Plug>(YankyPutAfter)',
-  {desc="Put after"}
-)
-map(
-  {"x"},
-  "gp",
-  '<Plug>(YankyGPutAfter)',
-  {desc="Put after and move"}
-)
-map(
-  {"x"},
-  "gP",
-  '<Plug>(YankyGPutBefore)',
-  {desc="Put before and move"}
-)
-map(
-  {"x"},
-  "<M-y>",
-  function()
-    require("yanky.textobj").last_put()
-  end,
-  {desc="Last put text object"}
-)
-map(
-  {"x"},
-  "P",
-  '<Plug>(YankyPutBefore)',
-  {desc="Put before"}
-)
-map(
-  {"n"},
+  {"n", "x"},
   "gp",
   '<Plug>(YankyGPutAfter)',
   {desc="Put after and move"}
@@ -325,7 +287,7 @@ map(
   {desc="Put indent before shift right"}
 )
 map(
-  {"n"},
+  {"n", "x"},
   "p",
   '<Plug>(YankyPutAfter)',
   {desc="Put after"}
@@ -349,7 +311,7 @@ map(
   {desc="Put indent before linewise"}
 )
 map(
-  {"n"},
+  {"n", "x"},
   "<M-y>",
   function()
     require("yanky.textobj").last_put()
@@ -357,7 +319,7 @@ map(
   {desc="Last put text object"}
 )
 map(
-  {"n"},
+  {"n", "x"},
   "y",
   '<Plug>(YankyYank)',
   {desc="Yank"}
@@ -369,7 +331,7 @@ map(
   {desc="Next yank"}
 )
 map(
-  {"n"},
+  {"n", "x"},
   "gP",
   '<Plug>(YankyGPutBefore)',
   {desc="Put before and move"}
@@ -405,7 +367,7 @@ map(
   {desc="Put indent after shift right"}
 )
 map(
-  {"n"},
+  {"n", "x"},
   "P",
   '<Plug>(YankyPutBefore)',
   {desc="Put before"}
@@ -563,18 +525,6 @@ map(
   {desc="Dont copy replaced text"}
 )
 map(
-  {"x"},
-  "k",
-  'v:count || mode(1)[0:1] == "no" ? "k" : "gk"',
-  {desc="Move up"}
-)
-map(
-  {"x"},
-  "j",
-  'v:count || mode(1)[0:1] == "no" ? "j" : "gj"',
-  {desc="Move down"}
-)
-map(
   {"n"},
   "<C-k>",
   '<cmd> TmuxNavigateUp<CR>',
@@ -593,13 +543,13 @@ map(
   {desc="Window down"}
 )
 map(
-  {"n"},
+  {"n", "x"},
   "k",
   'v:count || mode(1)[0:1] == "no" ? "k" : "gk"',
   {desc="Move up"}
 )
 map(
-  {"n"},
+  {"n", "x"},
   "j",
   'v:count || mode(1)[0:1] == "no" ? "j" : "gj"',
   {desc="Move down"}
@@ -641,7 +591,7 @@ map(
   {desc="Jump to next (<C-i> remap)"}
 )
 map(
-  {"n"},
+  {"n", "v"},
   "<Up>",
   'v:count || mode(1)[0:1] == "no" ? "k" : "gk"',
   {desc="Move up"}
@@ -653,7 +603,7 @@ map(
   {desc="Window left"}
 )
 map(
-  {"n"},
+  {"n", "x"},
   "<Down>",
   'v:count || mode(1)[0:1] == "no" ? "j" : "gj"',
   {desc="Move down"}
@@ -680,21 +630,9 @@ map(
 )
 map(
   {"v"},
-  "<Down>",
-  'v:count || mode(1)[0:1] == "no" ? "j" : "gj"',
-  {desc="Move down"}
-)
-map(
-  {"v"},
   "<",
   '<gv',
   {desc="Indent line"}
-)
-map(
-  {"v"},
-  "<Up>",
-  'v:count || mode(1)[0:1] == "no" ? "k" : "gk"',
-  {desc="Move up"}
 )
 map(
   {"v"},
