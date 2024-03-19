@@ -10,6 +10,20 @@ local plugins = {
   },
 
   {
+    "lukas-reineke/indent-blankline.nvim",
+    version = "2.20.7",
+    init = function()
+      require("plugins._utils._general").lazy_load("indent-blankline.nvim")
+    end,
+    opts = function()
+      return require("plugins.indent-blankline").opts
+    end,
+    config = function(_, opts)
+      require("indent_blankline").setup(opts)
+    end,
+  },
+
+  {
     'rmagatti/auto-session',
     lazy = false,
     opts = function()
