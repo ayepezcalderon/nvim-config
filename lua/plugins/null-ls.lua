@@ -1,10 +1,8 @@
-local M = {}
-
 --------- OPTS ------------
 -- local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 local null_ls = require('null-ls')
 
-M.opts = {
+local _opts = {
   sources = {
     -- null_ls.builtins.diagnostics.ruff,  -- not supported by none-ls
     null_ls.builtins.formatting.black,  -- also supports range_formatting in none-ls
@@ -31,4 +29,9 @@ M.opts = {
   -- end,
 }
 
-return M
+--------- RETURN ------------
+return {
+  "nvimtools/none-ls.nvim",
+  ft = {"python", "tex", "plaintex", "bib"},
+  opts = _opts,
+}

@@ -1,7 +1,5 @@
-local M = {}
-
 ---------- INIT ---------
-function M.init()
+local function _init()
   vim.api.nvim_command('filetype plugin on')
 
   vim.g.vimtex_compiler_method = 'latexmk'
@@ -15,4 +13,8 @@ function M.init()
 
 end
 
-return M
+return {
+  "lervag/vimtex",
+  lazy = false,
+  init = _init,
+}

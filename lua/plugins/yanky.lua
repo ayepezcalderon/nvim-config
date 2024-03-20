@@ -1,7 +1,5 @@
-local M = {}
-
 ---------- OPTS ----------
-M.opts = {
+local _opts = {
   highlight = {
     on_put = false,
     on_yank = false,
@@ -15,4 +13,12 @@ M.opts = {
   },
 }
 
-return M
+---------- RETURN ----------
+return {
+  "gbprod/yanky.nvim",
+  lazy = false,
+  opts = _opts,
+  config = function(_, opts)
+    require("yanky").setup(opts)
+  end
+}

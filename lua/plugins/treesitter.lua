@@ -1,7 +1,5 @@
-local M = {}
-
 ---------- OPTS -----------
-M.opts = {
+local _opts = {
   ensure_installed = {
     -- defaults 
     "vim",
@@ -56,4 +54,16 @@ M.opts = {
   indent = { enable = true },
 }
 
-return M
+---------- RETURN -----------
+return {
+  "nvim-treesitter/nvim-treesitter",
+  init = function()
+    require("plugins._utils._general").lazy_load("nvim-treesitter")
+  end,
+  cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
+  build = ":TSUpdate",
+  opts = _opts,
+  config = function(_, opts)
+    require("nvim-treesitter.configs").setup(opts)
+  end,
+}

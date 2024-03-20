@@ -1,7 +1,5 @@
-local M = {}
-
 ---------- INIT ------------
-function M.init ()
+local function _init ()
   -- load gitsigns only when a git file is opened
   vim.api.nvim_create_autocmd({ "BufRead" }, {
     group = vim.api.nvim_create_augroup("GitSignsLazyLoad", { clear = true }),
@@ -20,7 +18,7 @@ end
 ----------- OPTS ------------
 local map_on_demand = require("mappings.on_demand.gitsigns")
 
-M.opts = {
+local _opts = {
   signs = {
     add = { text = "│" },
     change = { text = "│" },
@@ -34,4 +32,13 @@ M.opts = {
   end,
 }
 
-return M
+return {
+  "lewis6991/gitsigns.nvim",
+  dependencies = { "tpope/vim-fugitive" },
+  ft = { "gitcommit", "diff" },
+  init = _init,
+  opts = _opts,
+  config = function(_, opts)
+    require("gitsigns").setup(opts)
+  end,
+}

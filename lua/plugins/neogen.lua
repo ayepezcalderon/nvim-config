@@ -1,7 +1,5 @@
-local M = {}
-
 ---------- OPTS ----------
-M.opts = {
+local _opts = {
   snippet_engine = "luasnip",
 
   languages = {
@@ -13,4 +11,15 @@ M.opts = {
   },
 }
 
-return M
+---------- RETURN ----------
+return {
+  "danymat/neogen",
+  dependencies = "nvim-treesitter/nvim-treesitter",
+  ft = {"python", "lua"},
+  opts = _opts,
+  config = function (_, opts)
+    require("neogen").setup(opts)
+  end
+  -- Uncomment next line if you want to follow only stable versions
+  -- version = "*" 
+}

@@ -1,10 +1,6 @@
-local M = {}
-
----------------- OPTS ------------------
 local cmp = require "cmp"
 
-dofile(vim.g.base46_cache .. "cmp")
-
+---------------- OPTS ------------------
 local cmp_ui = require("core.utils").load_config().ui.cmp
 local cmp_style = cmp_ui.style
 
@@ -56,7 +52,7 @@ local function border(hl_name)
   }
 end
 
-M.opts = {
+local _opts = {
   completion = {
     completeopt = "menu,menuone",
   },
@@ -131,14 +127,34 @@ if cmp_style ~= "atom" and cmp_style ~= "atom_colored" then
   M.opts.window.completion.border = border "CmpBorder"
 end
 
----------------- SETUP ------------------
-M.setup = function(_, opts)
-  require("cmp").setup(opts)
-  require("cmp").setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
+---------------- CONFIG ------------------
+local _config = function(_, opts)
+  cmp.setup(opts)
+  cmp.setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
     sources = {
       { name = "dap" },
     },
   })
 end
 
-return M
+---------------- RETURN ------------------
+-- load luasnips + cmp related in insert mode only
+return {
+  "hrsh7th/nvim-cmp",
+  event = "InsertEnter",
+  dependencies = {
+    -- snippet plugin
+    "L3MON4D3/LuaSnip",
+    -- autopairing of (){}[] etc
+    "windwp/nvim-autopairs",
+    -- cmp sources plugins
+    "saadparwaiz1/cmp_luasnip",
+    "hrsh7th/cmp-nvim-lua",
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
+    "rcarriga/cmp-dap",
+  },
+  opts = _opts,
+  config = _config
+}

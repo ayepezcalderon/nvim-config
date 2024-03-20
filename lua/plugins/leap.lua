@@ -1,6 +1,5 @@
-local M = {}
-
-function M.setup(_, opts)
+-------------- CONFIG ------------
+local function _config(_, opts)
   -- On demand mappings
   local map_on_demand = require("mappings.on_demand.leap")
   map_on_demand.load()
@@ -23,4 +22,9 @@ function M.setup(_, opts)
   )
 end
 
-return M
+-------------- RETURN ------------
+return {
+  "ggandor/leap.nvim",
+  lazy = false,
+  config = _config,
+}

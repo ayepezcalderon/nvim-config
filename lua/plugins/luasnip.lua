@@ -1,13 +1,11 @@
-local M = {}
-
 ------------ OPTS ---------
-M.opts = {
+local _opts = {
   history = true,
   updateevents = "TextChanged,TextChangedI",
 }
 
------------- SETUP ---------
-M.setup = function(_, opts)
+------------ CONFIG ---------
+local _config = function(_, opts)
   require("luasnip").config.set_config(opts)
 
   -- vscode format
@@ -34,4 +32,10 @@ M.setup = function(_, opts)
   })
 end
 
-return M
+------------ RETURN ---------
+return {
+  "L3MON4D3/LuaSnip",
+  dependencies = "rafamadriz/friendly-snippets",
+  opts = _opts,
+  config = _config,
+}

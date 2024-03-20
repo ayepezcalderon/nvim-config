@@ -1,11 +1,9 @@
-local M = {}
-
 --------- OPTS -------------
 local actions = require("telescope.actions")
 require("trouble")
 local trouble = require("trouble.providers.telescope")
 
-M.opts = {
+local _opts = {
   defaults = {
     vimgrep_arguments = {
       "rg",
@@ -77,8 +75,8 @@ M.opts = {
   },
 }
 
------------- SETUP --------------
-function M.setup(_, opts)
+------------ CONFIG --------------
+local function _config(_, opts)
   local telescope = require("telescope")
   telescope.setup(opts)
 
@@ -88,4 +86,11 @@ function M.setup(_, opts)
   end
 end
 
-return M
+------------ RETURN --------------
+return {
+  "nvim-telescope/telescope.nvim",
+  dependencies = { "nvim-treesitter/nvim-treesitter", { "nvim-telescope/telescope-fzf-native.nvim", build = "make" } },
+  cmd = "Telescope",
+  opts = _opts,
+  config = _config,
+}

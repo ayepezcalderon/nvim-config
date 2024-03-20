@@ -1,7 +1,5 @@
-local M = {}
-
---------- OPTS ---------
-M.opts = {
+------------ OPTS -------------
+local _opts = {
   indentLine_enabled = 1,
   filetype_exclude = {
     "help",
@@ -22,4 +20,15 @@ M.opts = {
   show_current_context_start = true,
 }
 
-return M
+------------ RETURN -------------
+return {
+  "lukas-reineke/indent-blankline.nvim",
+  version = "2.20.7",
+  init = function()
+    require("plugins._utils._general").lazy_load("indent-blankline.nvim")
+  end,
+  opts = _opts,
+  config = function(_, opts)
+    require("indent_blankline").setup(opts)
+  end,
+}

@@ -1,6 +1,4 @@
-local M = {}
-
------------ SETUP ----------
+----------- CONFIG ----------
 local on_attach = function(client, bufnr)
   client.server_capabilities.documentFormattingProvider = false
   client.server_capabilities.documentRangeFormattingProvider = false
@@ -32,10 +30,10 @@ capabilities.textDocument.completion.completionItem = {
 
 local lspconfig = require("lspconfig")
 
-function M.setup(_, opts)
+local function _config(_, opts)
   lspconfig.lua_ls.setup {
-    on_attach = M.on_attach,
-    capabilities = M.capabilities,
+    on_attach = on_attach,
+    capabilities = capabilities,
 
     settings = {
       Lua = {
@@ -104,4 +102,11 @@ function M.setup(_, opts)
   })
 end
 
-return M
+----------- RETURN ----------
+return {
+  "neovim/nvim-lspconfig",
+  init = function()
+    require("plugins._utils._general").lazy_load("nvim-lspconfig")
+  end,
+  config = _config,
+}

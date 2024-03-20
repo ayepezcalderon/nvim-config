@@ -1,7 +1,5 @@
-local M = {}
-
 -------- OPTS --------
-M.opts = {
+local _opts = {
   filetypes = {
     markdown = true,
     python = true,
@@ -27,4 +25,10 @@ M.opts = {
   },
 }
 
-return M
+-------- OPTS --------
+return {
+  "zbirenbaum/copilot.lua",
+  event = "InsertEnter",
+  build = ":Copilot auth",
+  opts = _opts
+}
