@@ -1,3 +1,3 @@
-# nvchad-config
+# nvim-config
 My Neovim config.
 

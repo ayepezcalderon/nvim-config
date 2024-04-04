@@ -68,12 +68,6 @@ map(
 )
 map(
   {"n"},
-  "<leader>th",
-  '<cmd> Telescope themes <CR>',
-  {desc="Nvchad themes"}
-)
-map(
-  {"n"},
   "<leader>fy",
   '<cmd> Telescope yank_history <CR>',
   {desc="Yank history"}

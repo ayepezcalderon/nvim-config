@@ -124,7 +124,7 @@ local _opts = {
 }
 
 if cmp_style ~= "atom" and cmp_style ~= "atom_colored" then
-  M.opts.window.completion.border = border "CmpBorder"
+  _opts.window.completion.border = border("CmpBorder")
 end
 
 ---------------- CONFIG ------------------
