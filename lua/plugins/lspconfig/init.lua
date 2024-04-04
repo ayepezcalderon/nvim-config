@@ -4,7 +4,7 @@ local on_attach = function(client, bufnr)
   client.server_capabilities.documentRangeFormattingProvider = false
 
   -- On demand mappings
-  local map_on_demand = require("mappings.on_demand.lspconfig")
+  local map_on_demand = require("plugins.lspconfig.mappings")
   map_on_demand.load(bufnr)
 end
 
@@ -106,7 +106,7 @@ end
 return {
   "neovim/nvim-lspconfig",
   init = function()
-    require("plugins._utils._general").lazy_load("nvim-lspconfig")
+    require("utils").lazy_load("nvim-lspconfig")
   end,
   config = _config,
 }

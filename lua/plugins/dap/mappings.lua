@@ -1,4 +1,5 @@
 local map = vim.keymap.set
+local dap_utils = require("plugins.dap.utils")
 
 map(
   {"n"},

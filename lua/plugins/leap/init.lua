@@ -1,7 +1,7 @@
 -------------- CONFIG ------------
 local function _config(_, opts)
   -- On demand mappings
-  local map_on_demand = require("mappings.on_demand.leap")
+  local map_on_demand = require("plugins.leap.mappings")
   map_on_demand.load()
 
   -- Workaround for the duplicate cursor bug when autojumping (Until neovim/neovim#20793 is fixed)

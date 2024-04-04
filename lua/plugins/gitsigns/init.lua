@@ -16,7 +16,7 @@ local function _init ()
 end
 
 ----------- OPTS ------------
-local map_on_demand = require("mappings.on_demand.gitsigns")
+local map_on_demand = require("plugins.gitsigns.mappings")
 
 local _opts = {
   signs = {

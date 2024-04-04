@@ -22,7 +22,7 @@ map(
   function()
     require('dap').repl.close()
     require("dapui").toggle()
-    dap_utils.delayed_dap_controls_refresh()
+    require("plugins.dapui.utils").delayed_dap_controls_refresh()
   end,
   {desc="dapui toggle"}
 )

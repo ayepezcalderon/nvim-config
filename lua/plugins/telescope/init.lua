@@ -84,6 +84,9 @@ local function _config(_, opts)
   for _, ext in ipairs(opts.extensions_list) do
     telescope.load_extension(ext)
   end
+
+  -- mappings
+  require("plugins.telescope.mappings")
 end
 
 ------------ RETURN --------------

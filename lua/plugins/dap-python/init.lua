@@ -27,6 +27,9 @@ local _config = function (_, opts)
     console = 'integratedTerminal';
     justMyCode = false;
   })
+
+  -- mappings
+  require("plugins.dap-python.mappings")
 end
 
 ------------ RETURN --------------

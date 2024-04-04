@@ -82,5 +82,8 @@ return {
   opts = _opts,
   config = function(_, opts)
     require("nvim-tree").setup(opts)
+
+    -- mappings
+    require("plugins.nvimtree.mappings")
   end,
 }

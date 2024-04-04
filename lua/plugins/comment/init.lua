@@ -10,6 +10,8 @@ return {
   },
   config = function(_, opts)
     require("Comment").setup(opts)
+    -- mappings
+    require("plugins.comment.mappings")
   end,
 }
 

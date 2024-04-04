@@ -25,10 +25,12 @@ return {
   "lukas-reineke/indent-blankline.nvim",
   version = "2.20.7",
   init = function()
-    require("plugins._utils._general").lazy_load("indent-blankline.nvim")
+    require("utils").lazy_load("indent-blankline.nvim")
   end,
   opts = _opts,
   config = function(_, opts)
     require("indent_blankline").setup(opts)
+  -- mappings
+    require("plugins.indent-blankline.mappings")
   end,
 }

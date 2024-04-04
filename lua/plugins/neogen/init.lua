@@ -19,6 +19,8 @@ return {
   opts = _opts,
   config = function (_, opts)
     require("neogen").setup(opts)
+    -- mappings
+    require("plugins.neogen.mappings")
   end
   -- Uncomment next line if you want to follow only stable versions
   -- version = "*" 
