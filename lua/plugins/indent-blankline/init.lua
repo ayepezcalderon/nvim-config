@@ -32,5 +32,7 @@ return {
     require("indent_blankline").setup(opts)
   -- mappings
     require("plugins.indent-blankline.mappings")
+  -- commands
+    require("plugins.indent-blankline.commands")
   end,
 }
