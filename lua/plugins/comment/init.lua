@@ -12,6 +12,8 @@ return {
     require("Comment").setup(opts)
     -- mappings
     require("plugins.comment.mappings")
+    -- highlights
+    require("plugins.comment.highlights")
   end,
 }
 

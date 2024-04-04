@@ -30,9 +30,11 @@ return {
   opts = _opts,
   config = function(_, opts)
     require("indent_blankline").setup(opts)
-  -- mappings
+    -- mappings
     require("plugins.indent-blankline.mappings")
-  -- commands
+    -- commands
     require("plugins.indent-blankline.commands")
+    -- highlights
+    require("plugins.indent-blankline.highlights")
   end,
 }

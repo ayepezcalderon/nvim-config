@@ -1,5 +1,7 @@
 ------------ CONFIG --------------
 local function _config (_, opts)
+  -- Set highlights for the colors of the signs
+  require("plugins.dap.highlights")
   -- Set colors with one of the util functions
   require("plugins.dap.utils").color_hls()
 
@@ -11,6 +13,7 @@ local function _config (_, opts)
   require("plugins.dap.mappings")
 end
 
+------------ RETURN --------------
 return {
   "mfussenegger/nvim-dap",
   dependencies = {
