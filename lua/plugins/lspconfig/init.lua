@@ -1,11 +1,15 @@
 ----------- CONFIG ----------
-local on_attach = function(client, bufnr)
-  client.server_capabilities.documentFormattingProvider = false
-  client.server_capabilities.documentRangeFormattingProvider = false
 
+local semantic_tokens = false
+
+local on_attach = function(client, bufnr)
   -- On demand mappings
   local map_on_demand = require("plugins.lspconfig.mappings")
   map_on_demand.load(bufnr)
+
+  if not semantic_tokens and client.supports_method "textDocument/semanticTokens" then
+    client.server_capabilities.semanticTokensProvider = nil
+  end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
