@@ -10,7 +10,7 @@ end
 local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
 vim.env.PATH = vim.fn.stdpath "data" .. "/mason/bin" .. (is_windows and ";" or ":") .. vim.env.PATH
 
--- load core
+-- load config for nvim core
 require("core")
 
 -- bootstrap lazy
