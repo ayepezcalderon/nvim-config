@@ -61,34 +61,10 @@ map(
   {desc="Window down"}
 )
 map(
-  {"n", "x"},
-  "k",
-  'v:count || mode(1)[0:1] == "no" ? "k" : "gk"',
-  {desc="Move up"}
-)
-map(
-  {"n", "x"},
-  "j",
-  'v:count || mode(1)[0:1] == "no" ? "j" : "gj"',
-  {desc="Move down"}
-)
-map(
-  {"n"},
-  "<leader>ch",
-  '<cmd> NvCheatsheet <CR>',
-  {desc="Mapping cheatsheet"}
-)
-map(
   {"n"},
   "<C-s>",
   '<cmd> w <CR>',
   {desc="Save file"}
-)
-map(
-  {"n"},
-  "<leader>b",
-  '<cmd> enew <CR>',
-  {desc="New buffer"}
 )
 map(
   {"n"},
@@ -109,22 +85,10 @@ map(
   {desc="Jump to next (<C-i> remap)"}
 )
 map(
-  {"n", "v"},
-  "<Up>",
-  'v:count || mode(1)[0:1] == "no" ? "k" : "gk"',
-  {desc="Move up"}
-)
-map(
   {"n"},
   "<C-h>",
   '<cmd> TmuxNavigateLeft<CR>',
   {desc="Window left"}
-)
-map(
-  {"n", "x"},
-  "<Down>",
-  'v:count || mode(1)[0:1] == "no" ? "j" : "gj"',
-  {desc="Move down"}
 )
 map(
   {"n"},
