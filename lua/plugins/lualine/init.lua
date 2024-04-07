@@ -21,6 +21,7 @@ local _opts = {
 ------ RETURN -------
 return {
   "nvim-lualine/lualine.nvim",
+  lazy=false,
   dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = _opts,
   config = function(_, opts)

@@ -10,6 +10,7 @@ local _opts = {
 ------ RETURN -------
 return {
   "akinsho/bufferline.nvim",
+  lazy=false,
   dependencies = { "nvim-tree/nvim-web-devicons" },
   version = "*",
   opts = _opts
