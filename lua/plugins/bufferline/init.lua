@@ -4,6 +4,7 @@ local _opts = {
     mode = "tabs",
     separator_style = "slant",
   },
+  highlights = require("catppuccin.groups.integrations.bufferline").get()
 }
 
 ------ RETURN -------

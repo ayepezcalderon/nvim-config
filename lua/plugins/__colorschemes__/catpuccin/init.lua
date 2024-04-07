@@ -5,6 +5,8 @@ local _opts = {
     mason = true,
     trouble = true,
     which_key = true,
+    -- on configs of other apps:
+    -- bufferline
   }
 }
 
