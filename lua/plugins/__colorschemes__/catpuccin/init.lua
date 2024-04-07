@@ -7,6 +7,7 @@ local _opts = {
     which_key = true,
     -- on configs of other apps:
     -- bufferline
+    -- lualine
   }
 }
 
