@@ -10,8 +10,8 @@ end
 local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
 vim.env.PATH = vim.fn.stdpath "data" .. "/mason/bin" .. (is_windows and ";" or ":") .. vim.env.PATH
 
--- load config for nvim core
-require("core")
+-- load nvim core config that executes before loading plugins
+require("core.before")
 
 -- bootstrap lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -31,3 +31,5 @@ vim.opt.rtp:prepend(lazypath)
 local lazy_config = require("lazy_config")
 require("lazy").setup({ { import = "plugins" }, }, lazy_config)
 
+-- load nvim core config that executes after loading plugins
+require("core.after")

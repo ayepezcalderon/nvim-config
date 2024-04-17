@@ -1,3 +1,6 @@
+-- mappings
+require("plugins.comment.mappings")
+
 return {
   "numToStr/Comment.nvim",
   keys = {
@@ -10,8 +13,6 @@ return {
   },
   config = function(_, opts)
     require("Comment").setup(opts)
-    -- mappings
-    require("plugins.comment.mappings")
     -- highlights
     require("plugins.comment.highlights")
   end,

@@ -75,6 +75,9 @@ local _opts = {
   },
 }
 
+-- mappings
+require("plugins.nvimtree.mappings")
+
 ----------- RETURN -----------
 return {
   "nvim-tree/nvim-tree.lua",
@@ -82,8 +85,5 @@ return {
   opts = _opts,
   config = function(_, opts)
     require("nvim-tree").setup(opts)
-
-    -- mappings
-    require("plugins.nvimtree.mappings")
   end,
 }

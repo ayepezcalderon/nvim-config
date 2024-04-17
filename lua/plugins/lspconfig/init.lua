@@ -32,9 +32,9 @@ capabilities.textDocument.completion.completionItem = {
 }
 
 
-local lspconfig = require("lspconfig")
-
 local function _config(_, opts)
+  local lspconfig = require("lspconfig")
+
   lspconfig.lua_ls.setup {
     on_attach = on_attach,
     capabilities = capabilities,

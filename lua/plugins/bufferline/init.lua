@@ -1,11 +1,20 @@
 ------ OPTS -------
-local _opts = {
-  options = {
-    mode = "tabs",
-    separator_style = "slant",
-  },
-  highlights = require("catppuccin.groups.integrations.bufferline").get()
-}
+local function _opts()
+  return {
+    options = {
+      separator_style = "slant",
+      offsets = {
+        {
+          filetype = "NvimTree",
+          -- text = "File Explorer",
+          text_align = "center",
+          separator = true
+        }
+      },
+    },
+    highlights = require("catppuccin.groups.integrations.bufferline").get()(),
+  }
+end
 
 ------ RETURN -------
 return {
