@@ -37,7 +37,7 @@ local function _opts()
     window = {
       completion = {
         side_padding = 1,
-        winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:None",
+        winhighlight = "Normal:CmpPmenu,Search:None",
         scrollbar = false,
         border = border("CmpBorder"),
       },
