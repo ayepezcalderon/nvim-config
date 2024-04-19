@@ -13,7 +13,7 @@ local _opts = {
     ["*"] = false,
   },
   suggestion = {
-    auto_trigger = true,
+    auto_trigger = false,
     keymap = {
       accept = "<M-l>",
       accept_line = "<M-k>",
@@ -28,7 +28,11 @@ local _opts = {
 -------- OPTS --------
 return {
   "zbirenbaum/copilot.lua",
-  event = "InsertEnter",
+  -- event = "InsertEnter",
+  cmd = "Copilot",
   build = ":Copilot auth",
-  opts = _opts
+  opts = _opts,
+  config = function (_, opts)
+    require("copilot").setup(opts)
+  end
 }
