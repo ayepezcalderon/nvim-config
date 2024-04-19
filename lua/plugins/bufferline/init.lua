@@ -12,7 +12,7 @@ local function _opts()
         }
       },
     },
-    highlights = require("catppuccin.groups.integrations.bufferline").get()(),
+    highlights = require("catppuccin.groups.integrations.bufferline").get(),
   }
 end
 
@@ -22,5 +22,10 @@ return {
   lazy=false,
   dependencies = { "nvim-tree/nvim-web-devicons" },
   version = "*",
-  opts = _opts
+  opts = _opts,
+  config = function(_, opts)
+    require("bufferline").setup(opts)
+    -- mappings
+    require("plugins.bufferline.mappings")
+  end,
 }

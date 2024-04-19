@@ -122,3 +122,9 @@ map(
   '>gv',
   {desc="Indent line"}
 )
+map(
+  {"n"},
+  "<leader>x",
+  '<cmd> :bdelete<CR>',
+  {desc="Toggle relative number"}
+)
