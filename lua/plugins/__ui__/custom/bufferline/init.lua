@@ -26,6 +26,6 @@ return {
   config = function(_, opts)
     require("bufferline").setup(opts)
     -- mappings
-    require("plugins.bufferline.mappings")
+    require("plugins.__ui__.custom.bufferline.mappings")
   end,
 }

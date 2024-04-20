@@ -1,3 +1,6 @@
+-- specify ui
+local ui = "custom"
+
 -- remap leader key
 vim.g.mapleader = " "
 
@@ -29,7 +32,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- load plugins
 local lazy_config = require("lazy_config")
-require("lazy").setup({ { import = "plugins" }, }, lazy_config)
+require("lazy").setup({ {import = "plugins.__ui__." .. ui}, { import = "plugins" }, }, lazy_config)
 
 -- load nvim core config that executes after loading plugins
 require("core.after")

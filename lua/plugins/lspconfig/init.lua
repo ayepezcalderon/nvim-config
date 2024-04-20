@@ -108,6 +108,7 @@ end
 ----------- RETURN ----------
 return {
   "neovim/nvim-lspconfig",
+  dependencies = { "nvim-tree/nvim-web-devicons" },
   init = function()
     require("utils").lazy_load("nvim-lspconfig")
   end,
