@@ -12,7 +12,7 @@ local function _opts()
         }
       },
     },
-    highlights = require("catppuccin.groups.integrations.bufferline").get(),
+    -- highlights = require("catppuccin.groups.integrations.bufferline").get(),
   }
 end
 
@@ -26,6 +26,6 @@ return {
   config = function(_, opts)
     require("bufferline").setup(opts)
     -- mappings
-    require("plugins.__ui__.custom.bufferline.mappings")
+    require("plugins.bufferline.mappings")
   end,
 }
