@@ -15,6 +15,9 @@ local _opts = {
 
   custom_highlights = function(colors)
     return {
+      LineNr = { fg = 16301462 },
+      CursorLineNr = { fg = 14278894 },
+
       IndentBlanklineChar = { fg = 3684167 },
       IndentBlanklineContextChar = { fg = 4540251 },
 
