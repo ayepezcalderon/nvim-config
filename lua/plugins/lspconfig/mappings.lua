@@ -176,6 +176,17 @@ function M.load(buffer)
       desc = "List workspace folders",
     }
   )
+
+  map(
+    "n",
+    "<leader>ra",
+    function()
+      require("plugins.lspconfig.utils").lsp_renamer()
+    end,
+    {
+      desc = "LSP rename",
+    }
+  )
 end
 
 return M
