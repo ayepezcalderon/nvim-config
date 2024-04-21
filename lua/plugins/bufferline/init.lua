@@ -1,5 +1,7 @@
 ------ OPTS -------
 local function _opts()
+  local bufferline = require("bufferline")
+
   return {
     options = {
       separator_style = "slant",
@@ -8,8 +10,13 @@ local function _opts()
           filetype = "NvimTree",
           -- text = "File Explorer",
           text_align = "center",
-          separator = true
+          separator = false,
         }
+      },
+      style_preset = {
+        bufferline.style_preset.no_italic,
+        bufferline.style_preset.no_bold,
+        bufferline.style_preset.minimal,
       },
     },
     -- highlights = require("catppuccin.groups.integrations.bufferline").get(),

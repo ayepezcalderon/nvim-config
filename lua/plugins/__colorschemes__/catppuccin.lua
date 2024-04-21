@@ -5,10 +5,35 @@ local _opts = {
     -- mason = true,
     -- trouble = true,
     -- which_key = true,
-    -- on configs of other apps:
-    -- bufferline
-    -- lualine
-  }
+    illuminate = {
+      enabled = false,
+      lsp = false
+    },
+  },
+
+  no_italic = true,
+
+  custom_highlights = function(colors)
+    return {
+      IndentBlanklineChar = { fg = 3684167 },
+      IndentBlanklineContextChar = { fg = 4540251 },
+
+      PmenuSel = {
+        bg = 11266483,
+        fg = 1973549
+      },
+
+      CmpBorder = { fg = colors.surface2 },
+      CmpPmenu = { bg = 1973549 },
+      CmpSel = {
+        bold = true,
+        cterm = {
+          bold = true
+        },
+        link = "PmenuSel"
+      }
+    }
+  end
 }
 
 ------- RETURN -------
@@ -20,6 +45,6 @@ return {
   opts=_opts,
   config = function (_, opts)
     require("catppuccin").setup(opts)
-    vim.cmd("colorscheme catppuccin")
+    vim.cmd("colorscheme " .. vim.g.colorscheme)
   end
 }

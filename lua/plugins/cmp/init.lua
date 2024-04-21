@@ -37,14 +37,14 @@ local function _opts()
     window = {
       completion = {
         side_padding = 1,
-        winhighlight = "Normal:CmpPmenu,Search:None",
+        winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:None",
         scrollbar = false,
         border = border("CmpBorder"),
       },
-      documentation = {
-        border = border "CmpDocBorder",
-        winhighlight = "Normal:CmpDoc",
-      },
+      -- documentation = {
+      --   -- border = border "CmpDocBorder",
+      --   winhighlight = "Normal:CmpDoc",
+      -- },
     },
     snippet = {
       expand = function(args)

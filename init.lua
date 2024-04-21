@@ -1,5 +1,6 @@
 -- specify ui
-vim.g.ui_config = "catppuccin"
+local colorscheme_plugin = "catppuccin"
+vim.g.colorscheme = "catppuccin"
 
 -- remap leader key
 vim.g.mapleader = " "
@@ -32,7 +33,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- load plugins
 local lazy_config = require("lazy_config")
-require("lazy").setup({ {import = "plugins.__colorschemes__." .. vim.g.ui_config}, { import = "plugins" }, }, lazy_config)
+require("lazy").setup({ {import = "plugins.__colorschemes__." .. colorscheme_plugin}, { import = "plugins" }, }, lazy_config)
 
 -- load nvim core config that executes after loading plugins
 require("core.after")
