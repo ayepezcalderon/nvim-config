@@ -1,6 +1,4 @@
-local M = {}
-
--- Renamer taken form nvchad
+-- Taken form nvchad
 local map = vim.keymap.set
 
 local function apply(curr, win)
@@ -15,7 +13,7 @@ local function apply(curr, win)
   end
 end
 
-function M.lsp_renamer()
+return function ()
   local currName = vim.fn.expand "<cword>" .. " "
 
   local win = require("plenary.popup").create(currName, {
@@ -43,5 +41,3 @@ function M.lsp_renamer()
   end, { buffer = 0 })
 end
 
-
-return M

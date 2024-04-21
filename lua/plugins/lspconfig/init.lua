@@ -10,6 +10,11 @@ local on_attach = function(client, bufnr)
   if not semantic_tokens and client.supports_method "textDocument/semanticTokens" then
     client.server_capabilities.semanticTokensProvider = nil
   end
+
+  -- signature popup
+  if client.server_capabilities.signatureHelpProvider then
+    require("plugins.lspconfig.utils.signature").setup(client, bufnr)
+  end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -34,6 +39,8 @@ capabilities.textDocument.completion.completionItem = {
 
 local function _config(_, opts)
   local lspconfig = require("lspconfig")
+
+  require("plugins.lspconfig.utils.ui")
 
   lspconfig.lua_ls.setup {
     on_attach = on_attach,

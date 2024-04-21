@@ -181,7 +181,7 @@ function M.load(buffer)
     "n",
     "<leader>ra",
     function()
-      require("plugins.lspconfig.utils").lsp_renamer()
+      require("plugins.lspconfig.utils.renamer")()
     end,
     {
       desc = "LSP rename",
