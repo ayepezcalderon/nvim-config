@@ -1,44 +1,107 @@
--- To put borders around signature
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = "single",
-})
+-- taken from nvchad
+-- signature popup when calling a definition
 
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-  border = "single",
-  focusable = false,
-  relative = "cursor",
-  silent = true,
-})
-
--- Brings signature help while typing inside a definition call
+-- thx to https://gitlab.com/ranjithshegde/dotbare/-/blob/master/.config/nvim/lua/lsp/init.lua
 local M = {}
 
-M.check_triggeredChars = function(triggerChars)
-  local cur_line = vim.api.nvim_get_current_line()
-  local pos = vim.api.nvim_win_get_cursor(0)[2]
+M.signature_window = function(_, result, ctx, config)
+  local bufnr, winner = vim.lsp.handlers.signature_help(_, result, ctx, config)
+  local current_cursor_line = vim.api.nvim_win_get_cursor(0)[1]
 
-  cur_line = cur_line:gsub("%s+", "") -- rm trailing spaces
-
-  for _, char in ipairs(triggerChars) do
-    if cur_line:sub(pos, pos) == char then
-      return true
+  if winner then
+    if current_cursor_line > 3 then
+      vim.api.nvim_win_set_config(winner, {
+        anchor = "SW",
+        relative = "cursor",
+        row = 0,
+        col = -1,
+      })
     end
+  end
+
+  if bufnr and winner then
+    return bufnr, winner
   end
 end
 
-M.setup = function(client, bufnr)
-  local group = vim.api.nvim_create_augroup("LspSignature", { clear = false })
-  vim.api.nvim_clear_autocmds { group = group, buffer = bufnr }
+-- thx to https://github.com/seblj/dotfiles/blob/0542cae6cd9a2a8cbddbb733f4f65155e6d20edf/nvim/lua/config/lspconfig/init.lua
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
+local util = require "vim.lsp.util"
+local clients = {}
 
-  local triggerChars = client.server_capabilities.signatureHelpProvider.triggerCharacters
+local check_trigger_char = function(line_to_cursor, triggers)
+  if not triggers then
+    return false
+  end
 
-  vim.api.nvim_create_autocmd("TextChangedI", {
+  for _, trigger_char in ipairs(triggers) do
+    local current_char = line_to_cursor:sub(#line_to_cursor, #line_to_cursor)
+    local prev_char = line_to_cursor:sub(#line_to_cursor - 1, #line_to_cursor - 1)
+    if current_char == trigger_char then
+      return true
+    end
+    if current_char == " " and prev_char == trigger_char then
+      return true
+    end
+  end
+  return false
+end
+
+local open_signature = function()
+  local triggered = false
+
+  for _, client in pairs(clients) do
+    local triggers = client.server_capabilities.signatureHelpProvider.triggerCharacters
+
+    -- csharp has wrong trigger chars for some odd reason
+    if client.name == "csharp" then
+      triggers = { "(", "," }
+    end
+
+    local pos = vim.api.nvim_win_get_cursor(0)
+    local line = vim.api.nvim_get_current_line()
+    local line_to_cursor = line:sub(1, pos[2])
+
+    if not triggered then
+      triggered = check_trigger_char(line_to_cursor, triggers)
+    end
+  end
+
+  if triggered then
+    local params = util.make_position_params()
+    vim.lsp.buf_request(
+      0,
+      "textDocument/signatureHelp",
+      params,
+      vim.lsp.with(M.signature_window, {
+        border = "single",
+        focusable = false,
+        -- silent = config.silent,
+      })
+    )
+  end
+end
+
+M.setup = function(client)
+  -- if config.disabled then
+  --   return
+  -- end
+  table.insert(clients, client)
+  local group = augroup("LspSignature", { clear = false })
+  vim.api.nvim_clear_autocmds { group = group, pattern = "<buffer>" }
+
+  autocmd("TextChangedI", {
     group = group,
-    buffer = bufnr,
+    pattern = "<buffer>",
     callback = function()
-      if M.check_triggeredChars(triggerChars) then
-        vim.lsp.buf.signature_help()
+      -- Guard against spamming of method not supported after
+      -- stopping a language serer with LspStop
+      local active_clients = vim.lsp.get_active_clients()
+      if #active_clients < 1 then
+        return
       end
+      open_signature()
     end,
   })
 end
