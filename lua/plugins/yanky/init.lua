@@ -12,7 +12,7 @@ local _opts = {
     enabled = true,
   },
 
-  --seems to fix the wayland issue
+  -- NEEDED FOR WAYLAND -> vim.o.clipboard SHOULD NOT be set to a register in wayland
   system_clipboard = {
     sync_with_ring = false,
   },
@@ -22,7 +22,6 @@ local _opts = {
 return {
   "gbprod/yanky.nvim",
   lazy = false,
-  -- enabled = false,  -- BUGGY IN WAYLAND
   opts = _opts,
   config = function(_, opts)
     require("yanky").setup(opts)

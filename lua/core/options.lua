@@ -8,7 +8,8 @@ vim.cmd('set nofixeol')
 opt.laststatus = 3 -- global statusline
 opt.showmode = false
 
-opt.clipboard = "unnamedplus"
+-- CANNOT SET A REGISTER TO THE CLIPBOARD IN WAYLAND -> NEOVIM CRASHES
+-- opt.clipboard = "unnamedplus"
 opt.cursorline = true
 
 -- Indenting
