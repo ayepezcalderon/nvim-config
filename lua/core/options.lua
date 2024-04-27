@@ -8,8 +8,10 @@ vim.cmd('set nofixeol')
 opt.laststatus = 3 -- global statusline
 opt.showmode = false
 
-
-if vim.fn.executable('gpaste-client') == 1 then
+-- DO NOT USE wl-clipboard in wayland to synchronize to clipboard registers
+-- CREATES WINDOWS FOR EVERY COPY, WHICH LEADS TU BUGGY/CRASHY BEHAVIOR
+-- unnamedplus is more of an issue than unnamed because it is used more often
+if os.getenv("WAYLAND_DISPLAY") and vim.fn.executable('gpaste-client') == 1 then
   vim.g.clipboard = {
     name = 'gpaste',
     copy = {
@@ -23,9 +25,6 @@ if vim.fn.executable('gpaste-client') == 1 then
     cache_enabled = true,
   }
 end
--- DO NOT USE wl-clipboard IN WAYLAND TO SYNCHRONIZE TO unnamedplus
--- CREATES WINDOWS FOR EVERY COPY, WHICH LEADS TU BUGGY/CRASHY BEHAVIOR
--- unnamedplus is more of an issue than unnamed because it is used more often
 if vim.g.clipboard or not os.getenv("WAYLAND_DISPLAY") then
   opt.clipboard = "unnamedplus"
 end
