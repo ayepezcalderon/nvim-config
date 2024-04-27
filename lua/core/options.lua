@@ -9,8 +9,6 @@ opt.laststatus = 3 -- global statusline
 opt.showmode = false
 
 
--- DO NOT USE wl-clipboard IN WAYLAND TO SYNCHRONIZE TO CLIPBOARD
--- CREATES WINDOWS FOR EVERY COPY, WHICH LEADS TU BUGGY/CRASHY BEHAVIOR
 if vim.fn.executable('gpaste-client') == 1 then
   vim.g.clipboard = {
     name = 'gpaste',
@@ -25,7 +23,12 @@ if vim.fn.executable('gpaste-client') == 1 then
     cache_enabled = true,
   }
 end
-opt.clipboard = "unnamedplus"
+-- DO NOT USE wl-clipboard IN WAYLAND TO SYNCHRONIZE TO unnamedplus
+-- CREATES WINDOWS FOR EVERY COPY, WHICH LEADS TU BUGGY/CRASHY BEHAVIOR
+-- unnamedplus is more of an issue than unnamed because it is used more often
+if vim.g.clipboard or not os.getenv("WAYLAND_DISPLAY") then
+  opt.clipboard = "unnamedplus"
+end
 
 opt.cursorline = true
 
