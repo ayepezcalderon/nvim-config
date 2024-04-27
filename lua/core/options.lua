@@ -25,6 +25,7 @@ if vim.fn.executable('gpaste-client') == 1 then
     cache_enabled = true,
   }
 end
+opt.clipboard = "unnamedplus"
 
 opt.cursorline = true
 

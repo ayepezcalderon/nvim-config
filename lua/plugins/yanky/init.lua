@@ -13,9 +13,7 @@ local _opts = {
   },
 
   system_clipboard = {
-    -- DO NOT USE wl-clipboard IN WAYLAND
-    -- CREATES WINDOWS FOR EVERY COPY, WHICH LEADS TU BUGGY/CRASHY BEHAVIOR
-    sync_with_ring = vim.fn.executable('gpaste-client') == 1,
+    sync_with_ring = true,
   },
 }
 
