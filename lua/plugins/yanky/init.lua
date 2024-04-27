@@ -12,9 +12,10 @@ local _opts = {
     enabled = true,
   },
 
-  -- NEEDED FOR WAYLAND -> vim.o.clipboard SHOULD NOT be set to a register in wayland
   system_clipboard = {
-    sync_with_ring = false,
+    -- DO NOT USE wl-clipboard IN WAYLAND
+    -- CREATES WINDOWS FOR EVERY COPY, WHICH LEADS TU BUGGY/CRASHY BEHAVIOR
+    sync_with_ring = vim.fn.executable('gpaste-client') == 1,
   },
 }
 

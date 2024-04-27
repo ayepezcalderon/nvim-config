@@ -8,8 +8,24 @@ vim.cmd('set nofixeol')
 opt.laststatus = 3 -- global statusline
 opt.showmode = false
 
--- CANNOT SET A REGISTER TO THE CLIPBOARD IN WAYLAND -> NEOVIM CRASHES
--- opt.clipboard = "unnamedplus"
+
+-- DO NOT USE wl-clipboard IN WAYLAND TO SYNCHRONIZE TO CLIPBOARD
+-- CREATES WINDOWS FOR EVERY COPY, WHICH LEADS TU BUGGY/CRASHY BEHAVIOR
+if vim.fn.executable('gpaste-client') == 1 then
+  vim.g.clipboard = {
+    name = 'gpaste',
+    copy = {
+      ["+"] = { 'gpaste-client' },
+      ["*"] = { 'gpaste-client' },
+    },
+    paste = {
+      ["+"] = { 'gpaste-client', '--use-index', 'get', '0' },
+      ["*"] = { 'gpaste-client', '--use-index', 'get', '0' },
+    },
+    cache_enabled = true,
+  }
+end
+
 opt.cursorline = true
 
 -- Indenting
