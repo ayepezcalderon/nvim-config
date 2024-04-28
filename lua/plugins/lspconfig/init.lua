@@ -19,7 +19,7 @@ local on_attach = function(client, bufnr)
     require("plugins.lspconfig.utils.signature").setup(client)
   end
 
-  -- let hover to pyright
+  -- use pyright to hover, not ruff
   if client.name == 'ruff' then
     -- Disable hover in favor of Pyright
     client.server_capabilities.hoverProvider = false
@@ -91,7 +91,10 @@ local function _config(_, opts)
     },
   })
 
-  lspconfig.ruff.setup {}
+  lspconfig.ruff.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  }
 
   lspconfig.texlab.setup({
     on_attach = on_attach,
