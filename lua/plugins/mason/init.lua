@@ -51,7 +51,7 @@ end
 return {
   "williamboman/mason.nvim",
   cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" },
-  commit = "41e75af1f578e55ba050c863587cffde3556ffa6",
+  -- commit = "41e75af1f578e55ba050c863587cffde3556ffa6",
   opts = _opts,
   config = _config,
 }
