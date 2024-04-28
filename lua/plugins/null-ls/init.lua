@@ -6,7 +6,7 @@ local function _opts()
   return {
     sources = {
       -- null_ls.builtins.diagnostics.ruff,  -- not supported by none-ls
-      null_ls.builtins.formatting.black,  -- also supports range_formatting in none-ls
+      -- null_ls.builtins.formatting.black,  -- also supports range_formatting in none-ls
       null_ls.builtins.diagnostics.textidote.with({
         cwd = function(params)
           return "/opt/textidote/"
@@ -34,6 +34,6 @@ end
 --------- RETURN ------------
 return {
   "nvimtools/none-ls.nvim",
-  ft = {"python", "tex", "plaintex", "bib"},
+  ft = {"tex", "plaintex", "bib"},
   opts = _opts,
 }

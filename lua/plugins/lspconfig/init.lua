@@ -1,11 +1,14 @@
 ----------- CONFIG ----------
 
 local semantic_tokens = false
-
+local attached_buffers = {}
 local on_attach = function(client, bufnr)
   -- On demand mappings
-  local map_on_demand = require("plugins.lspconfig.mappings")
-  map_on_demand.load(bufnr)
+  if not attached_buffers[bufnr] then
+    local map_on_demand = require("plugins.lspconfig.mappings")
+    map_on_demand.load(bufnr)
+    attached_buffers[bufnr] = true
+  end
 
   if not semantic_tokens and client.supports_method "textDocument/semanticTokens" then
     client.server_capabilities.semanticTokensProvider = nil
@@ -14,6 +17,12 @@ local on_attach = function(client, bufnr)
   -- signature popup when calling a definition
   if client.server_capabilities.signatureHelpProvider then
     require("plugins.lspconfig.utils.signature").setup(client)
+  end
+
+  -- let hover to pyright
+  if client.name == 'ruff' then
+    -- Disable hover in favor of Pyright
+    client.server_capabilities.hoverProvider = false
   end
 end
 
@@ -68,7 +77,21 @@ local function _config(_, opts)
     on_attach = on_attach,
     capabilities = capabilities,
     filetypes = {"python"},
+    settings = {
+      pyright = {
+        -- Using Ruff's import organizer
+        disableOrganizeImports = true,
+      },
+      -- python = {
+      --   analysis = {
+          -- -- Ignore all files for analysis to exclusively use Ruff for linting
+          -- ignore = { '*' },
+        -- },
+      -- },
+    },
   })
+
+  lspconfig.ruff.setup {}
 
   lspconfig.texlab.setup({
     on_attach = on_attach,
