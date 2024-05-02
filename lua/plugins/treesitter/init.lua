@@ -60,6 +60,9 @@ return {
   init = function()
     require("utils").lazy_load("nvim-treesitter")
   end,
+  dependencies = {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+  },
   cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
   build = ":TSUpdate",
   opts = _opts,
