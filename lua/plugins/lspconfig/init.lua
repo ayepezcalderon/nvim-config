@@ -136,6 +136,37 @@ local function _config(_, opts)
       }
     }
   })
+  --
+  -- lspconfig.textlsp.setup({
+  --   on_attach = on_attach,
+  --   capabilities = capabilities,
+  --   filetypes = { "text", "tex", "org" },
+  --   settings = {
+  --     textLSP = {
+  --       analysers = {
+  --         languagetool = {
+  --           check_text = {
+  --             on_change = false,
+  --             on_open = true,
+  --             on_save = true
+  --           },
+  --           enabled = true
+  --         }
+  --       },
+  --       documents = {
+  --         org = {
+  --           org_todo_keywords = { "TODO", "IN_PROGRESS", "DONE" }
+  --         }
+  --       }
+  --     }
+  --   }
+  -- })
+
+  lspconfig.ltex.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+  })
+
 end
 
 ----------- RETURN ----------

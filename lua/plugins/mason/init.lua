@@ -9,6 +9,7 @@ local _opts = {
     "texlab",
     "latexindent",
     "lua-language-server",
+    "ltex-ls",
   },
 
   PATH = "skip",

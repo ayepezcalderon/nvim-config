@@ -33,7 +33,7 @@ end
 
 --------- RETURN ------------
 return {
-  "nvimtools/none-ls.nvim",
-  ft = {"tex", "plaintex", "bib"},
-  opts = _opts,
+  -- "nvimtools/none-ls.nvim",
+  -- ft = {"tex", "plaintex", "bib"},
+  -- opts = _opts,
 }
