@@ -14,6 +14,7 @@ local _opts = {
     -- high level 
     "python",
     "cpp",
+    "rust",
 
     -- low level
     "c",

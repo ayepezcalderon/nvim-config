@@ -11,6 +11,12 @@ local function _config (_, opts)
 
   -- mappings
   require("plugins.dap.mappings")
+
+  -- CONFIGURATIONS
+  -- python
+  -- set in by dap-python and in dap-python init
+  -- codelldb
+  require("plugins.dap.adapters.codelldb")
 end
 
 ------------ RETURN --------------
@@ -22,5 +28,6 @@ return {
     "nvim-telescope/telescope-dap.nvim",
     "rcarriga/cmp-dap",
   },
+  ft = { "python", "c", "cpp", "rust" },
   config = _config,
 }

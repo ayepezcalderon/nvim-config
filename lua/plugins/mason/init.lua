@@ -11,6 +11,7 @@ local _opts = {
     "lua-language-server",
     "ltex-ls",
     "clangd",
+    "codelldb",
   },
 
   PATH = "skip",
