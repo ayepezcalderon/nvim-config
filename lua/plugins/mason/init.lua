@@ -10,6 +10,7 @@ local _opts = {
     "latexindent",
     "lua-language-server",
     "ltex-ls",
+    "clangd",
   },
 
   PATH = "skip",
