@@ -15,7 +15,7 @@ local _opts = {
 return {
   "danymat/neogen",
   dependencies = "nvim-treesitter/nvim-treesitter",
-  ft = {"python", "lua"},
+  ft = {"python", "lua", "c", "cpp", "rust"},
   opts = _opts,
   config = function (_, opts)
     require("neogen").setup(opts)
