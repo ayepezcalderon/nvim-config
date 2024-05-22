@@ -1,5 +1,7 @@
 --------- OPTS -------------
 local function _opts()
+  local actions = require("telescope.actions")
+
   return {
     defaults = {
       vimgrep_arguments = {
@@ -48,7 +50,20 @@ local function _opts()
       buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
       mappings = {
         n = {
-          ["q"] = require("telescope.actions").close,
+          ["q"] = actions.close,
+        },
+      },
+    },
+
+    pickers = {
+      buffers = {
+        mappings = {
+          i = {
+            ["<c-d>"] = actions.delete_buffer,
+          },
+          n = {
+            ["<c-d>"] = actions.delete_buffer,
+          }
         },
       },
     },
