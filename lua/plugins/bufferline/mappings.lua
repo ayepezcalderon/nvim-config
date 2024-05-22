@@ -12,15 +12,3 @@ map(
   "<cmd>:BufferLineCyclePrev<CR>",
   {desc="Go to previous buffer"}
 )
-map(
-  {"n"},
-  "<leader>gp",
-  "<cmd>:BufferLinePick<CR>",
-  {desc="Pick buffer to open"}
-)
-map(
-  {"n"},
-  "<leader>gc",
-  "<cmd>:BufferLinePickClose<CR>",
-  {desc="Pick buffer to close"}
-)
