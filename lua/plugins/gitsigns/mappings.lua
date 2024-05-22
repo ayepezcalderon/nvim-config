@@ -1,6 +1,5 @@
 local M = {}
 
----@param bufnr integer buffer where mappings will be loaded
 M.load = function (bufnr)
   local gs = package.loaded.gitsigns
 
@@ -36,18 +35,45 @@ M.load = function (bufnr)
   )
 
   -- Actions
-  map('n', '<leader>rh', gs.reset_hunk, {
-    desc = "Reset hunk",
+  map('n', '<leader>hr', gs.reset_hunk, {
+    desc = "Hunk reset",
   })
-  map('n', '<leader>ph', gs.preview_hunk, {
-      desc = "Preview hunk",
+  map('n', '<leader>hs', gs.stage_hunk, {
+    desc = "Hunk stage",
   })
-  map('n', '<leader>gb', function() gs.blame_line() end, {
+  map('v', '<leader>hs', function() gs.stage_hunk {vim.fn.line('.'), vim.fn.line('v')} end, {
+    desc = "Hunk reset",
+  })
+  map('v', '<leader>hr', function() gs.reset_hunk {vim.fn.line('.'), vim.fn.line('v')} end, {
+    desc = "Hunk stage",
+  })
+  map('n', '<leader>hu', gs.undo_stage_hunk, {
+    desc = "Hunk undo stage",
+  })
+  map('n', '<leader>hS', gs.stage_buffer, {
+    desc = "Buffer stage",
+  })
+  map('n', '<leader>hR', gs.reset_buffer, {
+    desc = "Buffer reset",
+  })
+  map('n', '<leader>hp', gs.preview_hunk, {
+      desc = "Hunk preview",
+  })
+  map('n', '<leader>hb', function() gs.blame_line() end, {
     desc = "Blame line",
+  })
+  map('n', '<leader>hd', gs.diffthis, {
+    desc = "Git diff",
+  })
+  map('n', '<leader>hD', function() gs.diffthis('~') end, {
+    desc = "Git diff HEAD~1",
   })
   map('n', '<leader>td', gs.toggle_deleted, {
     desc = "Toggle deleted",
   })
+
+  -- Text object
+  map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
 end
 
 return M
