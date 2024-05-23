@@ -36,17 +36,6 @@ function M.load(buffer)
 
   map(
     "n",
-    "K",
-    function()
-      vim.lsp.buf.hover()
-    end,
-    {
-      desc = "LSP hover",
-    }
-  )
-
-  map(
-    "n",
     "gi",
     function()
       vim.lsp.buf.implementation()
@@ -102,12 +91,12 @@ function M.load(buffer)
 
   map(
     "n",
-    "<leader>lf",
+    "<C-W>d",
     function()
       vim.diagnostic.open_float { border = "rounded" }
     end,
     {
-      desc = "Floating diagnostic",
+      desc = "Show diagnostics under the cursor",
     }
   )
 
@@ -118,7 +107,7 @@ function M.load(buffer)
       vim.diagnostic.goto_prev { float = { border = "rounded" } }
     end,
     {
-      desc = "Goto prev",
+      desc = "Jump to the previous diagnostic",
     }
   )
 
@@ -129,7 +118,7 @@ function M.load(buffer)
       vim.diagnostic.goto_next { float = { border = "rounded" } }
     end,
     {
-      desc = "Goto next",
+      desc = "Jump to the next diagnostic",
     }
   )
 
