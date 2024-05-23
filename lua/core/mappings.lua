@@ -142,6 +142,6 @@ map(
 map(
   {"n"},
   "<leader>x",
-  '<cmd> :bdelete<CR>',
-  {desc="Toggle relative number"}
+  '<cmd> :confirm bdelete<CR>',
+  {desc="Close buffer"}
 )
