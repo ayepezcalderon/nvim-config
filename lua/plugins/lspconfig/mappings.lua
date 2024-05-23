@@ -1,6 +1,6 @@
 local M = {}
 
-function M.load(buffer)
+function M.load(buffer, inlay_hints)
   -- bind buffer to mapping
   local function map(modes, lhs, rhs, opts)
     opts = vim.tbl_deep_extend(
@@ -33,6 +33,19 @@ function M.load(buffer)
       desc = "LSP definition",
     }
   )
+
+  if inlay_hints then
+    map(
+      "n",
+      '<leader>th',
+      function()
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+      end,
+      {
+        desc = 'Toggle Inlay Hints',
+      }
+    )
+  end
 
   map(
     "n",

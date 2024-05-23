@@ -5,7 +5,8 @@ local semantic_tokens = false
 local on_attach = function(client, bufnr)
   -- On demand mappings
   local map_on_demand = require("plugins.lspconfig.mappings")
-  map_on_demand.load(bufnr)
+  local inlay_hint_supported = client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint
+  map_on_demand.load(bufnr, inlay_hint_supported)
 
   if not semantic_tokens and client.supports_method "textDocument/semanticTokens" then
     client.server_capabilities.semanticTokensProvider = nil
@@ -52,6 +53,7 @@ local function _config(_, opts)
     on_attach = on_attach,
     capabilities = capabilities,
 
+
     settings = {
       Lua = {
         diagnostics = {
@@ -66,6 +68,7 @@ local function _config(_, opts)
           maxPreload = 100000,
           preloadFileSize = 10000,
         },
+        hint = { enable = true },
       },
     },
   }
