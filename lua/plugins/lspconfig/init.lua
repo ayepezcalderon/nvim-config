@@ -1,14 +1,11 @@
 ----------- CONFIG ----------
 
 local semantic_tokens = false
-local attached_buffers = {}
+
 local on_attach = function(client, bufnr)
   -- On demand mappings
-  if not attached_buffers[bufnr] then
-    local map_on_demand = require("plugins.lspconfig.mappings")
-    map_on_demand.load(bufnr)
-    attached_buffers[bufnr] = true
-  end
+  local map_on_demand = require("plugins.lspconfig.mappings")
+  map_on_demand.load(bufnr)
 
   if not semantic_tokens and client.supports_method "textDocument/semanticTokens" then
     client.server_capabilities.semanticTokensProvider = nil
