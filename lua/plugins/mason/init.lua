@@ -2,6 +2,7 @@
 local _opts = {
   ensure_installed = {
     "pyright",
+    "basedpyright",
     "debugpy",
     "black",
     "yapf",

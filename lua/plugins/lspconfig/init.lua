@@ -1,4 +1,5 @@
 ----------- CONFIG ----------
+local python_static_checker = "pyright"
 
 local semantic_tokens = false
 
@@ -17,9 +18,8 @@ local on_attach = function(client, bufnr)
     require("plugins.lspconfig.utils.signature").setup(client)
   end
 
-  -- use pyright to hover, not ruff
+  -- use (based)pyright to hover, not ruff
   if client.name == 'ruff' then
-    -- Disable hover in favor of Pyright
     client.server_capabilities.hoverProvider = false
   end
 end
@@ -73,23 +73,43 @@ local function _config(_, opts)
     },
   }
 
-  lspconfig.pyright.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-    filetypes = {"python"},
-    settings = {
-      pyright = {
-        -- Using Ruff's import organizer
-        disableOrganizeImports = true,
-      },
-      -- python = {
-      --   analysis = {
-          -- -- Ignore all files for analysis to exclusively use Ruff for linting
-          -- ignore = { '*' },
+  if python_static_checker == "pyright" then
+    lspconfig.pyright.setup({
+      on_attach = on_attach,
+      capabilities = capabilities,
+      filetypes = {"python"},
+      settings = {
+        pyright = {
+          -- Using Ruff's import organizer
+          disableOrganizeImports = true,
+        },
+        -- python = {
+        --   analysis = {
+            -- -- Ignore all files for analysis to exclusively use Ruff for linting
+            -- ignore = { '*' },
+          -- },
         -- },
-      -- },
-    },
-  })
+      },
+    })
+  else
+    lspconfig.basedpyright.setup({
+      on_attach = on_attach,
+      capabilities = capabilities,
+      filetypes = {"python"},
+      settings = {
+        basedpyright = {
+          -- Using Ruff's import organizer
+          disableOrganizeImports = true,
+        },
+        -- python = {
+        --   analysis = {
+        -- -- Ignore all files for analysis to exclusively use Ruff for linting
+        -- ignore = { '*' },
+        -- },
+        -- },
+      },
+    })
+  end
 
   lspconfig.ruff.setup {
     on_attach = on_attach,
