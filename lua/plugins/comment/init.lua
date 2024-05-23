@@ -1,7 +1,12 @@
+local _enabled = false
+
 -- mappings
-require("plugins.comment.mappings")
+if _enabled then
+  require("plugins.comment.mappings")
+end
 
 return {
+  enabled = _enabled,
   "numToStr/Comment.nvim",
   keys = {
     { "gcc", mode = "n", desc = "Comment toggle current line" },
