@@ -1,5 +1,5 @@
 ----------- CONFIG ----------
-local python_static_checker = "pyright"
+local python_static_checker = "basedpyright"
 
 local semantic_tokens = false
 
@@ -85,9 +85,9 @@ local function _config(_, opts)
         },
         -- python = {
         --   analysis = {
-            -- -- Ignore all files for analysis to exclusively use Ruff for linting
-            -- ignore = { '*' },
-          -- },
+        --     -- Ignore all files for analysis to exclusively use Ruff for linting
+        --     -- ignore = { '*' },
+        --   },
         -- },
       },
     })
@@ -100,12 +100,15 @@ local function _config(_, opts)
         basedpyright = {
           -- Using Ruff's import organizer
           disableOrganizeImports = true,
+          analysis = {
+            typeCheckingMode = "basic",
+          }
         },
         -- python = {
         --   analysis = {
-        -- -- Ignore all files for analysis to exclusively use Ruff for linting
-        -- ignore = { '*' },
-        -- },
+        --     -- Ignore all files for analysis to exclusively use Ruff for linting
+        --     -- ignore = { '*' },
+        --   },
         -- },
       },
     })
