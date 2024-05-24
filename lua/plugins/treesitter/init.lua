@@ -37,6 +37,7 @@ local _opts = {
 
     -- serialization
     "json",
+    "jsonc",
     "yaml",
     "toml",
 

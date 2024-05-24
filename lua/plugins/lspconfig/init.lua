@@ -111,6 +111,11 @@ local function _config(_, opts)
     })
   end
 
+  lspconfig.jsonls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  }
+
   lspconfig.ruff.setup {
     on_attach = on_attach,
     capabilities = capabilities,
