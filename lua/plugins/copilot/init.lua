@@ -26,6 +26,7 @@ local _opts = {
 }
 
 -------- OPTS --------
+require("plugins.copilot.mappings").nonlazy()
 return {
   "zbirenbaum/copilot.lua",
   -- event = "InsertEnter",
@@ -34,5 +35,6 @@ return {
   opts = _opts,
   config = function (_, opts)
     require("copilot").setup(opts)
+    require("plugins.copilot.mappings").lazy()
   end
 }
