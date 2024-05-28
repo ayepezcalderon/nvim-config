@@ -13,7 +13,7 @@ local _opts = {
     ["*"] = false,
   },
   suggestion = {
-    auto_trigger = false,
+    auto_trigger = true,
     keymap = {
       accept = "<M-l>",
       accept_line = "<M-k>",
