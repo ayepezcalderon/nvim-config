@@ -2,7 +2,7 @@ local map = vim.keymap.set
 
 map(
   {"n"},
-  "<leader>cc",
+  "<leader>tc",
   function()
     local ok, start = require("indent_blankline.utils").get_current_context(
       vim.g.indent_blankline_context_patterns,
