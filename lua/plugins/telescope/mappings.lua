@@ -81,6 +81,18 @@ map(
 map(
   { "n" },
   "<leader>flw",
-  '<cmd> Telescope lsp_workspace_symbols <CR>',
+  function()
+    -- iterator with matches from input
+    local match = string.gmatch(vim.fn.input("<query> [symbol]: "), "%S+")
+
+    -- terminate if no input
+    local query = match()
+    if not query then
+      return
+    end
+
+    -- perform search
+    require("telescope.builtin").lsp_workspace_symbols { query = query, symbols = match() }
+  end,
   { desc = "Workspace LSP symbols" }
 )

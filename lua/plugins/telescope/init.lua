@@ -67,6 +67,9 @@ local function _opts()
         },
         initial_mode = "normal",
       },
+      lsp_workspace_symbols = {
+        initial_mode="normal",
+      },
     },
 
     extensions_list = {
