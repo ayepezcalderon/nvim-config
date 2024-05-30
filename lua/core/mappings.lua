@@ -1,6 +1,6 @@
 local map = vim.keymap.set
 map(
-  {"n"},
+  { "n" },
   "<leader>/",
   "gcc",
   {
@@ -9,7 +9,7 @@ map(
   }
 )
 map(
-  {"v"},
+  { "v" },
   "<leader>/",
   "gc",
   {
@@ -18,130 +18,144 @@ map(
   }
 )
 map(
-  {"i"},
+  { "i" },
   "<C-l>",
   '<Right>',
-  {desc="Move right"}
+  { desc = "Move right" }
 )
 map(
-  {"i"},
+  { "i" },
   "<C-k>",
   '<Up>',
-  {desc="Move up"}
+  { desc = "Move up" }
 )
 map(
-  {"i"},
+  { "i" },
   "<C-e>",
   '<End>',
-  {desc="End of line"}
+  { desc = "End of line" }
 )
 map(
-  {"i"},
+  { "i" },
   "<C-b>",
   '<ESC>^i',
-  {desc="Beginning of line"}
+  { desc = "Beginning of line" }
 )
 map(
-  {"i"},
+  { "i" },
   "<C-h>",
   '<Left>',
-  {desc="Move left"}
+  { desc = "Move left" }
 )
 map(
-  {"i"},
+  { "i" },
   "<C-j>",
   '<Down>',
-  {desc="Move down"}
+  { desc = "Move down" }
 )
 map(
-  {"x"},
+  { "x" },
   "p",
   'p:let @+=@0<CR>:let @"=@0<CR>',
-  {desc="Dont copy replaced text"}
+  { desc = "Dont copy replaced text" }
 )
 map(
-  {"n"},
+  { "n" },
   "<C-k>",
   '<cmd> TmuxNavigateUp<CR>',
-  {desc="Window up"}
+  { desc = "Window up" }
 )
 map(
-  {"n"},
+  { "n" },
   "<Esc>",
   '<cmd> noh <CR>',
-  {desc="Clear highlights"}
+  { desc = "Clear highlights" }
 )
 map(
-  {"n"},
+  { "n" },
   "<C-j>",
   '<cmd> TmuxNavigateDown<CR>',
-  {desc="Window down"}
+  { desc = "Window down" }
 )
 map(
-  {"n"},
+  { "n" },
   "<C-s>",
   '<cmd> w <CR>',
-  {desc="Save file"}
+  { desc = "Save file" }
 )
 map(
-  {"n"},
+  { "n" },
   "<C-l>",
   '<cmd> TmuxNavigateRight<CR>',
-  {desc="Window right"}
+  { desc = "Window right" }
 )
 map(
-  {"n"},
+  { "n" },
   "<leader>rn",
   '<cmd> set rnu! <CR>',
-  {desc="Toggle relative number"}
+  { desc = "Toggle relative number" }
 )
 map(
-  {"n"},
+  { "n" },
   "<C-p>",
   '<C-I>',
-  {desc="Jump to next (<C-i> remap)"}
+  { desc = "Jump to next (<C-i> remap)" }
 )
 map(
-  {"n"},
+  { "n" },
   "<C-h>",
   '<cmd> TmuxNavigateLeft<CR>',
-  {desc="Window left"}
+  { desc = "Window left" }
 )
 map(
-  {"n"},
+  { "n" },
   "<leader>n",
   '<cmd> set nu! <CR>',
-  {desc="Toggle line number"}
+  { desc = "Toggle line number" }
 )
 map(
-  {"n"},
+  { "n" },
   "<C-c>",
   '<cmd> %y+ <CR>',
-  {desc="Copy whole file"}
+  { desc = "Copy whole file" }
 )
 map(
-  {"n", "v"},
+  { "n", "v" },
   "<leader>fm",
   function()
     vim.lsp.buf.format { async = true }
   end,
-  {desc="LSP formatting"}
+  { desc = "LSP formatting" }
 )
 map(
-  {"v"},
+  { "v" },
   "<",
   '<gv',
-  {desc="Indent line"}
+  { desc = "Indent line" }
 )
 map(
-  {"v"},
+  { "v" },
   ">",
   '>gv',
-  {desc="Indent line"}
+  { desc = "Indent line" }
 )
 map(
-  {"n"},
+  { "n" },
   "<leader>x",
   '<cmd> :confirm bdelete<CR>',
-  {desc="Close buffer"}
+  { desc = "Close buffer" }
+)
+map(
+  { "n" },
+  "<Tab>",
+  function()
+    vim.cmd("bnext " .. vim.v.count1)
+  end
+)
+map(
+  { "n" },
+  "<S-Tab>",
+  function()
+    vim.cmd("bprev " .. vim.v.count1)
+  end
 )
