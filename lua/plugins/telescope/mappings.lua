@@ -74,7 +74,7 @@ map(
 )
 map(
   { "n" },
-  "<leader>fld",
+  "<leader>fls",
   '<cmd> Telescope lsp_document_symbols <CR>',
   { desc = "Document/buffer LSP symbols" }
 )
