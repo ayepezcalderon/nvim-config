@@ -8,7 +8,7 @@ map(
 )
 map(
   { "n" },
-  "<leader>fe",
+  "<leader>k",
   '<cmd> Telescope buffers <CR>',
   { desc = "Find buffers" }
 )
