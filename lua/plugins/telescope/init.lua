@@ -62,7 +62,7 @@ local function _opts()
             ["<c-d>"] = actions.delete_buffer,
           },
           n = {
-            ["<c-d>"] = actions.delete_buffer,
+            ["dd"] = actions.delete_buffer,
           }
         },
         initial_mode = "normal",
