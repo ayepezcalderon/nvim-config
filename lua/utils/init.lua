@@ -1,5 +1,11 @@
 local M = {}
 
+--- Add keymaps to current buffer to easily close it with q and <ESC> in normal mode
+function M.set_buf_easy_close_mappings()
+  vim.keymap.set('n', 'q', "<cmd>:q<CR>", { buffer = 0 })
+  vim.keymap.set('n', '<ESC>', "<cmd>:q<CR>", { buffer = 0 })
+end
+
 --- Taken from nvchad
 --- Creates autocommand for lazy loading plugin on any sort of file opening, except on a few excluded file types.
 M.lazy_load = function(plugin)

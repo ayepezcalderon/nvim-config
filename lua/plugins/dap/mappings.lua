@@ -1,5 +1,6 @@
 local map = vim.keymap.set
 local dap_utils = require("plugins.dap.utils")
+local utils = require("utils")
 
 local _HAS_RUN = false
 
@@ -105,7 +106,7 @@ map(
   function()
     local widgets = require('dap.ui.widgets')
     widgets.centered_float(widgets.scopes)
-    dap_utils.set_buf_easy_close_mappings()
+    utils.set_buf_easy_close_mappings()
   end,
   {desc="dap scopes"}
 )
@@ -120,7 +121,7 @@ map(
   "<Leader>dh",
   function()
     require('dap.ui.widgets').hover()
-    dap_utils.set_buf_easy_close_mappings()
+    utils.set_buf_easy_close_mappings()
   end,
   {desc="dap hover"}
 )

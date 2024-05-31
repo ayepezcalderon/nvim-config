@@ -1,11 +1,5 @@
 local M = {}
 
---- Add keymaps to current buffer to easily close it with q and <ESC> in normal mode
-function M.set_buf_easy_close_mappings()
-  vim.keymap.set('n', 'q', "<cmd>:q<CR>", { buffer = 0 })
-  vim.keymap.set('n', '<ESC>', "<cmd>:q<CR>", { buffer = 0 })
-end
-
 --- Custom dap repl toggle function. Can enter repl in insert mode when toggle opens
 function M.custom_dap_repl_toggle(insert, ...)
   if not require("dap").repl.close({ mode = 'toggle' }) then
