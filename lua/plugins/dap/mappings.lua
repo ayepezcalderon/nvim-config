@@ -104,9 +104,7 @@ map(
   {"n"},
   "<Leader>ds",
   function()
-    local widgets = require('dap.ui.widgets')
-    widgets.centered_float(widgets.scopes)
-    utils.set_buf_easy_close_mappings()
+    require("dapui").float_element("scopes", { width=vim.o.columns - 2, height=vim.o.lines - 3, enter=true })
   end,
   {desc="dap scopes"}
 )
@@ -117,11 +115,10 @@ map(
   {desc="dap up"}
 )
 map(
-  {"n"},
+  {"n", "v"},
   "<Leader>dh",
   function()
-    require('dap.ui.widgets').hover()
-    utils.set_buf_easy_close_mappings()
+    require('dapui').eval()
   end,
   {desc="dap hover"}
 )
