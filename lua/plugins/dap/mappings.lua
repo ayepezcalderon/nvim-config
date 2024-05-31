@@ -1,6 +1,8 @@
 local map = vim.keymap.set
 local dap_utils = require("plugins.dap.utils")
 
+local _HAS_RUN = false
+
 map(
   {"n"},
   "<leader>dB",
@@ -81,8 +83,15 @@ map(
 map(
   {"n"},
   "<F4>",
-  function() require('dap').run_last() end,
-  {desc="dap run last"}
+  function()
+    if _HAS_RUN then
+      require('dap').run_last()
+    else
+      require('dap').run(require("dap").configurations[vim.bo.filetype][1])
+      _HAS_RUN = true
+    end
+  end,
+  {desc="dap run last (or 1st if not ran yet)"}
 )
 map(
   {"n"},
