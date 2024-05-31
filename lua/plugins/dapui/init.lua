@@ -55,7 +55,7 @@ local _opts = {
 local function _config(_, opts)
   require("dapui").setup(opts)
   -- load dapui actions with one of the utils
-  require("plugins.dapui.utils").load_repl_controls(true, false)
+  require("plugins.dapui.utils").load_console(true, false, false)
 
   -- mappings
   require("plugins.dapui.mappings")
