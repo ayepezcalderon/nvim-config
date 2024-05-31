@@ -2,7 +2,7 @@ local map = vim.keymap.set
 
 map(
   {"n"},
-  "<leader>dco",
+  "<leader>do",
   function()
     require('dap').repl.close()
     require("dapui").close(1)
