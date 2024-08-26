@@ -30,7 +30,8 @@ require("plugins.copilot.mappings").nonlazy()
 return {
   "zbirenbaum/copilot.lua",
   -- event = "InsertEnter",
-  cmd = "Copilot",
+  -- cmd = "Copilot",
+  lazy = false,
   build = ":Copilot auth",
   opts = _opts,
   config = function (_, opts)

@@ -42,10 +42,10 @@ M.load = function (bufnr)
     desc = "Hunk stage",
   })
   map('v', '<leader>hs', function() gs.stage_hunk {vim.fn.line('.'), vim.fn.line('v')} end, {
-    desc = "Hunk reset",
+    desc = "Hunk stage",
   })
   map('v', '<leader>hr', function() gs.reset_hunk {vim.fn.line('.'), vim.fn.line('v')} end, {
-    desc = "Hunk stage",
+    desc = "Hunk reset",
   })
   map('n', '<leader>hu', gs.undo_stage_hunk, {
     desc = "Hunk undo stage",
