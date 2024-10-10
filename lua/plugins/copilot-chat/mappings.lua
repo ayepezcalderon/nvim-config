@@ -23,7 +23,7 @@ map(
 )
 
 map(
-  "n",
+  { "n", "v" },
   "<leader>ccp",
   function()
     local actions = require("CopilotChat.actions")
