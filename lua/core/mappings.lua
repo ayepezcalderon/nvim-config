@@ -142,7 +142,25 @@ map(
 map(
   { "n" },
   "<leader>x",
-  '<cmd> :confirm bdelete<CR>',
+  function()
+    if vim.api.nvim_buf_is_loaded(vim.fn.bufnr('#')) then
+      -- Go to last visited buffer in this session, if it exists
+      vim.cmd("b # | confirm bd #")
+    else
+      -- Move to next buffer, and log buf before and after moving
+      local current_buf = vim.api.nvim_get_current_buf()
+      vim.cmd('bn')
+      local new_buf = vim.api.nvim_get_current_buf()
+
+      -- If we actually moved buffer, delete previous one
+      -- Else, report that we could not move to an alternate buffer
+      if current_buf ~= new_buf then
+        vim.cmd("confirm bd #")
+      else
+        print("No alternate buffer")
+      end
+    end
+  end,
   { desc = "Close buffer" }
 )
 map(
