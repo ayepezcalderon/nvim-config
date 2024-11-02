@@ -4,8 +4,6 @@ local _opts = {
     "pyright",
     "basedpyright",
     "debugpy",
-    "black",
-    "yapf",
     "ruff",
     "texlab",
     "latexindent",
