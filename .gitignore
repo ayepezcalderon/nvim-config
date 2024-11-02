@@ -1,0 +1,5 @@
+# Virtual environments for mason.
+# Activate the desired one when installing or updating a mason package.
+# Mason will recognize the version of the language that it should use from the currently active venv.
+# It will then use that version for creating its own virtual environment for the tool being installed/updated.
+/.mason_venvs
