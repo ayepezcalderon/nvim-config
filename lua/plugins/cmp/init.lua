@@ -2,18 +2,17 @@
 local enabled = function()
   local disabled = false
   -- enable in dap buffers
-  if package.loaded['cmp_dap'] then
-    disabled = disabled or (vim.api.nvim_buf_get_option(0, 'buftype') == 'prompt'
-    and not require("cmp_dap").is_dap_buffer())
-
+  if package.loaded["cmp_dap"] then
+    disabled = disabled
+      or (vim.api.nvim_buf_get_option(0, "buftype") == "prompt" and not require("cmp_dap").is_dap_buffer())
   else
-    disabled = disabled or (vim.api.nvim_buf_get_option(0, 'buftype') == 'prompt')
+    disabled = disabled or (vim.api.nvim_buf_get_option(0, "buftype") == "prompt")
   end
   -- handle recording
-  disabled = disabled or (vim.fn.reg_recording() ~= '')
-  disabled = disabled or (vim.fn.reg_executing() ~= '')
+  disabled = disabled or (vim.fn.reg_recording() ~= "")
+  disabled = disabled or (vim.fn.reg_executing() ~= "")
   -- disable for comments
-  disabled = disabled or require("cmp.config.context").in_treesitter_capture('comment')
+  disabled = disabled or require("cmp.config.context").in_treesitter_capture "comment"
 
   return not disabled
 end
@@ -44,7 +43,7 @@ local function _opts()
         side_padding = 1,
         winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:None",
         scrollbar = false,
-        border = border("CmpBorder"),
+        border = border "CmpBorder",
       },
       -- documentation = {
       --   -- border = border "CmpDocBorder",
@@ -61,12 +60,12 @@ local function _opts()
       -- default fields order i.e completion word + item.kind + item.kind icons
       fields = { "abbr", "kind", "menu" },
 
-      format = require('lspkind').cmp_format({
+      format = require("lspkind").cmp_format {
         -- mode = 'symbol', -- show only symbol annotations
         maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-        -- can also be a function to dynamically calculate max width such as 
+        -- can also be a function to dynamically calculate max width such as
         -- maxwidth = function() return math.floor(0.45 * vim.o.columns) end,
-        ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+        ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
         -- show_labelDetails = true, -- show labelDetails in menu. Disabled by default
 
         -- The function below will be called before any actual modifications from lspkind
@@ -75,7 +74,7 @@ local function _opts()
         --   ...
         --   return vim_item
         -- end
-      })
+      },
     },
 
     enabled = enabled,
@@ -100,9 +99,9 @@ local function _opts()
           fallback()
         end
       end, {
-          "i",
-          "s",
-        }),
+        "i",
+        "s",
+      }),
       ["<S-Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_prev_item()
@@ -112,9 +111,9 @@ local function _opts()
           fallback()
         end
       end, {
-          "i",
-          "s",
-        }),
+        "i",
+        "s",
+      }),
     },
     sources = {
       { name = "nvim_lsp" },
@@ -157,5 +156,5 @@ return {
     "hrsh7th/cmp-path",
   },
   opts = _opts,
-  config = _config
+  config = _config,
 }

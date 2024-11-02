@@ -1,7 +1,7 @@
 return {
   "nvim-telescope/telescope-dap.nvim",
-  config = function ()
+  config = function()
     -- mappings
-    require("plugins.telescope-dap.mappings")
-  end
+    require "plugins.telescope-dap.mappings"
+  end,
 }

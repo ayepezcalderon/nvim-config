@@ -76,7 +76,7 @@ local _opts = {
 }
 
 -- mappings
-require("plugins.nvimtree.mappings")
+require "plugins.nvimtree.mappings"
 
 ----------- RETURN -----------
 return {

@@ -1,17 +1,17 @@
 ---------- OPTS -----------
 local _opts = {
   ensure_installed = {
-    -- defaults 
+    -- defaults
     "vim",
     "lua",
 
-    -- web dev 
+    -- web dev
     "html",
     "css",
     "javascript",
     "typescript",
 
-    -- high level 
+    -- high level
     "python",
     "cpp",
     "rust",
@@ -60,7 +60,7 @@ local _opts = {
 return {
   "nvim-treesitter/nvim-treesitter",
   init = function()
-    require("utils").lazy_load("nvim-treesitter")
+    require("utils").lazy_load "nvim-treesitter"
   end,
   dependencies = {
     "nvim-treesitter/nvim-treesitter-textobjects",

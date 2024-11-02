@@ -25,6 +25,6 @@ return {
   config = function(_, opts)
     require("yanky").setup(opts)
     -- mappings
-    require("plugins.yanky.mappings")
-  end
+    require "plugins.yanky.mappings"
+  end,
 }

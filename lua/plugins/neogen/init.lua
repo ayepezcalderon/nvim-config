@@ -15,13 +15,13 @@ local _opts = {
 return {
   "danymat/neogen",
   dependencies = "nvim-treesitter/nvim-treesitter",
-  ft = {"python", "lua", "c", "cpp", "rust"},
+  ft = { "python", "lua", "c", "cpp", "rust" },
   opts = _opts,
-  config = function (_, opts)
+  config = function(_, opts)
     require("neogen").setup(opts)
     -- mappings
-    require("plugins.neogen.mappings")
-  end
+    require "plugins.neogen.mappings"
+  end,
   -- Uncomment next line if you want to follow only stable versions
-  -- version = "*" 
+  -- version = "*"
 }

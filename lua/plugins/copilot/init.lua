@@ -34,8 +34,8 @@ return {
   lazy = false,
   build = ":Copilot auth",
   opts = _opts,
-  config = function (_, opts)
+  config = function(_, opts)
     require("copilot").setup(opts)
     require("plugins.copilot.mappings").lazy()
-  end
+  end,
 }

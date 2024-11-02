@@ -1,6 +1,6 @@
 --------- OPTS -------------
 local function _opts()
-  local actions = require("telescope.actions")
+  local actions = require "telescope.actions"
 
   return {
     defaults = {
@@ -63,12 +63,12 @@ local function _opts()
           },
           n = {
             ["dd"] = actions.delete_buffer,
-          }
+          },
         },
         initial_mode = "normal",
       },
       lsp_workspace_symbols = {
-        initial_mode="normal",
+        initial_mode = "normal",
       },
     },
 
@@ -90,7 +90,7 @@ end
 
 ------------ CONFIG --------------
 local function _config(_, opts)
-  local telescope = require("telescope")
+  local telescope = require "telescope"
   telescope.setup(opts)
 
   -- load extensions
@@ -99,7 +99,7 @@ local function _config(_, opts)
   end
 
   -- mappings
-  require("plugins.telescope.mappings")
+  require "plugins.telescope.mappings"
 end
 
 ------------ RETURN --------------
@@ -107,7 +107,7 @@ return {
   "nvim-telescope/telescope.nvim",
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
-    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" }
+    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
   },
   lazy = false,
   opts = _opts,

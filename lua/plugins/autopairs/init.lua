@@ -5,7 +5,7 @@ local _opts = {
 }
 
 ----------- CONFIG ---------
-local _config = function (_, opts)
+local _config = function(_, opts)
   require("nvim-autopairs").setup(opts)
   -- setup cmp for autopairs
   local cmp_autopairs = require "nvim-autopairs.completion.cmp"

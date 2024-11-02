@@ -5,7 +5,7 @@ local semantic_tokens = false
 
 local on_attach = function(client, bufnr)
   -- On demand mappings
-  local map_on_demand = require("plugins.lspconfig.mappings")
+  local map_on_demand = require "plugins.lspconfig.mappings"
   local inlay_hint_supported = client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint
   map_on_demand.load(bufnr, inlay_hint_supported)
 
@@ -19,7 +19,7 @@ local on_attach = function(client, bufnr)
   end
 
   -- use (based)pyright to hover, not ruff
-  if client.name == 'ruff' then
+  if client.name == "ruff" then
     client.server_capabilities.hoverProvider = false
   end
 end
@@ -43,16 +43,14 @@ capabilities.textDocument.completion.completionItem = {
   },
 }
 
-
 local function _config(_, opts)
-  local lspconfig = require("lspconfig")
+  local lspconfig = require "lspconfig"
 
-  require("plugins.lspconfig.utils.ui")
+  require "plugins.lspconfig.utils.ui"
 
   lspconfig.lua_ls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
-
 
     settings = {
       Lua = {
@@ -74,10 +72,10 @@ local function _config(_, opts)
   }
 
   if python_static_checker == "pyright" then
-    lspconfig.pyright.setup({
+    lspconfig.pyright.setup {
       on_attach = on_attach,
       capabilities = capabilities,
-      filetypes = {"python"},
+      filetypes = { "python" },
       settings = {
         pyright = {
           -- Using Ruff's import organizer
@@ -90,19 +88,19 @@ local function _config(_, opts)
         --   },
         -- },
       },
-    })
+    }
   else
-    lspconfig.basedpyright.setup({
+    lspconfig.basedpyright.setup {
       on_attach = on_attach,
       capabilities = capabilities,
-      filetypes = {"python"},
+      filetypes = { "python" },
       settings = {
         basedpyright = {
           -- Using Ruff's import organizer
           disableOrganizeImports = true,
           analysis = {
             typeCheckingMode = "basic",
-          }
+          },
         },
         -- python = {
         --   analysis = {
@@ -111,7 +109,7 @@ local function _config(_, opts)
         --   },
         -- },
       },
-    })
+    }
   end
 
   lspconfig.jsonls.setup {
@@ -124,7 +122,7 @@ local function _config(_, opts)
     capabilities = capabilities,
   }
 
-  lspconfig.texlab.setup({
+  lspconfig.texlab.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     filetypes = { "tex", "plaintex", "bib" },
@@ -140,7 +138,7 @@ local function _config(_, opts)
         },
         chktex = {
           onEdit = false,
-          onOpenAndSave = true
+          onOpenAndSave = true,
         },
         diagnosticsDelay = 50,
         formatterLineLength = 80,
@@ -150,7 +148,7 @@ local function _config(_, opts)
           -- executable = "evince-synctex",
 
           -- okular
-          args = {"--unique", "file:%p#src:%l%f"},
+          args = { "--unique", "file:%p#src:%l%f" },
           executable = "okular",
 
           -- -- zathura
@@ -159,11 +157,11 @@ local function _config(_, opts)
         },
         latexFormatter = "texlab",
         latexindent = {
-          modifyLineBreaks = false
-        }
-      }
-    }
-  })
+          modifyLineBreaks = false,
+        },
+      },
+    },
+  }
   --
   -- lspconfig.textlsp.setup({
   --   on_attach = on_attach,
@@ -190,16 +188,15 @@ local function _config(_, opts)
   --   }
   -- })
 
-  lspconfig.ltex.setup({
+  lspconfig.ltex.setup {
     on_attach = on_attach,
     capabilities = capabilities,
-  })
+  }
 
-  lspconfig.clangd.setup({
+  lspconfig.clangd.setup {
     on_attach = on_attach,
     capabilities = capabilities,
-  })
-
+  }
 end
 
 ----------- RETURN ----------
@@ -207,7 +204,7 @@ return {
   "neovim/nvim-lspconfig",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   init = function()
-    require("utils").lazy_load("nvim-lspconfig")
+    require("utils").lazy_load "nvim-lspconfig"
   end,
   config = _config,
 }

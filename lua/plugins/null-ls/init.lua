@@ -1,17 +1,17 @@
 --------- OPTS ------------
 -- local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 local function _opts()
-  local null_ls = require('null-ls')
+  local null_ls = require "null-ls"
 
   return {
     sources = {
       -- null_ls.builtins.diagnostics.ruff,  -- not supported by none-ls
       -- null_ls.builtins.formatting.black,  -- also supports range_formatting in none-ls
-      null_ls.builtins.diagnostics.textidote.with({
+      null_ls.builtins.diagnostics.textidote.with {
         cwd = function(params)
           return "/opt/textidote/"
         end,
-      }),
+      },
     },
     -- on_attach = function(client, bufnr)
     --   if client.supports_method("textDocument/formatting") then

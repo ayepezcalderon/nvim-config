@@ -1,6 +1,6 @@
 ------ OPTS -------
 local function _opts()
-  local bufferline = require("bufferline")
+  local bufferline = require "bufferline"
 
   return {
     options = {
@@ -11,7 +11,7 @@ local function _opts()
           -- text = "File Explorer",
           text_align = "center",
           separator = false,
-        }
+        },
       },
       style_preset = {
         bufferline.style_preset.no_italic,
@@ -26,14 +26,14 @@ end
 ------ RETURN -------
 return {
   "akinsho/bufferline.nvim",
-  lazy=false,
-  enabled=false,
+  lazy = false,
+  enabled = false,
   dependencies = { "nvim-tree/nvim-web-devicons" },
   version = "*",
   opts = _opts,
   config = function(_, opts)
     require("bufferline").setup(opts)
     -- mappings
-    require("plugins.bufferline.mappings")
+    require "plugins.bufferline.mappings"
   end,
 }

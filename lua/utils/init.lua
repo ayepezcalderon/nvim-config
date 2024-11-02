@@ -2,8 +2,8 @@ local M = {}
 
 --- Add keymaps to current buffer to easily close it with q and <ESC> in normal mode
 function M.set_buf_easy_close_mappings()
-  vim.keymap.set('n', 'q', "<cmd>:q<CR>", { buffer = 0 })
-  vim.keymap.set('n', '<ESC>', "<cmd>:q<CR>", { buffer = 0 })
+  vim.keymap.set("n", "q", "<cmd>:q<CR>", { buffer = 0 })
+  vim.keymap.set("n", "<ESC>", "<cmd>:q<CR>", { buffer = 0 })
 end
 
 --- Taken from nvchad

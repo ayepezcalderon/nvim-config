@@ -8,11 +8,11 @@ local _opts = {
 }
 
 ------------ CONFIG -------------
-local function _config (_, opts)
+local function _config(_, opts)
   require("illuminate").configure(opts)
 
   -- On demand mappings
-  local map_on_demand = require("plugins.vim-illuminate.mappings")
+  local map_on_demand = require "plugins.vim-illuminate.mappings"
   map_on_demand.load()
 end
 

@@ -2,7 +2,7 @@
 local function _opts()
   return {
     -- mappings for textobjects and movements
-    textobjects = require("plugins.treesitter-text-objects.mappings").textobjects
+    textobjects = require("plugins.treesitter-text-objects.mappings").textobjects,
   }
 end
 
@@ -17,5 +17,5 @@ end
 return {
   "nvim-treesitter/nvim-treesitter-textobjects",
   opts = _opts,
-  config = _config
+  config = _config,
 }

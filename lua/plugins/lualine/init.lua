@@ -1,8 +1,8 @@
 ------ OPTS -------
-local lazy_status = require("lazy.status") -- to configure lazy pending updates count
+local lazy_status = require "lazy.status" -- to configure lazy pending updates count
 local _opts = {
   -- options = {
-    -- theme = "catppuccin"
+  -- theme = "catppuccin"
   -- },
   sections = {
     lualine_x = {
@@ -21,7 +21,7 @@ local _opts = {
 ------ RETURN -------
 return {
   "nvim-lualine/lualine.nvim",
-  lazy=false,
+  lazy = false,
   dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = _opts,
   config = function(_, opts)

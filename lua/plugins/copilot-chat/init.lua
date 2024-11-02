@@ -9,7 +9,6 @@ local _opts = {
   --   height = 0.4,
   --   row = 1
   -- },
-
 }
 
 ---------- RETURN ------------
@@ -17,16 +16,16 @@ return {
   {
     "CopilotC-Nvim/CopilotChat.nvim",
     branch = "canary",
-  -- cmd = "Copilot",
-  lazy = false,
+    -- cmd = "Copilot",
+    lazy = false,
     dependencies = {
       { "zbirenbaum/copilot.lua" },
       { "nvim-lua/plenary.nvim" },
     },
     opts = _opts,
-    config = function (_, opts)
+    config = function(_, opts)
       require("CopilotChat").setup(opts)
-      require("plugins.copilot-chat.mappings")
+      require "plugins.copilot-chat.mappings"
     end,
   },
 }
