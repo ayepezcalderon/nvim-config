@@ -1,17 +1,15 @@
 local M = {}
 
-local dapui = require("dapui")
-local dap = require("dap")
+local dapui = require "dapui"
+local dap = require "dap"
 
 --- Refreshes the controls of the dapui repl with a delay. Default delay is 1ms.
 function M.delayed_dap_controls_refresh(delay)
   local _delay = delay or 1
 
-  vim.defer_fn(
-    function()
-      require('dapui.controls').refresh_control_panel()
-    end,
-    _delay)
+  vim.defer_fn(function()
+    require("dapui.controls").refresh_control_panel()
+  end, _delay)
 end
 
 --- Closes the (possibly) open ui
@@ -71,10 +69,10 @@ end
 function M.load_repl_ui(close_repl, close_console, close_dapui)
   -- Open and close repl when debug is initialiaze and terminated/exited
   -- First enable dapui controls for repl
-  require('dapui.controls').enable_controls(require('dapui').elements['repl'])
+  require("dapui.controls").enable_controls(require("dapui").elements["repl"])
   dap.listeners.after.event_initialized["dapui_config"] = function()
     dapui.close()
-    require('dapui.controls').refresh_control_panel()
+    require("dapui.controls").refresh_control_panel()
     dap.repl.open()
   end
   _close_ui(close_repl, close_console, close_dapui)
@@ -84,7 +82,7 @@ end
 ---@param close_repl boolean wether repl should be closed upon terminate/exit events.
 ---@param close_dapui boolean wether dapui should be closed upon terminate/exit events.
 function M.load_repl_controls(close_repl, close_console, close_dapui)
-  require('dapui.controls').enable_controls(require('dapui').elements['repl'])
+  require("dapui.controls").enable_controls(require("dapui").elements["repl"])
   _close_ui(close_repl, close_console, close_dapui)
 end
 

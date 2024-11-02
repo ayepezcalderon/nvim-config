@@ -7,7 +7,7 @@ local _opts = {
     -- which_key = true,
     illuminate = {
       enabled = false,
-      lsp = false
+      lsp = false,
     },
   },
 
@@ -23,7 +23,7 @@ local _opts = {
 
       PmenuSel = {
         bg = 11266483,
-        fg = 1973549
+        fg = 1973549,
       },
 
       CmpBorder = { fg = colors.surface2 },
@@ -31,23 +31,23 @@ local _opts = {
       CmpSel = {
         bold = true,
         cterm = {
-          bold = true
+          bold = true,
         },
-        link = "PmenuSel"
-      }
+        link = "PmenuSel",
+      },
     }
-  end
+  end,
 }
 
 ------- RETURN -------
 return {
   "catppuccin/nvim",
-  name="catppuccin",
-  lazy=false,
-  priority=1000,
-  opts=_opts,
-  config = function (_, opts)
+  name = "catppuccin",
+  lazy = false,
+  priority = 1000,
+  opts = _opts,
+  config = function(_, opts)
     require("catppuccin").setup(opts)
     vim.cmd("colorscheme " .. vim.g.colorscheme)
-  end
+  end,
 }

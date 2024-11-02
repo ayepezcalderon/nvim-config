@@ -2,8 +2,8 @@ local opt = vim.opt
 local o = vim.o
 
 opt.relativenumber = true
-o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
-vim.cmd('set nofixeol')
+o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+vim.cmd "set nofixeol"
 
 opt.laststatus = 3 -- global statusline
 opt.showmode = false
@@ -11,21 +11,21 @@ opt.showmode = false
 -- DO NOT USE wl-clipboard in wayland to synchronize to clipboard registers
 -- CREATES WINDOWS FOR EVERY COPY, WHICH LEADS TU BUGGY/CRASHY BEHAVIOR
 -- unnamedplus is more of an issue than unnamed because it is used more often
-if os.getenv("WAYLAND_DISPLAY") and vim.fn.executable('gpaste-client') == 1 then
+if os.getenv "WAYLAND_DISPLAY" and vim.fn.executable "gpaste-client" == 1 then
   vim.g.clipboard = {
-    name = 'gpaste',
+    name = "gpaste",
     copy = {
-      ["+"] = { 'gpaste-client' },
-      ["*"] = { 'gpaste-client' },
+      ["+"] = { "gpaste-client" },
+      ["*"] = { "gpaste-client" },
     },
     paste = {
-      ["+"] = { 'gpaste-client', '--use-index', 'get', '0' },
-      ["*"] = { 'gpaste-client', '--use-index', 'get', '0' },
+      ["+"] = { "gpaste-client", "--use-index", "get", "0" },
+      ["*"] = { "gpaste-client", "--use-index", "get", "0" },
     },
     cache_enabled = true,
   }
 end
-if vim.g.clipboard or not os.getenv("WAYLAND_DISPLAY") then
+if vim.g.clipboard or not os.getenv "WAYLAND_DISPLAY" then
   opt.clipboard = "unnamedplus"
 end
 

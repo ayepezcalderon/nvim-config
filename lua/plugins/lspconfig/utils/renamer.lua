@@ -13,7 +13,7 @@ local function apply(curr, win)
   end
 end
 
-return function ()
+return function()
   local currName = vim.fn.expand "<cword>" .. " "
 
   local win = require("plenary.popup").create(currName, {
@@ -40,4 +40,3 @@ return function ()
     vim.cmd.stopinsert()
   end, { buffer = 0 })
 end
-

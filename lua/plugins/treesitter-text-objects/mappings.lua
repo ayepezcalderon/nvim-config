@@ -86,7 +86,7 @@ M.textobjects = {
 ------------- OPTS -------------
 function M.repeatable_move()
   -- , and ; support for movements
-  local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
+  local ts_repeat_move = require "nvim-treesitter.textobjects.repeatable_move"
 
   -- vim way: ; goes to the direction you were moving.
   vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move)
@@ -100,4 +100,3 @@ function M.repeatable_move()
 end
 
 return M
-
