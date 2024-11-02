@@ -59,19 +59,19 @@ function M.load(buffer, inlay_hints)
   })
 
   map("n", "<C-W>d", function()
-    vim.diagnostic.open_float { border = "rounded" }
+    vim.diagnostic.open_float({ border = "rounded" })
   end, {
     desc = "Show diagnostics under the cursor",
   })
 
   map("n", "[d", function()
-    vim.diagnostic.goto_prev { float = { border = "rounded" } }
+    vim.diagnostic.goto_prev({ float = { border = "rounded" } })
   end, {
     desc = "Jump to the previous diagnostic",
   })
 
   map("n", "]d", function()
-    vim.diagnostic.goto_next { float = { border = "rounded" } }
+    vim.diagnostic.goto_next({ float = { border = "rounded" } })
   end, {
     desc = "Jump to the next diagnostic",
   })
@@ -101,7 +101,7 @@ function M.load(buffer, inlay_hints)
   })
 
   map("n", "<leader>ra", function()
-    require "plugins.lspconfig.utils.renamer"()
+    require("plugins.lspconfig.utils.renamer")()
   end, {
     desc = "LSP rename",
   })

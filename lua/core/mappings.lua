@@ -25,26 +25,26 @@ map({ "n" }, "<C-h>", "<cmd> TmuxNavigateLeft<CR>", { desc = "Window left" })
 map({ "n" }, "<leader>n", "<cmd> set nu! <CR>", { desc = "Toggle line number" })
 map({ "n" }, "<C-c>", "<cmd> %y+ <CR>", { desc = "Copy whole file" })
 map({ "n", "v" }, "<leader>fm", function()
-  vim.lsp.buf.format { async = true }
+  vim.lsp.buf.format({ async = true })
 end, { desc = "LSP formatting" })
 map({ "v" }, "<", "<gv", { desc = "Indent line" })
 map({ "v" }, ">", ">gv", { desc = "Indent line" })
 map({ "n" }, "<leader>x", function()
-  if vim.api.nvim_buf_is_loaded(vim.fn.bufnr "#") then
+  if vim.api.nvim_buf_is_loaded(vim.fn.bufnr("#")) then
     -- Go to last visited buffer in this session, if it exists
-    vim.cmd "b # | confirm bd #"
+    vim.cmd("b # | confirm bd #")
   else
     -- Move to next buffer, and log buf before and after moving
     local current_buf = vim.api.nvim_get_current_buf()
-    vim.cmd "bn"
+    vim.cmd("bn")
     local new_buf = vim.api.nvim_get_current_buf()
 
     -- If we actually moved buffer, delete previous one
     -- Else, report that we could not move to an alternate buffer
     if current_buf ~= new_buf then
-      vim.cmd "confirm bd #"
+      vim.cmd("confirm bd #")
     else
-      print "No alternate buffer"
+      print("No alternate buffer")
     end
   end
 end, { desc = "Close buffer" })

@@ -1,11 +1,11 @@
 local map = vim.keymap.set
-local dap_utils = require "plugins.dap.utils"
-local utils = require "utils"
+local dap_utils = require("plugins.dap.utils")
+local utils = require("utils")
 
 local _HAS_RUN = false
 
 map({ "n" }, "<leader>dB", function()
-  require("dap").set_breakpoint(vim.fn.input "Breakpoint condition: ")
+  require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
 end, { desc = "Breakpoint condition" })
 map({ "n" }, "<Leader>dr", function()
   require("dapui").close()
@@ -22,7 +22,7 @@ map({ "n" }, "<F9>", function()
   require("dap").step_out()
 end, { desc = "dap step out" })
 map({ "n" }, "<Leader>lp", function()
-  require("dap").set_breakpoint(nil, nil, vim.fn.input "Log point message: ")
+  require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
 end, { desc = "Log point" })
 map({ "n" }, "<F5>", function()
   require("dap").continue()

@@ -12,7 +12,7 @@ local enabled = function()
   disabled = disabled or (vim.fn.reg_recording() ~= "")
   disabled = disabled or (vim.fn.reg_executing() ~= "")
   -- disable for comments
-  disabled = disabled or require("cmp.config.context").in_treesitter_capture "comment"
+  disabled = disabled or require("cmp.config.context").in_treesitter_capture("comment")
 
   return not disabled
 end
@@ -31,7 +31,7 @@ local function border(hl_name)
 end
 
 local function _opts()
-  local cmp = require "cmp"
+  local cmp = require("cmp")
 
   return {
     completion = {
@@ -43,7 +43,7 @@ local function _opts()
         side_padding = 1,
         winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:None",
         scrollbar = false,
-        border = border "CmpBorder",
+        border = border("CmpBorder"),
       },
       -- documentation = {
       --   -- border = border "CmpDocBorder",
@@ -60,7 +60,7 @@ local function _opts()
       -- default fields order i.e completion word + item.kind + item.kind icons
       fields = { "abbr", "kind", "menu" },
 
-      format = require("lspkind").cmp_format {
+      format = require("lspkind").cmp_format({
         -- mode = 'symbol', -- show only symbol annotations
         maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
         -- can also be a function to dynamically calculate max width such as
@@ -74,7 +74,7 @@ local function _opts()
         --   ...
         --   return vim_item
         -- end
-      },
+      }),
     },
 
     enabled = enabled,
@@ -86,10 +86,10 @@ local function _opts()
       ["<C-f>"] = cmp.mapping.scroll_docs(4),
       ["<C-Space>"] = cmp.mapping.complete(),
       ["<C-e>"] = cmp.mapping.close(),
-      ["<CR>"] = cmp.mapping.confirm {
+      ["<CR>"] = cmp.mapping.confirm({
         behavior = cmp.ConfirmBehavior.Insert,
         select = true,
-      },
+      }),
       ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
@@ -127,7 +127,7 @@ end
 
 ---------------- CONFIG ------------------
 local _config = function(_, opts)
-  local cmp = require "cmp"
+  local cmp = require("cmp")
   cmp.setup(opts)
   cmp.setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
     sources = {

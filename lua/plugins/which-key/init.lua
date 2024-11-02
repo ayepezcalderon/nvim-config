@@ -6,6 +6,6 @@ return {
   config = function(_, opts)
     require("which-key").setup(opts)
     -- mappings
-    require "plugins.which-key.mappings"
+    require("plugins.which-key.mappings")
   end,
 }

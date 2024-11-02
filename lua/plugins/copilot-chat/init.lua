@@ -25,7 +25,7 @@ return {
     opts = _opts,
     config = function(_, opts)
       require("CopilotChat").setup(opts)
-      require "plugins.copilot-chat.mappings"
+      require("plugins.copilot-chat.mappings")
     end,
   },
 }

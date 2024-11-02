@@ -58,7 +58,7 @@ local function _config(_, opts)
   require("plugins.dapui.utils").load_console(true, false, false)
 
   -- mappings
-  require "plugins.dapui.mappings"
+  require("plugins.dapui.mappings")
 end
 
 return {

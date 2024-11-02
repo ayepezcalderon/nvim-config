@@ -8,6 +8,6 @@ map({ "n" }, "<leader>tc", function()
 
   if ok then
     vim.api.nvim_win_set_cursor(vim.api.nvim_get_current_win(), { start, 0 })
-    vim.cmd [[normal! _]]
+    vim.cmd([[normal! _]])
   end
 end, { desc = "Jump to current context" })

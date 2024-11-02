@@ -20,7 +20,7 @@ map({ "n" }, "<leader>fy", "<cmd> Telescope yank_history <CR>", { desc = "Yank h
 map({ "n" }, "<leader>fls", "<cmd> Telescope lsp_document_symbols <CR>", { desc = "Document/buffer LSP symbols" })
 map({ "n" }, "<leader>flw", function()
   -- iterator with matches from input
-  local match = string.gmatch(vim.fn.input "<query> [symbol]: ", "%S+")
+  local match = string.gmatch(vim.fn.input("<query> [symbol]: "), "%S+")
 
   -- terminate if no input
   local query = match()
@@ -29,5 +29,5 @@ map({ "n" }, "<leader>flw", function()
   end
 
   -- perform search
-  require("telescope.builtin").lsp_workspace_symbols { query = query, symbols = match() }
+  require("telescope.builtin").lsp_workspace_symbols({ query = query, symbols = match() })
 end, { desc = "Workspace LSP symbols" })

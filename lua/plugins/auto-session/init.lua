@@ -13,6 +13,6 @@ return {
   config = function(_, opts)
     require("auto-session").setup(opts)
     -- mappings
-    require "plugins.auto-session.mappings"
+    require("plugins.auto-session.mappings")
   end,
 }

@@ -3,7 +3,7 @@ local _config = function(_, opts)
   local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
   require("dap-python").setup(path)
 
-  local dap = require "dap"
+  local dap = require("dap")
   local configs = dap.configurations.python
 
   dap.configurations.python = configs
@@ -21,7 +21,7 @@ local _config = function(_, opts)
     name = "Launch file with arguments (justMyCode = false)",
     program = "${file}",
     args = function()
-      local args_string = vim.fn.input "Arguments: "
+      local args_string = vim.fn.input("Arguments: ")
       return vim.split(args_string, " +")
     end,
     console = "integratedTerminal",
@@ -29,7 +29,7 @@ local _config = function(_, opts)
   })
 
   -- mappings
-  require "plugins.dap-python.mappings"
+  require("plugins.dap-python.mappings")
 end
 
 ------------ RETURN --------------

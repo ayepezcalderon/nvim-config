@@ -5,6 +5,6 @@ return {
   config = function(_, opts)
     require("trouble").setup(opts)
     -- mappings
-    require "plugins.trouble.mappings"
+    require("plugins.trouble.mappings")
   end,
 }

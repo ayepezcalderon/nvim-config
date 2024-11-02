@@ -1,7 +1,7 @@
 local M = {}
 
-local dapui = require "dapui"
-local dap = require "dap"
+local dapui = require("dapui")
+local dap = require("dap")
 
 --- Refreshes the controls of the dapui repl with a delay. Default delay is 1ms.
 function M.delayed_dap_controls_refresh(delay)
@@ -17,7 +17,7 @@ end
 ---@param close_console boolean whether console should be closed.
 ---@param close_dapui boolean whether dapui should be closed.
 local function _close_ui(close_repl, close_console, close_dapui)
-  for _, event in ipairs { "event_terminated", "event_exited" } do
+  for _, event in ipairs({ "event_terminated", "event_exited" }) do
     dap.listeners.before[event]["dapui_config"] = function()
       if close_repl then
         dap.repl.close()

@@ -44,12 +44,12 @@ M.load = function(bufnr)
     desc = "Hunk stage",
   })
   map("v", "<leader>hs", function()
-    gs.stage_hunk { vim.fn.line ".", vim.fn.line "v" }
+    gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
   end, {
     desc = "Hunk stage",
   })
   map("v", "<leader>hr", function()
-    gs.reset_hunk { vim.fn.line ".", vim.fn.line "v" }
+    gs.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
   end, {
     desc = "Hunk reset",
   })
@@ -74,7 +74,7 @@ M.load = function(bufnr)
     desc = "Git diff",
   })
   map("n", "<leader>hD", function()
-    gs.diffthis "~"
+    gs.diffthis("~")
   end, {
     desc = "Git diff HEAD~1",
   })

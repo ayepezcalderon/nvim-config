@@ -2,7 +2,7 @@
 local map = vim.keymap.set
 
 local function apply(curr, win)
-  local newName = vim.trim(vim.fn.getline ".")
+  local newName = vim.trim(vim.fn.getline("."))
   vim.api.nvim_win_close(win, true)
 
   if #newName > 0 and newName ~= curr then
@@ -14,7 +14,7 @@ local function apply(curr, win)
 end
 
 return function()
-  local currName = vim.fn.expand "<cword>" .. " "
+  local currName = vim.fn.expand("<cword>") .. " "
 
   local win = require("plenary.popup").create(currName, {
     title = "Renamer",
@@ -30,8 +30,8 @@ return function()
     col = "cursor-1",
   })
 
-  vim.cmd "normal A"
-  vim.cmd "startinsert"
+  vim.cmd("normal A")
+  vim.cmd("startinsert")
 
   map({ "i", "n" }, "<Esc>", "<cmd>q<CR>", { buffer = 0 })
 

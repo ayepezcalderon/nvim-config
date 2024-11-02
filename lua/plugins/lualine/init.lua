@@ -1,5 +1,5 @@
 ------ OPTS -------
-local lazy_status = require "lazy.status" -- to configure lazy pending updates count
+local lazy_status = require("lazy.status") -- to configure lazy pending updates count
 local _opts = {
   -- options = {
   -- theme = "catppuccin"

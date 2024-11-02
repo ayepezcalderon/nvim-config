@@ -2,13 +2,13 @@ local M = {}
 
 --- Custom dap repl toggle function. Can enter repl in insert mode when toggle opens
 function M.custom_dap_repl_toggle(insert, ...)
-  if not require("dap").repl.close { mode = "toggle" } then
+  if not require("dap").repl.close({ mode = "toggle" }) then
     require("dap").repl.open(...)
     -- Move to repl
-    vim.cmd ":wincmd p"
+    vim.cmd(":wincmd p")
     -- Enter insert mode if required
     if insert then
-      vim.cmd "startinsert"
+      vim.cmd("startinsert")
     end
   end
 end

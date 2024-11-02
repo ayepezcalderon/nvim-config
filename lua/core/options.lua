@@ -3,7 +3,7 @@ local o = vim.o
 
 opt.relativenumber = true
 o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
-vim.cmd "set nofixeol"
+vim.cmd("set nofixeol")
 
 opt.laststatus = 3 -- global statusline
 opt.showmode = false
@@ -11,7 +11,7 @@ opt.showmode = false
 -- DO NOT USE wl-clipboard in wayland to synchronize to clipboard registers
 -- CREATES WINDOWS FOR EVERY COPY, WHICH LEADS TU BUGGY/CRASHY BEHAVIOR
 -- unnamedplus is more of an issue than unnamed because it is used more often
-if os.getenv "WAYLAND_DISPLAY" and vim.fn.executable "gpaste-client" == 1 then
+if os.getenv("WAYLAND_DISPLAY") and vim.fn.executable("gpaste-client") == 1 then
   vim.g.clipboard = {
     name = "gpaste",
     copy = {
@@ -25,7 +25,7 @@ if os.getenv "WAYLAND_DISPLAY" and vim.fn.executable "gpaste-client" == 1 then
     cache_enabled = true,
   }
 end
-if vim.g.clipboard or not os.getenv "WAYLAND_DISPLAY" then
+if vim.g.clipboard or not os.getenv("WAYLAND_DISPLAY") then
   opt.clipboard = "unnamedplus"
 end
 
@@ -49,7 +49,7 @@ opt.numberwidth = 2
 opt.ruler = false
 
 -- disable nvim intro
-opt.shortmess:append "sI"
+opt.shortmess:append("sI")
 
 opt.signcolumn = "yes"
 opt.splitbelow = true
@@ -63,4 +63,4 @@ opt.updatetime = 250
 
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
-opt.whichwrap:append "<>[]hl"
+opt.whichwrap:append("<>[]hl")

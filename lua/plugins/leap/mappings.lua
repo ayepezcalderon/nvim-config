@@ -8,11 +8,11 @@ function M.load()
   ---@param leap_keys table<string>
   ---@param force boolean
   local function create_default_mappings(leap_keys, force)
-    for _, _1_ in ipairs {
+    for _, _1_ in ipairs({
       { { "n", "x", "o" }, leap_keys[1], "<Plug>(leap-forward)", "Leap forward" },
       { { "n", "x", "o" }, leap_keys[2], "<Plug>(leap-backward)", "Leap backward" },
       { { "n", "x", "o" }, leap_keys[3], "<Plug>(leap-from-window)", "Leap from window" },
-    } do
+    }) do
       local _each_2_ = _1_
       local modes = _each_2_[1]
       local lhs = _each_2_[2]

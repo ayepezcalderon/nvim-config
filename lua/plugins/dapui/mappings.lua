@@ -7,7 +7,7 @@ map({ "n" }, "<leader>do", function()
   require("dapui").toggle(3)
 end, { desc = "dapui console" })
 map({ "n" }, "<leader>dw", function()
-  require("dapui").float_element "watches"
+  require("dapui").float_element("watches")
 end, { desc = "dapui watches" })
 map({ "n" }, "<leader>dui", function()
   require("dap").repl.close()

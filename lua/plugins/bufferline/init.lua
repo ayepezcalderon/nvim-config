@@ -1,6 +1,6 @@
 ------ OPTS -------
 local function _opts()
-  local bufferline = require "bufferline"
+  local bufferline = require("bufferline")
 
   return {
     options = {
@@ -34,6 +34,6 @@ return {
   config = function(_, opts)
     require("bufferline").setup(opts)
     -- mappings
-    require "plugins.bufferline.mappings"
+    require("plugins.bufferline.mappings")
   end,
 }

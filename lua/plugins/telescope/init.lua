@@ -1,6 +1,6 @@
 --------- OPTS -------------
 local function _opts()
-  local actions = require "telescope.actions"
+  local actions = require("telescope.actions")
 
   return {
     defaults = {
@@ -90,7 +90,7 @@ end
 
 ------------ CONFIG --------------
 local function _config(_, opts)
-  local telescope = require "telescope"
+  local telescope = require("telescope")
   telescope.setup(opts)
 
   -- load extensions
@@ -99,7 +99,7 @@ local function _config(_, opts)
   end
 
   -- mappings
-  require "plugins.telescope.mappings"
+  require("plugins.telescope.mappings")
 end
 
 ------------ RETURN --------------

@@ -2,7 +2,7 @@ local _enabled = false
 
 -- mappings
 if _enabled then
-  require "plugins.comment.mappings"
+  require("plugins.comment.mappings")
 end
 
 return {
@@ -19,6 +19,6 @@ return {
   config = function(_, opts)
     require("Comment").setup(opts)
     -- highlights
-    require "plugins.comment.highlights"
+    require("plugins.comment.highlights")
   end,
 }

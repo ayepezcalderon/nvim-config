@@ -5,11 +5,11 @@ local semantic_tokens = false
 
 local on_attach = function(client, bufnr)
   -- On demand mappings
-  local map_on_demand = require "plugins.lspconfig.mappings"
+  local map_on_demand = require("plugins.lspconfig.mappings")
   local inlay_hint_supported = client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint
   map_on_demand.load(bufnr, inlay_hint_supported)
 
-  if not semantic_tokens and client.supports_method "textDocument/semanticTokens" then
+  if not semantic_tokens and client.supports_method("textDocument/semanticTokens") then
     client.server_capabilities.semanticTokensProvider = nil
   end
 
@@ -44,11 +44,11 @@ capabilities.textDocument.completion.completionItem = {
 }
 
 local function _config(_, opts)
-  local lspconfig = require "lspconfig"
+  local lspconfig = require("lspconfig")
 
-  require "plugins.lspconfig.utils.ui"
+  require("plugins.lspconfig.utils.ui")
 
-  lspconfig.lua_ls.setup {
+  lspconfig.lua_ls.setup({
     on_attach = on_attach,
     capabilities = capabilities,
 
@@ -59,9 +59,9 @@ local function _config(_, opts)
         },
         workspace = {
           library = {
-            [vim.fn.expand "$VIMRUNTIME/lua"] = true,
-            [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
-            [vim.fn.stdpath "data" .. "/lazy/lazy.nvim/lua/lazy"] = true,
+            [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+            [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+            [vim.fn.stdpath("data") .. "/lazy/lazy.nvim/lua/lazy"] = true,
           },
           maxPreload = 100000,
           preloadFileSize = 10000,
@@ -69,10 +69,10 @@ local function _config(_, opts)
         hint = { enable = true },
       },
     },
-  }
+  })
 
   if python_static_checker == "pyright" then
-    lspconfig.pyright.setup {
+    lspconfig.pyright.setup({
       on_attach = on_attach,
       capabilities = capabilities,
       filetypes = { "python" },
@@ -88,9 +88,9 @@ local function _config(_, opts)
         --   },
         -- },
       },
-    }
+    })
   else
-    lspconfig.basedpyright.setup {
+    lspconfig.basedpyright.setup({
       on_attach = on_attach,
       capabilities = capabilities,
       filetypes = { "python" },
@@ -109,20 +109,20 @@ local function _config(_, opts)
         --   },
         -- },
       },
-    }
+    })
   end
 
-  lspconfig.jsonls.setup {
+  lspconfig.jsonls.setup({
     on_attach = on_attach,
     capabilities = capabilities,
-  }
+  })
 
-  lspconfig.ruff.setup {
+  lspconfig.ruff.setup({
     on_attach = on_attach,
     capabilities = capabilities,
-  }
+  })
 
-  lspconfig.texlab.setup {
+  lspconfig.texlab.setup({
     on_attach = on_attach,
     capabilities = capabilities,
     filetypes = { "tex", "plaintex", "bib" },
@@ -161,7 +161,7 @@ local function _config(_, opts)
         },
       },
     },
-  }
+  })
   --
   -- lspconfig.textlsp.setup({
   --   on_attach = on_attach,
@@ -188,15 +188,15 @@ local function _config(_, opts)
   --   }
   -- })
 
-  lspconfig.ltex.setup {
+  lspconfig.ltex.setup({
     on_attach = on_attach,
     capabilities = capabilities,
-  }
+  })
 
-  lspconfig.clangd.setup {
+  lspconfig.clangd.setup({
     on_attach = on_attach,
     capabilities = capabilities,
-  }
+  })
 end
 
 ----------- RETURN ----------
@@ -204,7 +204,7 @@ return {
   "neovim/nvim-lspconfig",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   init = function()
-    require("utils").lazy_load "nvim-lspconfig"
+    require("utils").lazy_load("nvim-lspconfig")
   end,
   config = _config,
 }
