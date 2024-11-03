@@ -64,6 +64,7 @@ return {
   end,
   dependencies = {
     "nvim-treesitter/nvim-treesitter-textobjects",
+    "nvim-treesitter/nvim-treesitter-context",
   },
   cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
   build = ":TSUpdate",

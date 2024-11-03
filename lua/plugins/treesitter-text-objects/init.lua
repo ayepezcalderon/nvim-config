@@ -14,6 +14,8 @@ local function _config(_, opts)
   require("plugins.treesitter-text-objects.mappings").repeatable_move()
 end
 
+
+------------- RETURN -------------
 return {
   "nvim-treesitter/nvim-treesitter-textobjects",
   opts = _opts,
