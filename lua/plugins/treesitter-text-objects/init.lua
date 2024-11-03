@@ -6,7 +6,7 @@ local function _opts()
   }
 end
 
-------------- OPTS -------------
+------------- CONFIG -------------
 local function _config(_, opts)
   require("nvim-treesitter.configs").setup(opts)
 
