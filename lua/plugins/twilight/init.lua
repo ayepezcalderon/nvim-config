@@ -1,6 +1,5 @@
 ------------- CONFIG -------------
 local function _config(_, opts)
-  -- require("twilight.nvim").setup(opts)
   -- mappings
   require("plugins.twilight.mappings")
 end
