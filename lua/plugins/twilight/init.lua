@@ -4,6 +4,7 @@ local _opts = {
 
 ------------- CONFIG -------------
 local function _config(_, opts)
+  require("twilight").setup(opts)
   -- mappings
   require("plugins.twilight.mappings")
 end
