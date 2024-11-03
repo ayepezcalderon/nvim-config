@@ -21,9 +21,9 @@ map(
 
 map(
   { "n" },
-  "<leader>tf",
+  "<leader>ta",
   "<cmd>Trouble lsp_document_symbols toggle focus=true win.position=right<cr>",
-  { desc = "Toggle LSP symbols" }
+  { desc = "Toggle all LSP symbols" }
 )
 
 map(
