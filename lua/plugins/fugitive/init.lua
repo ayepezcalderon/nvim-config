@@ -1,7 +1,7 @@
 ----------- RETURN ------------
 return {
   "tpope/vim-fugitive",
-  ft = { "gitcommit", "diff" },
+  lazy = false,
   config = function(_, opts)
     require("plugins.fugitive.mappings")
   end,
