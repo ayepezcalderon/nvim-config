@@ -3,11 +3,18 @@ local _init = require("utils").init_git_plugin("neogit", "NeogitLazyLoad")
 
 ---------- OPTS ------------
 local _opts = {
-  kind = "split",
+  kind = "tab",
+  mappings = {
+    -- Setting any of these to `false` will disable the mapping.
+    popup = {
+      ["p"] = "PushPopup",
+      ["P"] = "PullPopup",
+    }
+  }
 }
 
 ---------- CONFIG ------------
-local _config = function (_, opts)
+local _config = function(_, opts)
   require("neogit").setup(opts)
   -- mappings
   require("plugins.neogit.mappings")

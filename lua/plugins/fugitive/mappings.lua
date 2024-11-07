@@ -22,10 +22,10 @@ end, {
   desc = "Git add all and commit",
 })
 
-map("n", "<leader>gp", "<cmd>:Git pull<CR>", {
+map("n", "<leader>gP", "<cmd>:Git pull<CR>", {
   desc = "Git pull",
 })
 
-map("n", "<leader>gP", "<cmd>:Git push<CR>", {
+map("n", "<leader>gp", "<cmd>:Git push<CR>", {
   desc = "Git push",
 })
