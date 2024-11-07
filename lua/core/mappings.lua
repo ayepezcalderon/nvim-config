@@ -1,4 +1,9 @@
 local map = vim.keymap.set
+
+map({ "n" }, "<leader>qq", "<cmd>q<cr>", { desc = "Close window" })
+
+map({ "n" }, "<leader>qa", "<cmd>qa<cr>", { desc = "Close all windows " })
+
 map({ "n" }, "<leader>/", "gcc", {
   desc = "Toggle comment",
   remap = true,
