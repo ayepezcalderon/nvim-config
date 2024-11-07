@@ -71,12 +71,12 @@ M.load = function(bufnr)
     desc = "Blame line",
   })
   map("n", "<leader>hd", gs.diffthis, {
-    desc = "Git diff",
+    desc = "Gitsigns diff",
   })
   map("n", "<leader>hD", function()
     gs.diffthis("~")
   end, {
-    desc = "Git diff HEAD~1",
+    desc = "Gitsigns diff HEAD~1",
   })
   map("n", "<leader>td", gs.toggle_deleted, {
     desc = "Toggle deleted",
