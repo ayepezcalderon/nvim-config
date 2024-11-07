@@ -52,6 +52,13 @@ map({ "v" }, "<", "<gv", { desc = "Indent line" })
 
 map({ "v" }, ">", ">gv", { desc = "Indent line" })
 
+map(
+  { "n" },
+  "<leader>X",
+  '<cmd>confirm bdelete<CR>',
+  { desc = "Close buffer and window" }
+)
+
 map({ "n" }, "<leader>x", function()
   if vim.api.nvim_buf_is_loaded(vim.fn.bufnr("#")) then
     -- Go to last visited buffer in this session, if it exists
