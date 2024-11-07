@@ -1,7 +1,11 @@
 local map = vim.keymap.set
 
+map("n", "<leader>fi", "<cmd>:Git<CR>", {
+  desc = "Fugitive",
+})
+
 map("n", "<leader>co", "<cmd>:Git commit<CR>", {
-  desc = ":Git commit",
+  desc = "Git commit",
 })
 
 map("n", "<leader>cu", function()
