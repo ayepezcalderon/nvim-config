@@ -76,12 +76,6 @@ function M.load(buffer, inlay_hints)
     desc = "Jump to the next diagnostic",
   })
 
-  map("n", "<leader>q", function()
-    vim.diagnostic.setloclist()
-  end, {
-    desc = "Diagnostic setloclist",
-  })
-
   map("n", "<leader>wa", function()
     vim.lsp.buf.add_workspace_folder()
   end, {
