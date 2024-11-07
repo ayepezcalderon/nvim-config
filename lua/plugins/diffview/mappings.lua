@@ -2,7 +2,7 @@ local map = vim.keymap.set
 
 map(
   { "n" },
-  "<leader>gD",
+  "<leader>gd",
   "<cmd>DiffviewOpen<cr>",
   { desc = "DiffviewOpen (default diff against HEAD, including untracked files)" }
 )
