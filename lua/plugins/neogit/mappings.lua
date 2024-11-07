@@ -1,13 +1,13 @@
 local map = vim.keymap.set
 
 map({ "n" },
-  "<leader>ng",
+  "<leader>gg",
   "<cmd>Neogit<cr>",
   { desc = "Neogit" }
 )
 
 map({ "n" },
-  "<leader>nw",
+  "<leader>gw",
   "<cmd>Neogit worktree<cr>",
   { desc = "Neogit worktree" }
 )
