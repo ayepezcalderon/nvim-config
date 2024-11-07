@@ -83,6 +83,9 @@ map({ "n" }, "<Tab>", function()
   vim.cmd("bnext " .. vim.v.count1)
 end)
 
-map({ "n" }, "<S-Tab>", function()
-  vim.cmd("bprev " .. vim.v.count1)
-end)
+map(
+  { "n" },
+  "<leader>z",
+  '<cmd>confirm tabclose<CR>',
+  { desc = "Close tab" }
+)
