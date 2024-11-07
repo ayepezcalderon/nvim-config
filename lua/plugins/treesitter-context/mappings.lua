@@ -2,7 +2,7 @@ local map = vim.keymap.set
 
 map(
   { "n" },
-  "<leader>tc",
+  "<leader>ck",
   "<cmd>TSContextToggle<cr>",
   { desc = "Toggle context header" }
 )
