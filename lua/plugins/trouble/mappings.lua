@@ -21,7 +21,7 @@ map(
 
 map(
   { "n" },
-  "<leader>ta",
+  "<leader>tS",
   "<cmd>Trouble lsp_document_symbols toggle focus=true win.position=right<cr>",
   { desc = "Toggle all LSP symbols" }
 )
@@ -47,13 +47,6 @@ map({ "n" }, "<leader>to",
 map(
   { "n" },
   "<leader>tr",
-  "<cmd>Trouble lsp_references toggle focus=true",
-  { desc = "Toggle LSP references" }
-)
-
-map(
-  { "n" },
-  "<leader>tS",
-  "<cmd>Trouble lsp_references toggle focus=true",
+  "<cmd>Trouble lsp_references toggle focus=true<cr>",
   { desc = "Toggle LSP references" }
 )
