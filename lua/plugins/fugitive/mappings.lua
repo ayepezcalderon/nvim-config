@@ -21,3 +21,11 @@ map("n", "<leader>cU", function()
 end, {
   desc = "Git add all and commit",
 })
+
+map("n", "<leader>gp", "<cmd>:Git pull<CR>", {
+  desc = "Git pull",
+})
+
+map("n", "<leader>gP", "<cmd>:Git push<CR>", {
+  desc = "Git push",
+})
