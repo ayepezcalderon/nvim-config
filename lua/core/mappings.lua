@@ -32,6 +32,8 @@ map({ "n" }, "<C-j>", "<cmd> TmuxNavigateDown<CR>", { desc = "Window down" })
 
 map({ "n" }, "<C-s>", "<cmd> w <CR>", { desc = "Save file" })
 
+map({ "n" }, "<C-a>", "<cmd> wa <CR>", { desc = "Save all files" })
+
 map({ "n" }, "<C-l>", "<cmd> TmuxNavigateRight<CR>", { desc = "Window right" })
 
 map({ "n" }, "<leader>rn", "<cmd> set rnu! <CR>", { desc = "Toggle relative number" })
@@ -81,6 +83,10 @@ end, { desc = "Close buffer" })
 
 map({ "n" }, "<Tab>", function()
   vim.cmd("bnext " .. vim.v.count1)
+end)
+
+map({ "n" }, "<S-Tab>", function()
+  vim.cmd("bprev " .. vim.v.count1)
 end)
 
 map(

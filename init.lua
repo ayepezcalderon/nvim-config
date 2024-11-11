@@ -1,7 +1,6 @@
 -- specify ui
 local colorscheme_plugin = "catppuccin"
 vim.g.colorscheme = "catppuccin"
-
 -- remap leader key
 vim.g.mapleader = " "
 
