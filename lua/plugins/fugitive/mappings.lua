@@ -29,3 +29,7 @@ map("n", "<leader>gP", "<cmd>:Git pull<CR>", {
 map("n", "<leader>gp", "<cmd>:Git push<CR>", {
   desc = "Git push",
 })
+
+map("n", "<leader>gb", "<cmd>:Git blame<CR>", {
+  desc = "Git blame",
+})
