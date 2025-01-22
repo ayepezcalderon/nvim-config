@@ -11,6 +11,7 @@ local _opts = {
     "ltex-ls",
     "clangd",
     "codelldb",
+    "rust-analyzer",
   },
 
   PATH = "skip",
