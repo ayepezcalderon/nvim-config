@@ -97,3 +97,18 @@ map(
 map({ "n" }, "]q", function() vim.cmd("cnext") end, { desc = "Next quickfix" })
 
 map({ "n" }, "[q", function() vim.cmd("cprevious") end, { desc = "Previous quickfix" })
+
+map(
+  { 'n' },
+  '<leader>q',
+  function()
+    if vim.fn.getqflist({ winid = 0 }).winid ~= 0 then
+      -- If the quickfix window is open, close it
+      vim.cmd('cclose')
+    else
+      -- If the quickfix window is not open, open it
+      vim.cmd('copen')
+    end
+  end,
+  { desc = "Toggle quickfix", silent = true }
+)
