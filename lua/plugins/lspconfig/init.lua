@@ -120,6 +120,12 @@ local function _config(_, opts)
   lspconfig.ruff.setup({
     on_attach = on_attach,
     capabilities = capabilities,
+    trace = 'messages',
+    init_options = {
+      settings = {
+        logLevel = 'debug',
+      }
+    }
   })
 
   lspconfig.texlab.setup({
