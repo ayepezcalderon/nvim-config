@@ -29,7 +29,7 @@ map(
   { desc = "Find all" }
 )
 
-map({ "n" }, "<leader>fy", "<cmd> Telescope yank_history <CR>", { desc = "Yank history" })
+map({ "n", "v" }, "<leader>fy", "<cmd> Telescope yank_history <CR>", { desc = "Yank history" })
 
 map({ "n" }, "<leader>fls", "<cmd> Telescope lsp_document_symbols <CR>", { desc = "Document/buffer LSP symbols" })
 
