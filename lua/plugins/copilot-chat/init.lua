@@ -15,7 +15,7 @@ local _opts = {
 return {
   {
     "CopilotC-Nvim/CopilotChat.nvim",
-    branch = "canary",
+    branch = "main",
     -- cmd = "Copilot",
     lazy = false,
     dependencies = {
