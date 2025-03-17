@@ -43,6 +43,9 @@ local _opts = {
 
     -- regex
     "regex",
+
+    -- csv
+    "csv",
   },
 
   highlight = {
