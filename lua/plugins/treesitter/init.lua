@@ -46,6 +46,10 @@ local _opts = {
 
     -- csv
     "csv",
+
+    -- templating
+    "jinja",
+    -- "jinja-inline",
   },
 
   highlight = {
