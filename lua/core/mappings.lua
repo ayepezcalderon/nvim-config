@@ -10,17 +10,13 @@ map({ "v" }, "<leader>/", "gc", {
   remap = true,
 })
 
-map({ "i" }, "<C-l>", "<Right>", { desc = "Move right" })
+map({ "n", "v" }, "<M-k>", "5k", { desc = "Move 5 up" })
 
-map({ "i" }, "<C-k>", "<Up>", { desc = "Move up" })
+map({ "n", "v" }, "<M-j>", "5j", { desc = "Move 5 down" })
 
 map({ "i" }, "<C-e>", "<End>", { desc = "End of line" })
 
 map({ "i" }, "<C-b>", "<ESC>^i", { desc = "Beginning of line" })
-
-map({ "i" }, "<C-h>", "<Left>", { desc = "Move left" })
-
-map({ "i" }, "<C-j>", "<Down>", { desc = "Move down" })
 
 map({ "x" }, "p", 'p:let @+=@0<CR>:let @"=@0<CR>', { desc = "Dont copy replaced text" })
 

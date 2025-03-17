@@ -50,6 +50,7 @@ M.textobjects = {
     set_jumps = true, -- whether to set jumps in the jumplist
     goto_next_start = {
       ["]a"] = { query = "@parameter.outer", desc = "Next parameter/argument start" },
+      ["]="] = { query = "@assignment.outer", desc = "Next assignment start" },
       ["]f"] = { query = "@call.outer", desc = "Next function call start" },
       ["]m"] = { query = "@function.outer", desc = "Next method/function def start" },
       ["]b"] = { query = "@class.outer", desc = "Next class start" },
@@ -66,6 +67,7 @@ M.textobjects = {
     },
     goto_previous_start = {
       ["[a"] = { query = "@parameter.outer", desc = "Prev parameter/argument call start" },
+      ["[="] = { query = "@assignment.outer", desc = "Prev assignment start" },
       ["[f"] = { query = "@call.outer", desc = "Prev function call start" },
       ["[m"] = { query = "@function.outer", desc = "Prev method/function def start" },
       ["[b"] = { query = "@class.outer", desc = "Prev class start" },
