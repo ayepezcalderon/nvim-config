@@ -10,15 +10,16 @@ local _config = function(_, opts)
   table.insert(configs, 1, {
     type = "python",
     request = "launch",
-    name = "Launch file (justMyCode = false)",
+    name = "Launch file (justMyCode = false, cwd = ${workspaceFolder})",
     program = "${file}",
     console = "integratedTerminal",
     justMyCode = false,
+    cwd = "${workspaceFolder}",
   })
   table.insert(configs, 2, {
     type = "python",
     request = "launch",
-    name = "Launch file with arguments (justMyCode = false)",
+    name = "Launch file with arguments (justMyCode = false, cwd = ${workspaceFolder})",
     program = "${file}",
     args = function()
       local args_string = vim.fn.input("Arguments: ")
@@ -26,6 +27,7 @@ local _config = function(_, opts)
     end,
     console = "integratedTerminal",
     justMyCode = false,
+    cwd = "${workspaceFolder}",
   })
 
   -- mappings
