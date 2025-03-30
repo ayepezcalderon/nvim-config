@@ -28,12 +28,6 @@ function M.load(buffer, inlay_hints)
     })
   end
 
-  map("n", "gi", function()
-    vim.lsp.buf.implementation()
-  end, {
-    desc = "LSP implementation",
-  })
-
   map("n", "<leader>ls", function()
     vim.lsp.buf.signature_help()
   end, {
@@ -46,36 +40,11 @@ function M.load(buffer, inlay_hints)
     desc = "LSP definition type",
   })
 
-  map({ "n", "v" }, "<leader>ca", function()
-    vim.lsp.buf.code_action()
-  end, {
-    desc = "LSP code action",
-  })
-
-  map("n", "gr", function()
-    vim.lsp.buf.references()
-  end, {
-    desc = "LSP references",
-  })
-
   map("n", "<C-W>d", function()
     vim.diagnostic.open_float({ border = "rounded" })
   end, {
     desc = "Show diagnostics under the cursor",
   })
-
-  map("n", "[d", function()
-    vim.diagnostic.goto_prev({ float = { border = "rounded" } })
-  end, {
-    desc = "Jump to the previous diagnostic",
-  })
-
-  map("n", "]d", function()
-    vim.diagnostic.goto_next({ float = { border = "rounded" } })
-  end, {
-    desc = "Jump to the next diagnostic",
-  })
-
   map("n", "<leader>wa", function()
     vim.lsp.buf.add_workspace_folder()
   end, {
@@ -92,12 +61,6 @@ function M.load(buffer, inlay_hints)
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, {
     desc = "List workspace folders",
-  })
-
-  map("n", "<leader>ra", function()
-    require("plugins.lspconfig.utils.renamer")()
-  end, {
-    desc = "LSP rename",
   })
 end
 

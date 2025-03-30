@@ -69,7 +69,7 @@ local open_signature = function()
   end
 
   if triggered then
-    local params = util.make_position_params()
+    local params = util.make_position_params(0, 'utf-8')
     vim.lsp.buf_request(
       0,
       "textDocument/signatureHelp",

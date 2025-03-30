@@ -90,10 +90,6 @@ map(
   { desc = "Close tab" }
 )
 
-map({ "n" }, "]q", function() vim.cmd("cnext") end, { desc = "Next quickfix" })
-
-map({ "n" }, "[q", function() vim.cmd("cprevious") end, { desc = "Previous quickfix" })
-
 map(
   { 'n' },
   '<leader>q',
