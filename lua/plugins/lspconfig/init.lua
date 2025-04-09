@@ -13,11 +13,6 @@ local on_attach = function(client, bufnr)
     client.server_capabilities.semanticTokensProvider = nil
   end
 
-  -- signature popup when calling a definition
-  if client.server_capabilities.signatureHelpProvider then
-    require("plugins.lspconfig.utils.signature").setup(client)
-  end
-
   -- use (based)pyright to hover, not ruff
   if client.name == "ruff" then
     client.server_capabilities.hoverProvider = false

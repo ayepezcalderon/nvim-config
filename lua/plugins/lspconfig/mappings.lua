@@ -29,10 +29,18 @@ function M.load(buffer, inlay_hints)
   end
 
   map("i", "<C-s>", function()
+    -- Close cmp
+    if package.loaded["cmp"] then
+      local cmp = require("cmp")
+      if cmp.visible() then
+        cmp.close()
+      end
+    end
+    -- Show signature help
     vim.lsp.buf.signature_help({
       border = "single",
-      focusable = false,
-      title = nil,
+      title = "",
+      title_pos = 'right'
     })
   end, {
     desc = "LSP signature help",
