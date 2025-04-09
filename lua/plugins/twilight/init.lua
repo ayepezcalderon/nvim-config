@@ -9,7 +9,6 @@ local function _config(_, opts)
   require("plugins.twilight.mappings")
 end
 
-
 ---------- RETURN -----------
 return {
   "folke/twilight.nvim",
@@ -18,5 +17,5 @@ return {
     require("utils").lazy_load("twilight.nvim")
   end,
   opts = _opts,
-  config = _config
+  config = _config,
 }

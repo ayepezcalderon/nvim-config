@@ -48,12 +48,7 @@ map({ "v" }, "<", "<gv", { desc = "Indent line" })
 
 map({ "v" }, ">", ">gv", { desc = "Indent line" })
 
-map(
-  { "n" },
-  "<leader>X",
-  '<cmd>confirm bdelete<CR>',
-  { desc = "Close buffer and window" }
-)
+map({ "n" }, "<leader>X", "<cmd>confirm bdelete<CR>", { desc = "Close buffer and window" })
 
 map({ "n" }, "<leader>x", function()
   if vim.api.nvim_buf_is_loaded(vim.fn.bufnr("#")) then
@@ -83,24 +78,14 @@ map({ "n" }, "<S-Tab>", function()
   vim.cmd("bprev " .. vim.v.count1)
 end)
 
-map(
-  { "n" },
-  "<leader>z",
-  '<cmd>confirm tabclose<CR>',
-  { desc = "Close tab" }
-)
+map({ "n" }, "<leader>z", "<cmd>confirm tabclose<CR>", { desc = "Close tab" })
 
-map(
-  { 'n' },
-  '<leader>q',
-  function()
-    if vim.fn.getqflist({ winid = 0 }).winid ~= 0 then
-      -- If the quickfix window is open, close it
-      vim.cmd('cclose')
-    else
-      -- If the quickfix window is not open, open it
-      vim.cmd('copen')
-    end
-  end,
-  { desc = "Toggle quickfix", silent = true }
-)
+map({ "n" }, "<leader>q", function()
+  if vim.fn.getqflist({ winid = 0 }).winid ~= 0 then
+    -- If the quickfix window is open, close it
+    vim.cmd("cclose")
+  else
+    -- If the quickfix window is not open, open it
+    vim.cmd("copen")
+  end
+end, { desc = "Toggle quickfix", silent = true })

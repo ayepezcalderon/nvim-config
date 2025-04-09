@@ -1,10 +1,6 @@
 local map = vim.keymap.set
 
-map({ "n" },
-  "<leader>tw",
-  "<cmd>Trouble diagnostics toggle focus=true<cr>",
-  { desc = "Toggle diagnostics" }
-)
+map({ "n" }, "<leader>tw", "<cmd>Trouble diagnostics toggle focus=true<cr>", { desc = "Toggle diagnostics" })
 
 map(
   { "n" },
@@ -13,11 +9,7 @@ map(
   { desc = "Toggle buffer diagnostics" }
 )
 
-map(
-  { "n" },
-  "<leader>ts", "<cmd>Trouble symbols toggle focus=true<cr>",
-  { desc = "Toggle symbols" }
-)
+map({ "n" }, "<leader>ts", "<cmd>Trouble symbols toggle focus=true<cr>", { desc = "Toggle symbols" })
 
 map(
   { "n" },
@@ -26,12 +18,7 @@ map(
   { desc = "Toggle all LSP symbols" }
 )
 
-map(
-  { "n" },
-  "<leader>tq",
-  "<cmd>Trouble qflist toggle focus=true<cr>",
-  { desc = "Toggle quickfix" }
-)
+map({ "n" }, "<leader>tq", "<cmd>Trouble qflist toggle focus=true<cr>", { desc = "Toggle quickfix" })
 
 map(
   { "n" },
@@ -40,13 +27,6 @@ map(
   { desc = "LSP Definitions / references / ..." }
 )
 
-map({ "n" }, "<leader>to",
-  "<cmd>Trouble loclist toggle focus=true<cr>, focus=true",
-  { desc = "Toggle loclist" })
+map({ "n" }, "<leader>to", "<cmd>Trouble loclist toggle focus=true<cr>, focus=true", { desc = "Toggle loclist" })
 
-map(
-  { "n" },
-  "<leader>tr",
-  "<cmd>Trouble lsp_references toggle focus=true<cr>",
-  { desc = "Toggle LSP references" }
-)
+map({ "n" }, "<leader>tr", "<cmd>Trouble lsp_references toggle focus=true<cr>", { desc = "Toggle LSP references" })

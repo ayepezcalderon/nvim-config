@@ -34,7 +34,6 @@ local _opts = {
   },
 }
 
-
 ---------- RETURN -----------
 return {
   "folke/trouble.nvim",

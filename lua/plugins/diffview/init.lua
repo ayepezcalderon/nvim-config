@@ -9,5 +9,5 @@ end
 return {
   "sindrets/diffview.nvim",
   ft = { "gitcommit", "diff" },
-  config = _config
+  config = _config,
 }

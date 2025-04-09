@@ -69,7 +69,7 @@ opt.whichwrap:append("<>[]hl")
 opt.foldlevel = 99
 
 -- Default border style of floating windows
-vim.o.winborder = 'rounded'
+vim.o.winborder = "rounded"
 
 -- TODO: Delete this once you figure out how to not have autos-session break this
 vim.g._ts_force_sync_parsing = true

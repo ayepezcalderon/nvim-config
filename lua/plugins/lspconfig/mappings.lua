@@ -39,8 +39,10 @@ function M.load(buffer, inlay_hints)
     -- Show signature help
     vim.lsp.buf.signature_help({
       border = "single",
+      -- This doesn't work, annoying title
       title = "",
-      title_pos = 'right'
+      -- Move to right so that it bothers less
+      title_pos = "right",
     })
   end, {
     desc = "LSP signature help",
@@ -52,11 +54,6 @@ function M.load(buffer, inlay_hints)
     desc = "LSP definition type",
   })
 
-  map("n", "<C-W>d", function()
-    vim.diagnostic.open_float({ border = "rounded" })
-  end, {
-    desc = "Show diagnostics under the cursor",
-  })
   map("n", "<leader>wa", function()
     vim.lsp.buf.add_workspace_folder()
   end, {

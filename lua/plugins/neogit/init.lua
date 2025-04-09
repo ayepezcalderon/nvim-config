@@ -9,8 +9,8 @@ local _opts = {
     popup = {
       ["p"] = "PushPopup",
       ["P"] = "PullPopup",
-    }
-  }
+    },
+  },
 }
 
 ---------- CONFIG ------------
@@ -26,10 +26,10 @@ return {
   ft = { "gitcommit", "diff" },
   init = _init,
   dependencies = {
-    "nvim-lua/plenary.nvim",         -- required
-    "sindrets/diffview.nvim",        -- optional - Diff integration
+    "nvim-lua/plenary.nvim", -- required
+    "sindrets/diffview.nvim", -- optional - Diff integration
     "nvim-telescope/telescope.nvim", -- optional
   },
   opts = _opts,
-  config = _config
+  config = _config,
 }
