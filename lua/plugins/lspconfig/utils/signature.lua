@@ -4,26 +4,6 @@
 -- thx to https://gitlab.com/ranjithshegde/dotbare/-/blob/master/.config/nvim/lua/lsp/init.lua
 local M = {}
 
-M.signature_window = function(_, result, ctx, config)
-  local bufnr, winner = vim.lsp.handlers.signature_help(_, result, ctx, config)
-  local current_cursor_line = vim.api.nvim_win_get_cursor(0)[1]
-
-  if winner then
-    if current_cursor_line > 3 then
-      vim.api.nvim_win_set_config(winner, {
-        anchor = "SW",
-        relative = "cursor",
-        row = 0,
-        col = -1,
-      })
-    end
-  end
-
-  if bufnr and winner then
-    return bufnr, winner
-  end
-end
-
 -- thx to https://github.com/seblj/dotfiles/blob/0542cae6cd9a2a8cbddbb733f4f65155e6d20edf/nvim/lua/config/lspconfig/init.lua
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
@@ -74,11 +54,13 @@ local open_signature = function()
       0,
       "textDocument/signatureHelp",
       params,
-      vim.lsp.with(M.signature_window, {
-        border = "single",
-        focusable = false,
-        -- silent = config.silent,
-      })
+      function()
+        vim.lsp.buf.signature_help({
+          border = "single",
+          focusable = false,
+          title = nil,
+        })
+      end
     )
   end
 end
@@ -97,7 +79,7 @@ M.setup = function(client)
     callback = function()
       -- Guard against spamming of method not supported after
       -- stopping a language serer with LspStop
-      local active_clients = vim.lsp.get_active_clients()
+      local active_clients = vim.lsp.get_clients()
       if #active_clients < 1 then
         return
       end

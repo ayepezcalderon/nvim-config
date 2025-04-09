@@ -28,8 +28,12 @@ function M.load(buffer, inlay_hints)
     })
   end
 
-  map("n", "<leader>ls", function()
-    vim.lsp.buf.signature_help()
+  map("i", "<C-s>", function()
+    vim.lsp.buf.signature_help({
+      border = "single",
+      focusable = false,
+      title = nil,
+    })
   end, {
     desc = "LSP signature help",
   })
