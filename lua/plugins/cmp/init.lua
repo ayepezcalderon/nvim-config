@@ -4,9 +4,9 @@ local enabled = function()
   -- enable in dap buffers
   if package.loaded["cmp_dap"] then
     disabled = disabled
-      or (vim.api.nvim_buf_get_option(0, "buftype") == "prompt" and not require("cmp_dap").is_dap_buffer())
+      or (vim.api.nvim_get_option_value("buftype", { buf = 0 }) == "prompt" and not require("cmp_dap").is_dap_buffer())
   else
-    disabled = disabled or (vim.api.nvim_buf_get_option(0, "buftype") == "prompt")
+    disabled = disabled or (vim.api.nvim_get_option_value("buftype", { buf = 0 }) == "prompt")
   end
   -- handle recording
   disabled = disabled or (vim.fn.reg_recording() ~= "")
