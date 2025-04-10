@@ -1,5 +1,5 @@
 ---------- INIT ------------
-local _init = require("utils").init_git_plugin("neogit", "NeogitLazyLoad")
+local _init = require("utils.load_plugin").init_git_plugin("neogit", "NeogitLazyLoad")
 
 ---------- OPTS ------------
 local _opts = {

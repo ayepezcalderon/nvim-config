@@ -14,7 +14,7 @@ return {
   "folke/twilight.nvim",
   init = function()
     -- Same conditions as tree-sitter
-    require("utils").lazy_load("twilight.nvim")
+    require("utils.load_plugin").lazy_load("twilight.nvim")
   end,
   opts = _opts,
   config = _config,

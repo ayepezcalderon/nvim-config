@@ -1,4 +1,33 @@
-return {
+local M = {}
+
+M.lsp = {
+  semantic_tokens = false,
+  servers = {
+    python = { "basedpyright", "ruff" },
+    lua = { "lua_ls" },
+
+    json = { "jsonls" },
+
+    bib = { "ltex" },
+    gitcommit = { "ltex" },
+    markdown = { "ltex" },
+    org = { "ltex" },
+    plaintex = { "ltex" },
+    rst = { "ltex" },
+    rnoweb = { "ltex" },
+    tex = { "ltex" },
+    pandoc = { "ltex" },
+    quarto = { "ltex" },
+    rmd = { "ltex" },
+    context = { "ltex" },
+    html = { "ltex" },
+    xhtml = { "ltex" },
+    mail = { "ltex" },
+    text = { "ltex" },
+  },
+}
+
+M.lazy = {
   defaults = { lazy = true },
 
   -- ui = {
@@ -44,3 +73,5 @@ return {
   --   },
   -- },
 }
+
+return M

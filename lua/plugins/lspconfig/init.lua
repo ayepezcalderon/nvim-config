@@ -41,87 +41,87 @@ capabilities.textDocument.completion.completionItem = {
 local function _config(_, opts)
   local lspconfig = require("lspconfig")
 
-  require("plugins.lspconfig.utils.ui")
+  -- require("plugins.lspconfig.utils.ui")
 
-  lspconfig.lua_ls.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
+  -- lspconfig.lua_ls.setup({
+  --   on_attach = on_attach,
+  --   capabilities = capabilities,
+  --
+  --   settings = {
+  --     Lua = {
+  --       diagnostics = {
+  --         globals = { "vim" },
+  --       },
+  --       workspace = {
+  --         library = {
+  --           [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+  --           [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+  --           [vim.fn.stdpath("data") .. "/lazy/lazy.nvim/lua/lazy"] = true,
+  --         },
+  --         maxPreload = 100000,
+  --         preloadFileSize = 10000,
+  --       },
+  --       hint = { enable = true },
+  --     },
+  --   },
+  -- })
 
-    settings = {
-      Lua = {
-        diagnostics = {
-          globals = { "vim" },
-        },
-        workspace = {
-          library = {
-            [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-            [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-            [vim.fn.stdpath("data") .. "/lazy/lazy.nvim/lua/lazy"] = true,
-          },
-          maxPreload = 100000,
-          preloadFileSize = 10000,
-        },
-        hint = { enable = true },
-      },
-    },
-  })
+  -- if python_static_checker == "pyright" then
+  --   lspconfig.pyright.setup({
+  --     on_attach = on_attach,
+  --     capabilities = capabilities,
+  --     filetypes = { "python" },
+  --     settings = {
+  --       pyright = {
+  --         -- Using Ruff's import organizer
+  --         disableOrganizeImports = true,
+  --       },
+  --       -- python = {
+  --       --   analysis = {
+  --       --     -- Ignore all files for analysis to exclusively use Ruff for linting
+  --       --     -- ignore = { '*' },
+  --       --   },
+  --       -- },
+  --     },
+  --   })
+  -- else
+  --   lspconfig.basedpyright.setup({
+  --     on_attach = on_attach,
+  --     capabilities = capabilities,
+  --     filetypes = { "python" },
+  --     settings = {
+  --       basedpyright = {
+  --         -- Using Ruff's import organizer
+  --         disableOrganizeImports = true,
+  --         analysis = {
+  --           typeCheckingMode = "basic",
+  --         },
+  --       },
+  --       -- python = {
+  --       --   analysis = {
+  --       --     -- Ignore all files for analysis to exclusively use Ruff for linting
+  --       --     -- ignore = { '*' },
+  --       --   },
+  --       -- },
+  --     },
+  --   })
+  -- end
 
-  if python_static_checker == "pyright" then
-    lspconfig.pyright.setup({
-      on_attach = on_attach,
-      capabilities = capabilities,
-      filetypes = { "python" },
-      settings = {
-        pyright = {
-          -- Using Ruff's import organizer
-          disableOrganizeImports = true,
-        },
-        -- python = {
-        --   analysis = {
-        --     -- Ignore all files for analysis to exclusively use Ruff for linting
-        --     -- ignore = { '*' },
-        --   },
-        -- },
-      },
-    })
-  else
-    lspconfig.basedpyright.setup({
-      on_attach = on_attach,
-      capabilities = capabilities,
-      filetypes = { "python" },
-      settings = {
-        basedpyright = {
-          -- Using Ruff's import organizer
-          disableOrganizeImports = true,
-          analysis = {
-            typeCheckingMode = "basic",
-          },
-        },
-        -- python = {
-        --   analysis = {
-        --     -- Ignore all files for analysis to exclusively use Ruff for linting
-        --     -- ignore = { '*' },
-        --   },
-        -- },
-      },
-    })
-  end
-
-  lspconfig.jsonls.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-  })
-
-  lspconfig.ruff.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-    trace = "messages",
-    init_options = {
-      settings = {
-        logLevel = "debug",
-      },
-    },
-  })
+  -- lspconfig.jsonls.setup({
+  --   on_attach = on_attach,
+  --   capabilities = capabilities,
+  -- })
+  --
+  -- lspconfig.ruff.setup({
+  --   on_attach = on_attach,
+  --   capabilities = capabilities,
+  --   trace = "messages",
+  --   init_options = {
+  --     settings = {
+  --       logLevel = "debug",
+  --     },
+  --   },
+  -- })
 
   lspconfig.texlab.setup({
     on_attach = on_attach,
@@ -189,10 +189,10 @@ local function _config(_, opts)
   --   }
   -- })
 
-  lspconfig.ltex.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-  })
+  -- lspconfig.ltex.setup({
+  --   on_attach = on_attach,
+  --   capabilities = capabilities,
+  -- })
 
   lspconfig.clangd.setup({
     on_attach = on_attach,
@@ -210,7 +210,7 @@ return {
   "neovim/nvim-lspconfig",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   init = function()
-    require("utils").lazy_load("nvim-lspconfig")
+    require("utils.load_plugin").lazy_load("nvim-lspconfig")
   end,
   config = _config,
 }

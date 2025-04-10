@@ -1,5 +1,5 @@
 ---------- INIT ------------
-local _init = require("utils").init_git_plugin("gitsigns.nvim", "GitSignsLazyLoad")
+local _init = require("utils.load_plugin").init_git_plugin("gitsigns.nvim", "GitSignsLazyLoad")
 
 ----------- OPTS ------------
 local map_on_demand = require("plugins.gitsigns.mappings")
