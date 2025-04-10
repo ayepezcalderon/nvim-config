@@ -76,7 +76,7 @@ M.setup = function()
   })
 
   -- Enable LSP servers
-  vim.lsp.enable({ "basedpyright", "ruff", "lua_ls", "jsonls", "ltex" })
+  vim.lsp.enable({ "basedpyright", "ruff", "lua_ls", "jsonls", "ltex", "clangd" })
 end
 
 return M

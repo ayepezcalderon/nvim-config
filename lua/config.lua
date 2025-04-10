@@ -5,6 +5,9 @@ M.lsp = {
   servers = {
     python = { "basedpyright", "ruff" },
     lua = { "lua_ls" },
+    cpp = { "clangd" },
+    c = { "clangd" },
+    cuda = { "clangd" },
 
     json = { "jsonls" },
 

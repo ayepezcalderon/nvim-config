@@ -63,4 +63,17 @@ M.get_filetypes = function(server_name)
   return filetypes
 end
 
+--------- UTILITIES FROM lspconfig HERE ---------
+local validate = vim.validate
+local api = vim.api
+-- local lsp = vim.lsp
+local nvim_eleven = vim.fn.has 'nvim-0.11' == 1
+
+function M.validate_bufnr(bufnr)
+  if nvim_eleven then
+    validate('bufnr', bufnr, 'number')
+  end
+  return bufnr == 0 and api.nvim_get_current_buf() or bufnr
+end
+
 return M
