@@ -11,14 +11,14 @@ M.lsp = {
 
     json = { "jsonls" },
 
-    bib = { "ltex" },
+    tex = { "ltex" , "texlab" },
+    bib = { "ltex", "texlab" },
+    plaintex = { "ltex", "texlab" },
     gitcommit = { "ltex" },
     markdown = { "ltex" },
     org = { "ltex" },
-    plaintex = { "ltex" },
     rst = { "ltex" },
     rnoweb = { "ltex" },
-    tex = { "ltex" },
     pandoc = { "ltex" },
     quarto = { "ltex" },
     rmd = { "ltex" },
