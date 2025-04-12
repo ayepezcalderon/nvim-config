@@ -85,3 +85,11 @@ map({ "n" }, "<leader>q", function()
     vim.cmd("copen")
   end
 end, { desc = "Toggle quickfix", silent = true })
+
+-- Move current line down
+vim.keymap.set('n', '<M-j>', ":m .+1<CR>==", { noremap = true, silent = true })
+vim.keymap.set('v', '<M-j>', ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
+
+-- Move current line up
+vim.keymap.set('n', '<M-k>', ":m .-2<CR>==", { noremap = true, silent = true })
+vim.keymap.set('v', '<M-k>', ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
