@@ -1,4 +1,5 @@
 local utils = require("utils.lsp")
+local lsp = require('lsp')
 
 local function client_with_fn(fn)
   return function()
@@ -200,7 +201,7 @@ return {
     },
   },
   on_attach = function(client, bufnr)
-    utils.on_attach(client, bufnr)
+    lsp.on_attach(client, bufnr)
     -- User commands
     vim.api.nvim_buf_create_user_command(bufnr, "TexlabBuild",
       client_with_fn(buf_build), { desc = "Build the current buffer" })

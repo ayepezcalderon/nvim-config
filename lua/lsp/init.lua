@@ -1,8 +1,10 @@
 local servers = require("config")["lsp"]["servers"]
 
-local on_attach = function(client, bufnr)
+local M = {}
+
+M.on_attach = function(client, bufnr)
   -- On demand mappings
-  local map_on_demand = require("plugins.lspconfig.mappings")
+  local map_on_demand = require("lsp.mappings")
   local inlay_hint_supported = client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint
   map_on_demand.load(bufnr, inlay_hint_supported)
 
@@ -16,8 +18,8 @@ local on_attach = function(client, bufnr)
   end
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem = {
+M.capabilities = vim.lsp.protocol.make_client_capabilities()
+M.capabilities.textDocument.completion.completionItem = {
   documentationFormat = { "markdown", "plaintext" },
   snippetSupport = true,
   preselectSupport = true,
@@ -35,13 +37,11 @@ capabilities.textDocument.completion.completionItem = {
   },
 }
 
-local M = {}
-
 M.setup = function()
   -- Default config for all LSP servers
   vim.lsp.config('*', {
-    capabilities = capabilities,
-    on_attach = on_attach,
+    capabilities = M.capabilities,
+    on_attach = M.on_attach,
     root_markers = { '.git' },
   })
 

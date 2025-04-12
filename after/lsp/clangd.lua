@@ -1,4 +1,5 @@
 local utils = require("utils.lsp")
+local lsp = require('lsp')
 
 -- https://clangd.llvm.org/extensions.html#switch-between-sourceheader
 local function switch_source_header(bufnr)
@@ -59,7 +60,7 @@ return {
     'configure.ac' -- AutoTools
   },
   single_file_support = true,
-  capabilities = vim.tbl_deep_extend("force", utils.capabilities, {
+  capabilities = vim.tbl_deep_extend("force", lsp.capabilities, {
     textDocument = {
       completion = {
         editsNearCursor = true,
@@ -68,7 +69,7 @@ return {
     offsetEncoding = { 'utf-8', 'utf-16' },
   }),
   on_attach = function(client, bufnr)
-    utils.on_attach(client, bufnr)
+    lsp.on_attach(client, bufnr)
     -- User commands
     vim.api.nvim_buf_create_user_command(bufnr, 'ClangdSwitchSourceHeader', function()
       switch_source_header(bufnr)

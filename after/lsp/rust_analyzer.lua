@@ -1,4 +1,5 @@
 local utils = require('utils.lsp')
+local lsp = require('lsp')
 
 local function reload_workspace(bufnr)
   bufnr = utils.validate_bufnr(bufnr)
@@ -116,7 +117,7 @@ return {
     end
   end,
 
-  capabilities = vim.tbl_deep_extend("force", utils.capabilities, {
+  capabilities = vim.tbl_deep_extend("force", lsp.capabilities, {
     experimental = {
       serverStatusNotification = true,
     },
@@ -130,7 +131,7 @@ return {
   end,
 
   on_attach = function(client, bufnr)
-    utils.on_attach(client, bufnr)
+    lsp.on_attach(client, bufnr)
     -- User commands
     vim.api.nvim_buf_create_user_command(bufnr, 'CargoReload', function()
       reload_workspace(bufnr)
