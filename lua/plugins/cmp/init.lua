@@ -30,13 +30,23 @@ local function border(hl_name)
   }
 end
 
+local cmp_config = require("config")["cmp"]
+
+local completion = {
+  completeopt = "menu,menuone",
+}
+if cmp_config.autocomplete ~= true then
+  completion.autocomplete = cmp_config.autocomplete
+end
+
 local function _opts()
   local cmp = require("cmp")
 
   return {
-    completion = {
-      completeopt = "menu,menuone",
-      autocomplete = false,
+    completion = completion,
+
+    performance = {
+      max_view_entries = cmp_config.max_view_entries,
     },
 
     window = {
@@ -78,14 +88,15 @@ local function _opts()
       }),
     },
 
-    enabled = enabled,
+    enabled = cmp_config.enabled,
 
     mapping = {
       ["<C-p>"] = cmp.mapping.select_prev_item(),
       ["<C-n>"] = cmp.mapping.select_next_item(),
       ["<C-d>"] = cmp.mapping.scroll_docs(-4),
       ["<C-f>"] = cmp.mapping.scroll_docs(4),
-      ["<C-e>"] = cmp.mapping.close(),
+      -- ["<C-e>"] = cmp.mapping.close(),
+      ["<C-e>"] = cmp.mapping.abort(),
       ["<CR>"] = cmp.mapping.confirm({
         behavior = cmp.ConfirmBehavior.Insert,
         select = true,

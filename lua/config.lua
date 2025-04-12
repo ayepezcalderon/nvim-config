@@ -1,5 +1,11 @@
 local M = {}
 
+M.cmp = {
+  enabled = true,
+  autocomplete = false,
+  max_view_entries = 10,
+}
+
 M.lsp = {
   semantic_tokens = false,
   format_on_save = true,
