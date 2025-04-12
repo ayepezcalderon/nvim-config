@@ -8,6 +8,7 @@ M.lsp = {
     cpp = { "clangd" },
     c = { "clangd" },
     cuda = { "clangd" },
+    rust = { "rust_analyzer" },
 
     json = { "jsonls" },
 
