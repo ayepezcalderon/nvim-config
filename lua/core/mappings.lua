@@ -40,10 +40,6 @@ map({ "n" }, "<leader>n", "<cmd> set nu! <CR>", { desc = "Toggle line number" })
 
 map({ "n" }, "<C-c>", "<cmd> %y+ <CR>", { desc = "Copy whole file" })
 
-map({ "n", "v" }, "<leader>fm", function()
-  vim.lsp.buf.format({ async = true })
-end, { desc = "LSP formatting" })
-
 map({ "v" }, "<", "<gv", { desc = "Indent line" })
 
 map({ "v" }, ">", ">gv", { desc = "Indent line" })

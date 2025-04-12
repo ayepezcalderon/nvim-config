@@ -1,4 +1,5 @@
 local servers = require("config")["lsp"]["servers"]
+local config = require("config")
 
 local M = {}
 
@@ -15,6 +16,17 @@ M.on_attach = function(client, bufnr)
   -- use (based)pyright to hover, not ruff
   if client.name == "ruff" then
     client.server_capabilities.hoverProvider = false
+  end
+
+  -- Set format on save
+  if config.lsp.format_on_save then
+    if client.supports_method("textDocument/formatting") then
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        callback = function()
+          vim.lsp.buf.format({ async = true })
+        end,
+      })
+    end
   end
 end
 

@@ -20,6 +20,10 @@ function M.load(buffer, inlay_hints)
     desc = "LSP definition",
   })
 
+  map({ "n", "v" }, "<leader>fm", function()
+    vim.lsp.buf.format({ async = true })
+  end, { desc = "LSP formatting" })
+
   if inlay_hints then
     map("n", "<leader>th", function()
       vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())

@@ -2,6 +2,7 @@ local M = {}
 
 M.lsp = {
   semantic_tokens = false,
+  format_on_save = true,
   servers = {
     python = { "basedpyright", "ruff" },
     lua = { "lua_ls" },
@@ -12,7 +13,7 @@ M.lsp = {
 
     json = { "jsonls" },
 
-    tex = { "ltex" , "texlab" },
+    tex = { "ltex", "texlab" },
     bib = { "ltex", "texlab" },
     plaintex = { "ltex", "texlab" },
     gitcommit = { "ltex" },
