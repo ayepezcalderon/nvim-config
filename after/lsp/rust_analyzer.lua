@@ -47,74 +47,73 @@ return {
 
     local cargo_crate_dir = utils.root_pattern 'Cargo.toml' (fname)
 
-    if cargo_crate_dir ~= nil then
-      local cmd = {
-        'cargo',
-        'metadata',
-        '--no-deps',
-        '--format-version',
-        '1',
-        '--manifest-path',
-        cargo_crate_dir .. '/Cargo.toml',
-      }
-
-      local stdout = {}
-      local stderr = {}
-      local exit_code = nil
-
-      local jobid = vim.fn.jobstart(cmd, {
-        on_stdout = function(_, data, _)
-          data = table.concat(data, '\n')
-          if #data > 0 then
-            stdout[#stdout + 1] = data
-          end
-        end,
-        on_stderr = function(_, data, _)
-          stderr[#stderr + 1] = table.concat(data, '\n')
-        end,
-        on_exit = function(_, code, _)
-          exit_code = code
-
-          local result
-          if exit_code ~= 0 then
-            vim.notify(
-              ('lsp cmd failed with code %d: %s\n%s'):format(exit_code, cmd, table.concat(stderr, '')),
-              vim.log.levels.WARN
-            )
-            result = nil
-          elseif next(stdout) == nil then
-            result = nil
-          else
-            result = stdout and stdout or nil
-          end
-
-          local cargo_workspace_root
-          if result and result[1] then
-            result = vim.json.decode(table.concat(result, ''))
-            if result['workspace_root'] then
-              cargo_workspace_root = vim.fs.normalize(result['workspace_root'])
-            end
-          end
-          vim.schedule(function()
-            cb(cargo_workspace_root or cargo_crate_dir)
-          end)
-        end,
-        stdout_buffered = true,
-        stderr_buffered = true,
-      })
-
-      if jobid <= 0 then
-        -- Fallback if the job failed
-        vim.notify(('lsp unable to run cmd: %s'):format(cmd), vim.log.levels.WARN)
-        vim.schedule(function() cb(cargo_crate_dir) end)
-      end
-
+    if cargo_crate_dir == nil then
+      cb(utils.root_pattern 'rust-project.json' (fname)
+        or vim.fs.dirname(vim.fs.find('.git', { path = fname, upward = true })[1]))
       return
     end
 
-    -- Fallback if no Cargo.toml found
-    cb(utils.root_pattern 'rust-project.json' (fname)
-      or vim.fs.dirname(vim.fs.find('.git', { path = fname, upward = true })[1]))
+    local cmd = {
+      'cargo',
+      'metadata',
+      '--no-deps',
+      '--format-version',
+      '1',
+      '--manifest-path',
+      cargo_crate_dir .. '/Cargo.toml',
+    }
+
+    local stdout = {}
+    local stderr = {}
+    local exit_code = nil
+
+    local jobid = vim.fn.jobstart(cmd, {
+      on_stdout = function(_, data, _)
+        data = table.concat(data, '\n')
+        if #data > 0 then
+          stdout[#stdout + 1] = data
+        end
+      end,
+      on_stderr = function(_, data, _)
+        stderr[#stderr + 1] = table.concat(data, '\n')
+      end,
+      on_exit = function(_, code, _)
+        exit_code = code
+
+        local result
+        if exit_code ~= 0 then
+          vim.notify(
+            ('lsp cmd failed with code %d: %s\n%s'):format(exit_code, cmd, table.concat(stderr, '')),
+            vim.log.levels.WARN
+          )
+          result = nil
+        elseif next(stdout) == nil then
+          result = nil
+        else
+          result = stdout and stdout or nil
+        end
+
+        local cargo_workspace_root
+        if result and result[1] then
+          result = vim.json.decode(table.concat(result, ''))
+          if result['workspace_root'] then
+            cargo_workspace_root = vim.fs.normalize(result['workspace_root'])
+          end
+        end
+
+        vim.schedule(function()
+          cb(cargo_workspace_root or cargo_crate_dir)
+        end)
+      end,
+      stdout_buffered = true,
+      stderr_buffered = true,
+    })
+
+    if jobid <= 0 then
+      -- Fallback if the job failed
+      vim.notify(('lsp unable to run cmd: %s'):format(cmd), vim.log.levels.WARN)
+      vim.schedule(function() cb(cargo_crate_dir) end)
+    end
   end,
 
   capabilities = vim.tbl_deep_extend("force", utils.capabilities, {
