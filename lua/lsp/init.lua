@@ -1,4 +1,3 @@
-local servers = require("config")["lsp"]["servers"]
 local config = require("config")
 
 local M = {}
@@ -9,7 +8,7 @@ M.on_attach = function(client, bufnr)
   local inlay_hint_supported = client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint
   map_on_demand.load(bufnr, inlay_hint_supported)
 
-  if not servers["semantic_tokens"] and client.supports_method("textDocument/semanticTokens") then
+  if not config.lsp.semantic_tokens and client.supports_method("textDocument/semanticTokens") then
     client.server_capabilities.semanticTokensProvider = nil
   end
 
@@ -90,7 +89,7 @@ M.setup = function()
   })
 
   -- Enable LSP servers
-  vim.lsp.enable({ "basedpyright", "ruff", "lua_ls", "jsonls", "ltex", "clangd", "texlab", "rust_analyzer" })
+  vim.lsp.enable(config.lsp.servers)
 end
 
 return M
