@@ -5,4 +5,6 @@ return {
 
   { "christoomey/vim-tmux-navigator",  lazy = false },
 
+  { "neovim/nvim-lspconfig",           lazy = false },
+
 }
