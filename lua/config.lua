@@ -7,7 +7,7 @@ M.cmp = {
 }
 
 M.lsp = {
-  semantic_tokens = false,
+  semantic_tokens = true,
   format_on_save = true,
   servers = {
     "basedpyright",

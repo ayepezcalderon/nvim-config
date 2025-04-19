@@ -2,12 +2,7 @@ local config = require("config")
 
 local M = {}
 
-M.on_attach = function(client, bufnr)
-  -- On demand mappings
-  local map_on_demand = require("lsp.mappings")
-  local inlay_hint_supported = client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint
-  map_on_demand.load(bufnr, inlay_hint_supported)
-
+M.on_init = function(client)
   if not config.lsp.semantic_tokens and client.supports_method("textDocument/semanticTokens") then
     client.server_capabilities.semanticTokensProvider = nil
   end
@@ -16,6 +11,14 @@ M.on_attach = function(client, bufnr)
   if client.name == "ruff" then
     client.server_capabilities.hoverProvider = false
   end
+end
+
+M.on_attach = function(client, bufnr)
+  -- On demand mappings
+  local map_on_demand = require("lsp.mappings")
+  -- local inlay_hint_supported = client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint
+  local inlay_hint_supported = true
+  map_on_demand.load(bufnr, inlay_hint_supported)
 
   -- Set format on save
   if config.lsp.format_on_save then
@@ -53,6 +56,7 @@ M.capabilities.textDocument.completion.completionItem = {
 M.setup = function()
   -- Default config for all LSP servers
   vim.lsp.config('*', {
+    on_init = M.on_init,
     capabilities = M.capabilities,
     on_attach = M.on_attach,
     root_markers = { '.git' },
