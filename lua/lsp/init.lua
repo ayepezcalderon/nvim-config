@@ -2,6 +2,61 @@ local config = require("config")
 
 local M = {}
 
+
+local format_on_save = config.lsp.format_on_save
+---Toggle format on save
+---@param client vim.lsp.Client|nil
+local define_format_on_save = function(client)
+  -- Get client(s)
+  local clients
+  if client then
+    clients = { client }
+  else
+    clients = vim.lsp.get_clients({ bufnr = vim.api.nvim_get_current_buf() })
+  end
+
+  local bufnr = vim.api.nvim_get_current_buf()
+
+  ---Check if the autocommand for format on save exists
+  local function autocommand_exists(group_name)
+    local autocmds = vim.api.nvim_get_autocmds({
+      group = group_name,
+      buffer = bufnr,
+    })
+    return #autocmds > 0
+  end
+
+  -- If format on save is not desired and the autocommand exists, clear it
+  if not format_on_save and autocommand_exists("FormatOnSave_" .. bufnr) then
+    vim.api.nvim_clear_autocmds({
+      group = "FormatOnSave_" .. bufnr,
+      buffer = bufnr,
+    })
+    return
+  end
+
+  -- If format on save is desired and the autocommand does not exist, create it
+  for _, _client in ipairs(clients) do
+    if _client:supports_method("textDocument/formatting") then
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = vim.api.nvim_create_augroup("FormatOnSave_" .. bufnr, { clear = true }),
+        buffer = bufnr,
+        callback = function()
+          vim.lsp.buf.format({ async = false, bufnr = bufnr })
+        end,
+      })
+    end
+  end
+end
+
+vim.api.nvim_create_user_command("FormatOnSaveToggle", function()
+  format_on_save = not format_on_save
+  print("Format on Save is now " .. (format_on_save and "enabled" or "disabled"))
+
+  define_format_on_save()
+end, {})
+
+
 M.on_init = function(client)
   if not config.lsp.semantic_tokens and client.supports_method("textDocument/semanticTokens") then
     client.server_capabilities.semanticTokensProvider = nil
@@ -21,17 +76,7 @@ M.on_attach = function(client, bufnr)
   map_on_demand.load(bufnr, inlay_hint_supported)
 
   -- Set format on save
-  if config.lsp.format_on_save then
-    if client.supports_method("textDocument/formatting") then
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        group = vim.api.nvim_create_augroup("FormatOnSave" .. bufnr, { clear = true }),
-        buffer = bufnr,
-        callback = function()
-          vim.lsp.buf.format({ async = false, bufnr = bufnr })
-        end,
-      })
-    end
-  end
+  define_format_on_save(client)
 end
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()

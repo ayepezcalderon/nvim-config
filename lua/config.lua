@@ -2,7 +2,7 @@ local M = {}
 
 M.cmp = {
   enabled = true,
-  autocomplete = false,
+  autocomplete = true,
   max_view_entries = 10,
 }
 
