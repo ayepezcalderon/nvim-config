@@ -2,7 +2,8 @@ local M = {}
 
 M.cmp = {
   enabled = true,
-  autocomplete = true,
+  -- boolean or list of filetypes
+  autocomplete = { "python", "lua", "json", "cpp", "c", "rust", "bash" },
   max_view_entries = 10,
 }
 

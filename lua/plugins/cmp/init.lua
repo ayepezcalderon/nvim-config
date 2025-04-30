@@ -1,5 +1,5 @@
 ---------------- OPTS ------------------
-local enabled = function()
+local enable = function()
   local disabled = false
   -- enable in dap buffers
   if package.loaded["cmp_dap"] then
@@ -36,7 +36,7 @@ local completion = {
   completeopt = "menu,menuone",
 }
 if cmp_config.autocomplete ~= true then
-  completion.autocomplete = cmp_config.autocomplete
+  completion.autocomplete = false
 end
 
 local function _opts()
@@ -88,7 +88,7 @@ local function _opts()
       }),
     },
 
-    enabled = cmp_config.enabled,
+    enabled = cmp_config.enabled and enable,
 
     mapping = {
       ["<C-p>"] = cmp.mapping.select_prev_item(),
@@ -145,6 +145,15 @@ local _config = function(_, opts)
       { name = "dap" },
     },
   })
+  -- setup autocomplete for required filetypes
+  if type(cmp_config.autocomplete) == "table" then
+    cmp.setup.filetype(cmp_config.autocomplete, {
+      completion = {
+        completeopt = "menu,menuone",
+        autocomplete = { require('cmp.types').cmp.TriggerEvent.TextChanged },
+      },
+    })
+  end
 end
 
 ---------------- RETURN ------------------

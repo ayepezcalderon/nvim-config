@@ -45,6 +45,7 @@ local define_format_on_save = function(client)
           vim.lsp.buf.format({ async = false, bufnr = bufnr })
         end,
       })
+      break
     end
   end
 end
