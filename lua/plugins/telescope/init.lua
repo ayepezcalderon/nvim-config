@@ -74,7 +74,7 @@ local function _opts()
 
     extensions_list = {
       "fzf",
-      "session-lens",
+      -- "session-lens",
       "yank_history",
     },
     extensions = {

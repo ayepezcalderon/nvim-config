@@ -8,9 +8,10 @@ local _opts = {
 ---------- RETURN -----------
 return {
   "rmagatti/auto-session",
-  lazy = false,
-  opts = _opts,
-  config = function(_, opts)
+  enabled = false,
+  lazy    = false,
+  opts    = _opts,
+  config  = function(_, opts)
     require("auto-session").setup(opts)
     -- mappings
     require("plugins.auto-session.mappings")
