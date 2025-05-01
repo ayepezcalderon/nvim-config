@@ -16,6 +16,8 @@ local _opts = {
       { "filetype" },
     },
   },
+  disabled_filetypes = {
+  },
 }
 
 ------ RETURN -------
