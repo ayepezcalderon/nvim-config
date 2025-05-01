@@ -10,7 +10,7 @@ map({ "n" }, "<leader>cm", "<cmd> Telescope git_commits <CR>", { desc = "Git com
 
 map({ "n" }, "<leader>pt", "<cmd> Telescope terms <CR>", { desc = "Pick hidden term" })
 
-map({ "n" }, "<leader>gt", "<cmd> Telescope git_status <CR>", { desc = "Git status" })
+map({ "n" }, "<leader>gs", "<cmd> Telescope git_status <CR>", { desc = "Git status" })
 
 map({ "n" }, "<leader>fw", "<cmd> Telescope live_grep <CR>", { desc = "Live grep" })
 

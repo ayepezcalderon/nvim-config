@@ -4,13 +4,17 @@ map("n", "<leader>fi", "<cmd>:Git<CR>", {
   desc = "Fugitive",
 })
 
-map("n", "<leader>co", "<cmd>:Git commit<CR>", {
+map("n", "<leader>co", function()
+  vim.cmd("Git commit")
+  vim.api.nvim_feedkeys("i", "n", false)
+end, {
   desc = "Git commit",
 })
 
 map("n", "<leader>cu", function()
   vim.cmd("Git add -u")
   vim.cmd("Git commit")
+  vim.api.nvim_feedkeys("i", "n", false)
 end, {
   desc = "Git update and commit",
 })
@@ -18,6 +22,7 @@ end, {
 map("n", "<leader>cU", function()
   vim.cmd("Git add --all")
   vim.cmd("Git commit")
+  vim.api.nvim_feedkeys("i", "n", false)
 end, {
   desc = "Git add all and commit",
 })
