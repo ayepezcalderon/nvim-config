@@ -87,9 +87,11 @@ map({ "n" }, "<leader>q", function()
 end, { desc = "Toggle quickfix", silent = true })
 
 -- Move current line down
-vim.keymap.set('n', '<M-j>', ":m .+1<CR>==", { noremap = true, silent = true })
-vim.keymap.set('v', '<M-j>', ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
+map('n', '<M-j>', ":m .+1<CR>==", { noremap = true, silent = true })
+map('v', '<M-j>', ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
 
 -- Move current line up
-vim.keymap.set('n', '<M-k>', ":m .-2<CR>==", { noremap = true, silent = true })
-vim.keymap.set('v', '<M-k>', ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
+map('n', '<M-k>', ":m .-2<CR>==", { noremap = true, silent = true })
+map('v', '<M-k>', ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
+
+map({ 't' }, '<Esc>', [[<C-\><C-n>]], { desc = "Exit terminal mode" })
