@@ -1,7 +1,7 @@
 -------- OPTS --------
 local _opts = {
   filetypes = {
-    markdown = true,
+    -- markdown = true,
     python = true,
     lua = true,
     javascript = true,
@@ -14,6 +14,7 @@ local _opts = {
   },
   suggestion = {
     auto_trigger = true,
+    trigger_on_accept = false,
     keymap = {
       accept = "<Tab>",
       accept_line = "<S-Tab>",

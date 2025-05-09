@@ -21,6 +21,9 @@ M.lsp = {
     "rust_analyzer",
     "bashls"
   },
+  nvim_lint_server_spec = {
+    -- python = { "mypy" },
+  },
 }
 
 M.lazy = {
