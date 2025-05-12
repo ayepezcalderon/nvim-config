@@ -11,6 +11,14 @@ map("n", "<leader>ccc", function()
   vim.cmd("CopilotChat")
 end, { desc = "CopilotChat" })
 
+map("v", "<leader>ccc", function()
+  vim.cmd([[:'<,'> CopilotChat]])
+end, { desc = "CopilotChat (visual)" })
+
+map({ "n", "v" }, "<leader>ccp", function()
+  vim.cmd(":CopilotChatStop")
+end, { desc = "CopilotChatStop" })
+
 map({ "n", "v" }, "<leader>ccp", function()
   local actions = require("CopilotChat.actions")
   require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())

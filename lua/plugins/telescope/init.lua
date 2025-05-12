@@ -52,6 +52,10 @@ local function _opts()
         n = {
           ["q"] = actions.close,
         },
+        i = {
+          ["<C-j>"] = actions.move_selection_next,
+          ["<C-k>"] = actions.move_selection_previous,
+        }
       },
     },
 
@@ -76,6 +80,7 @@ local function _opts()
       "fzf",
       -- "session-lens",
       "yank_history",
+      "ui-select",
     },
     extensions = {
       fzf = {
@@ -108,6 +113,7 @@ return {
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    'nvim-telescope/telescope-ui-select.nvim'
   },
   lazy = false,
   opts = _opts,
