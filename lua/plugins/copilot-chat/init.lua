@@ -9,6 +9,13 @@ local _opts = {
   --   height = 0.4,
   --   row = 1
   -- },
+
+  mappings = {
+    reset = {
+      normal = "<C-s>",
+      insert = "<C-s>",
+    }
+  }
 }
 
 ---------- RETURN ------------
