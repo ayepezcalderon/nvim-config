@@ -7,10 +7,9 @@ map("n", "<leader>ccq", function()
   end
 end, { desc = "CopilotChat - Quick chat" })
 
-map("n", "<leader>cch", function()
-  local actions = require("CopilotChat.actions")
-  require("CopilotChat.integrations.telescope").pick(actions.help_actions())
-end, { desc = "CopilotChat - Help actions" })
+map("n", "<leader>ccc", function()
+  vim.cmd("CopilotChat")
+end, { desc = "CopilotChat" })
 
 map({ "n", "v" }, "<leader>ccp", function()
   local actions = require("CopilotChat.actions")

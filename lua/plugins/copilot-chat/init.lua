@@ -12,9 +12,32 @@ local _opts = {
 
   mappings = {
     reset = {
-      normal = "<C-s>",
-      insert = "<C-s>",
+      normal = "<C-g>",
+      insert = "<C-g>",
     }
+  },
+
+  prompts = {
+    ExplainCodeBase = {
+      prompt = "Explain this codebase in detail. It is my first time seeing it and I want to learn it in depth.",
+      system_prompt = "COPILOT_EXPLAIN",
+      description = "Explain the codebase in detail.",
+      mapping = "<leader>ccb",
+      sticky = {
+        "#files",
+      },
+    },
+    PullRequest = {
+      prompt =
+      "The git diff defines changes for this PR. Suggest improvements in terms of code quality, performance, security and debugging. Phrase your answer as an enumerated review comment.",
+      system_prompt = "COPILOT_REVIEW",
+      mapping = "<leader>ccpr",
+      description = "Review the git diff as a pull request.",
+      sticky = {
+        "#files",
+        "#git",
+      },
+    },
   }
 }
 
