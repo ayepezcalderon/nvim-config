@@ -1,5 +1,10 @@
 local M = {}
 
+M.dashboard = {
+  -- hyper or doom
+  theme = "doom",
+}
+
 M.cmp = {
   enabled = true,
   -- boolean or list of filetypes
