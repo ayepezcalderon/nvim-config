@@ -7,4 +7,5 @@ return {
 
   { "neovim/nvim-lspconfig",           lazy = false },
 
+  { "rhysd/clever-f.vim",              lazy = false },
 }
