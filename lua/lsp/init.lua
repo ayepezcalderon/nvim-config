@@ -131,9 +131,7 @@ M.setup = function()
     --   prefix = "",
     --   current_line = true,
     -- },
-    virtual_lines = {
-      current_line = true,
-    },
+    virtual_lines = config.lsp.virtual_lines,
     underline = true,
     update_in_insert = false,
   })
