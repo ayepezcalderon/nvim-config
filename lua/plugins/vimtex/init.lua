@@ -10,6 +10,11 @@ local function _init()
   -- }
 
   vim.g.vimtex_view_method = "zathura"
+
+  vim.g.vimtex_quickfix_ignore_filters = {
+    'Overfull',
+    'Underfull',
+  }
 end
 
 return {
