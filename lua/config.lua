@@ -5,6 +5,9 @@ M.dashboard = {
   theme = "doom",
 }
 
+-- gpaste-client or wl-clipboard
+M.wayland_paste_provider = "wl-clipboard"
+
 M.cmp = {
   enabled = true,
   -- boolean or list of filetypes
