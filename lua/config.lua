@@ -15,6 +15,16 @@ M.cmp = {
   max_view_entries = 10,
 }
 
+M.latex = {
+  diagnostics = {
+    ignoredPatterns = {
+      "Overfull \\\\hbox.*",
+      "Underfull \\\\hbox.*",
+      "Unused label",
+    },
+  }
+}
+
 M.lsp = {
   semantic_tokens = true,
   format_on_save = true,
