@@ -14,6 +14,13 @@ return {
         onOpenAndSave = true,
       },
       diagnosticsDelay = 50,
+      diagnostics = {
+        ignoredPatterns = {
+          "Overfull \\\\hbox.*",
+          "Underfull \\\\hbox.*",
+          "Unused label",
+        },
+      },
       formatterLineLength = 80,
       forwardSearch = {
         -- -- evince-synctex
