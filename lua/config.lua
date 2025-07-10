@@ -11,7 +11,7 @@ M.wayland_paste_provider = "wl-clipboard"
 M.cmp = {
   enabled = true,
   -- boolean or list of filetypes
-  autocomplete = { "python", "lua", "json", "cpp", "c", "rust", "bash", "tex", },
+  autocomplete = { "python", "lua", "json", "cpp", "c", "rust", "bash", "tex", "markdown"},
   max_view_entries = 10,
 }
 
@@ -45,7 +45,8 @@ M.lsp = {
     "clangd",
     "texlab",
     "rust_analyzer",
-    "bashls"
+    "bashls",
+    "marksman",
   },
   nvim_lint_server_spec = {
     -- python = { "mypy" },

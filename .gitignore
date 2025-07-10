@@ -4,3 +4,5 @@
 # It will then use that version for creating its own virtual environment for the tool being installed/updated.
 /.mason_venvs
 /spell
+node_modules/
+/yarn.lock

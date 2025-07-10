@@ -28,6 +28,9 @@ local _opts = {
       { icon = '  ', desc = 'Recently opened files', action = 'Telescope oldfiles', key = 'o' },
       { icon = '  ', desc = 'Find word', action = 'Telescope live_grep', key = 'w' },
       { icon = '  ', desc = 'Settings', action = 'e ~/.config/nvim/init.lua | cd ~/.config/nvim', key = 's' },
+      { icon = '  ', desc = '.bashrc', action = 'e ~/.bashrc | cd ~', key = 'b' },
+      { icon = '  ', desc = '.profile', action = 'e ~/.profile | cd ~', key = 'p' },
+      { icon = '  ', desc = '.bash_aliases', action = 'e ~/.bash_aliases | cd ~', key = 'a' },
       { icon = '󰊳  ', desc = 'Update', action = 'Lazy update', key = 'u' },
     },
     footer = {}

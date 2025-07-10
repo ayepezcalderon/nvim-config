@@ -6,6 +6,7 @@ local _opts = {
     "lua",
 
     -- web dev
+    "markdown",
     "html",
     "css",
     "javascript",
@@ -50,6 +51,9 @@ local _opts = {
     -- templating
     "jinja",
     -- "jinja-inline",
+
+    -- other
+    "diff",
   },
 
   highlight = {

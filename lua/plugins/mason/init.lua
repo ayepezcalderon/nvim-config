@@ -12,6 +12,8 @@ local _opts = {
     "clangd",
     "codelldb",
     "rust-analyzer",
+    "marksman",
+    "bash-language-server",
   },
 
   PATH = "skip",
