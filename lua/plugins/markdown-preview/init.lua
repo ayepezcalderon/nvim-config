@@ -8,5 +8,7 @@ return {
   ft = { "markdown" },
   config = function()
     require("plugins.markdown-preview.mappings")
+    -- options
+    vim.g.mkdp_auto_close = 0
   end
 }
