@@ -11,7 +11,7 @@ M.wayland_paste_provider = "wl-clipboard"
 M.cmp = {
   enabled = true,
   -- boolean or list of filetypes
-  autocomplete = { "python", "lua", "json", "cpp", "c", "rust", "bash", "tex", "markdown"},
+  autocomplete = { "python", "lua", "json", "cpp", "c", "rust", "bash", "tex", "markdown" },
   max_view_entries = 10,
 }
 
@@ -34,6 +34,7 @@ M.lsp = {
     end
     return {
       current_line = true,
+      severity = { min = vim.diagnostic.severity.WARN }
     }
   end,
   servers = {

@@ -7,6 +7,11 @@ function M.load(buffer, inlay_hints)
     vim.keymap.set(modes, lhs, rhs, opts)
   end
 
+  map('n', 'gK', function()
+    local new_config = not vim.diagnostic.config().virtual_lines
+    vim.diagnostic.config({ virtual_lines = new_config })
+  end, { desc = 'Toggle diagnostic virtual_lines' })
+
   -- mappings
   map("n", "gD", function()
     vim.lsp.buf.declaration()
