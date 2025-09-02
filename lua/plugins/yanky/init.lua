@@ -1,21 +1,26 @@
 ---------- OPTS ----------
-local _opts = {
-  highlight = {
-    on_put = false,
-    on_yank = false,
-    timer = 300,
-  },
-  preserve_cursor_position = {
-    enabled = true,
-  },
-  textobj = {
-    enabled = true,
-  },
+local function _opts()
+  return {
+    ring = {
+      permanent_wrapper = require("yanky.wrappers").remove_carriage_return,
+    },
+    highlight = {
+      on_put = false,
+      on_yank = false,
+      timer = 300,
+    },
+    preserve_cursor_position = {
+      enabled = true,
+    },
+    textobj = {
+      enabled = true,
+    },
 
-  system_clipboard = {
-    sync_with_ring = true,
-  },
-}
+    system_clipboard = {
+      sync_with_ring = true,
+    },
+  }
+end
 
 ---------- RETURN ----------
 return {

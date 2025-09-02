@@ -1,6 +1,7 @@
 return {
   "jackMort/ChatGPT.nvim",
   event = "VeryLazy",
+  enabled = false,
   config = function()
     require("chatgpt").setup(
       -- api key as OPENAI_API_KEY (encrypted)environment variable, so api_key_cmd not used

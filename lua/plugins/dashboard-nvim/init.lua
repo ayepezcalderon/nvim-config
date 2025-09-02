@@ -15,7 +15,7 @@ local _opts = {
     hide = {
     },
     shortcut = {
-      { desc = 'Restore session', group = '@property', action = 'SessionRestore', key = 'r' },
+      { desc = 'Restore session', group = '@property', action = 'AutoSession restore', key = 'r' },
       { desc = 'Find file', group = '@property', action = 'Telescope find_files', key = 'f' },
       { desc = 'Recently opened files', group = '@property', action = 'Telescope oldfiles', key = 'o' },
       { desc = 'Find word', group = '@property', action = 'Telescope live_grep', key = 'w' },
@@ -23,7 +23,7 @@ local _opts = {
       { desc = '󰊳 Update', group = '@property', action = 'Lazy update', key = 'u' },
     },
     center = {
-      { icon = '  ', desc = 'Restore session', action = 'SessionRestore', key = 'r' },
+      { icon = '  ', desc = 'Restore session', action = 'AutoSession restore', key = 'r' },
       { icon = '  ', desc = 'Find file', action = 'Telescope find_files', key = 'f' },
       { icon = '  ', desc = 'Recently opened files', action = 'Telescope oldfiles', key = 'o' },
       { icon = '  ', desc = 'Find word', action = 'Telescope live_grep', key = 'w' },
