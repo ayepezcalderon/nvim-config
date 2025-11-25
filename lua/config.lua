@@ -42,7 +42,7 @@ M.lsp = {
     "ruff",
     "lua_ls",
     "jsonls",
-    "ltex",
+    -- "ltex",
     "clangd",
     "texlab",
     "rust_analyzer",

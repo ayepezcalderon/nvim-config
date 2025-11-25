@@ -38,7 +38,7 @@ local _opts = {
 return {
   "folke/trouble.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
-  ft = { "python", "lua", "c", "cpp", "rust" },
+  ft = { "python", "lua", "c", "cpp", "rust", "tex" },
   opts = _opts,
   config = function(_, opts)
     require("trouble").setup(opts)
