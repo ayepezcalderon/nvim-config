@@ -60,17 +60,17 @@ local function _opts()
     },
 
     pickers = {
-      -- buffers = {
-      --   mappings = {
-      --     i = {
-      --       ["<c-d>"] = actions.delete_buffer,
-      --     },
-      --     n = {
-      --       ["dd"] = actions.delete_buffer,
-      --     },
-      --   },
-      --   initial_mode = "normal",
-      -- },
+      buffers = {
+        mappings = {
+          i = {
+            ["<c-d>"] = actions.delete_buffer,
+          },
+          n = {
+            ["dd"] = actions.delete_buffer,
+          },
+        },
+        initial_mode = "insert",
+      },
       lsp_workspace_symbols = {
         initial_mode = "normal",
       },
