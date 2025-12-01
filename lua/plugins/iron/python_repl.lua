@@ -1,104 +1,32 @@
 local M = {}
 
-local cache = {
-  resolved = nil,
-  pending = false,
-  queue = {}, -- functions to run once resolved
-}
-
+-- candidate commands in priority order
 local candidates = {
+  { "uv",      "run",            "ipython", "--no-autoindent" },
+  { "uv",      "run",            "python3" },
   { "ipython", "--no-autoindent" },
-  { "ipython" },
-  { "python" },
+  { "python3" },
 }
 
--- helper: create uv run command
-local function uv_run_cmd(cmd)
-  return vim.list_extend({ "uv", "run" }, vim.deepcopy(cmd))
-end
+local cache = nil -- store the resolved command
 
--- probe uv run asynchronously
-local function uv_run_available(cmd, callback)
-  if vim.fn.executable("uv") ~= 1 then
-    return callback(false)
+-- main function: returns cached command if available
+function M.get()
+  if cache then
+    return cache
   end
-  local subcmd = table.concat(cmd, " ")
-  vim.fn.jobstart("uv run " .. subcmd .. " --version", {
-    on_exit = function(_, code)
-      callback(code == 0)
-    end,
-    stdout_buffered = true,
-    stderr_buffered = true,
-  })
-end
 
--- resolve recursively
-local function resolve_async()
-  cache.pending = true
-  local i = 1
-
-  local function try_next()
-    if i > #candidates then
-      -- fallback to global
-      for _, cmd in ipairs(candidates) do
-        if vim.fn.executable(cmd[1]) == 1 then
-          cache.resolved = cmd
-          goto DONE
-        end
-      end
-      if vim.fn.executable("python3") == 1 then
-        cache.resolved = { "python3" }
-      else
-        cache.resolved = nil
-      end
-      ::DONE::
-      cache.pending = false
-      -- run queued functions
-      for _, fn in ipairs(cache.queue) do fn(cache.resolved) end
-      cache.queue = {}
-      return
+  for _, cmd in ipairs(candidates) do
+    local candidate_copy = vim.deepcopy(cmd)
+    table.insert(candidate_copy, "--version")
+    vim.fn.system(candidate_copy)
+    if vim.v.shell_error == 0 then
+      cache = cmd
+      return cache
     end
-
-    local cmd = candidates[i]
-    i = i + 1
-
-    uv_run_available(cmd, function(ok)
-      if ok then
-        cache.resolved = uv_run_cmd(cmd)
-        cache.pending = false
-        for _, fn in ipairs(cache.queue) do fn(cache.resolved) end
-        cache.queue = {}
-      else
-        try_next()
-      end
-    end)
   end
 
-  try_next()
-end
-
--- public get() function
--- fn: optional callback to call once resolved
-function M.get(fn)
-  if cache.resolved then
-    if fn then fn(cache.resolved) end
-    return cache.resolved
-  end
-
-  if fn then
-    table.insert(cache.queue, fn)
-  end
-
-  if not cache.pending then
-    resolve_async()
-  end
-
-  -- return temporary fallback to avoid Iron:E5108
-  if vim.fn.executable("python3") == 1 then
-    return { "python3" }
-  else
-    return { "python" }
-  end
+  return error("No suitable Python REPL found.")
 end
 
 return M
