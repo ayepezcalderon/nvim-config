@@ -45,8 +45,8 @@ local _opts = function()
       -- How the repl window will be displayed
       -- See below for more information
       repl_open_cmd = {
-        view.split.vertical.rightbelow("%40"), -- cmd_1: open a repl to the right
-        view.split.bottom("%40"),              -- cmd_2: open a repl below
+        view.split.vertical.rightbelow("%40"),   -- cmd_1: open a repl to the right
+        view.split.horizontal.rightbelow("%50"), -- cmd_2: open a repl below
         -- repl_open_cmd = view.bottom(40),
       }
 
