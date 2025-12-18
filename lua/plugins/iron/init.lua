@@ -45,6 +45,7 @@ local _opts = function()
       -- How the repl window will be displayed
       -- See below for more information
       repl_open_cmd = {
+        "rightbelow vsplit",
         view.split.vertical.rightbelow("%40"),   -- cmd_1: open a repl to the right
         view.split.horizontal.rightbelow("%50"), -- cmd_2: open a repl below
         -- repl_open_cmd = view.bottom(40),
@@ -71,8 +72,8 @@ local _opts = function()
       toggle_repl = "<space>rr", -- toggles the repl open and closed.
       -- If repl_open_command is a table as above, then the following keymaps are
       -- available
-      toggle_repl_with_cmd_1 = "<space>rv",
-      toggle_repl_with_cmd_2 = "<space>rh",
+      toggle_repl_with_cmd_2 = "<space>rv",
+      toggle_repl_with_cmd_3 = "<space>rh",
       restart_repl = "<space>rR", -- calls `IronRestart` to restart the repl
       send_motion = "<space>sc",
       visual_send = "<space>sc",
