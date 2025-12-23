@@ -10,9 +10,9 @@ M.load = function(bufnr)
   end
 
   -- Navigation through hunks
-  map("n", "]c", function()
+  map("n", "]h", function()
     if vim.wo.diff then
-      return "]c"
+      return "]h"
     end
     vim.schedule(function()
       gs.next_hunk()
@@ -23,9 +23,9 @@ M.load = function(bufnr)
     desc = "Jump to next hunk",
   })
 
-  map("n", "[c", function()
+  map("n", "[h", function()
     if vim.wo.diff then
-      return "[c"
+      return "[h"
     end
     vim.schedule(function()
       gs.prev_hunk()
