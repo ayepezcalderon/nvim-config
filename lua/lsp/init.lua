@@ -63,7 +63,7 @@ M.on_init = function(client)
     client.server_capabilities.semanticTokensProvider = nil
   end
 
-  -- use (based)pyright to hover, not ruff
+  -- do not use ruff to hover
   if client.name == "ruff" then
     client.server_capabilities.hoverProvider = false
   end

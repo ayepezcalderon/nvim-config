@@ -38,7 +38,8 @@ M.lsp = {
     }
   end,
   servers = {
-    "basedpyright",
+    -- "basedpyright",
+    "ty",
     "ruff",
     "lua_ls",
     "jsonls",

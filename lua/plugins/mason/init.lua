@@ -1,6 +1,7 @@
 ------------ OPTS -----------
 local _opts = {
   ensure_installed = {
+    "ty",
     "pyright",
     "basedpyright",
     "debugpy",
