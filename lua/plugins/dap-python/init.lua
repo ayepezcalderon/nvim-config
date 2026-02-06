@@ -29,6 +29,18 @@ local _config = function(_, opts)
     justMyCode = false,
     cwd = "${workspaceFolder}",
   })
+  table.insert(configs, {
+    type = 'python',
+    request = 'attach',
+    name = 'Attach (justMyCode = false)',
+    connect = function()
+      local host = vim.fn.input('Host [127.0.0.1]: ')
+      host = host ~= '' and host or '127.0.0.1'
+      local port = tonumber(vim.fn.input('Port [5678]: ')) or 5678
+      return { host = host, port = port }
+    end,
+    justMyCode = false,
+  })
 
   -- mappings
   require("plugins.dap-python.mappings")
