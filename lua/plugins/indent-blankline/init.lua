@@ -24,6 +24,7 @@ local _opts = {
 return {
   "lukas-reineke/indent-blankline.nvim",
   version = "2.20.7",
+  enabled = false,
   init = function()
     require("utils.load_plugin").lazy_load("indent-blankline.nvim")
   end,

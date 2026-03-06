@@ -1,104 +1,191 @@
-local M = {}
+local map = vim.keymap.set
 
-------------- OPTS -------------
-M.textobjects = {
-  select = {
-    enable = true,
+local nvto_select = require("nvim-treesitter-textobjects.select")
+local nvto_swap = require("nvim-treesitter-textobjects.swap")
+local nvto_move = require("nvim-treesitter-textobjects.move")
 
-    -- Automatically jump forward to textobj, similar to targets.vim
-    lookahead = true,
 
-    keymaps = {
-      -- You can use the capture groups defined in textobjects.scm
-      ["a="] = { query = "@assignment.outer", desc = "Select outer part of an assignment" },
-      ["i="] = { query = "@assignment.inner", desc = "Select inner part of an assignment" },
-      ["L="] = { query = "@assignment.lhs", desc = "Select left hand side of an assignment" },
-      ["r="] = { query = "@assignment.rhs", desc = "Select right hand side of an assignment" },
+map({ "x", "o" }, "a=", function()
+  nvto_select.select_textobject("@assignment.outer")
+end, { desc = "Select outer part of an assignment" })
+map({ "x", "o" }, "i=",
+  function()
+    nvto_select.select_textobject("@assignment.inner")
+  end, { desc = "Select inner part of an assignment" })
 
-      ["aa"] = { query = "@parameter.outer", desc = "Select outer part of a parameter/argument" },
-      ["ia"] = { query = "@parameter.inner", desc = "Select inner part of a parameter/argument" },
+map({ "x", "o" }, "L=", function()
+  nvto_select.select_textobject("@assignment.lhs")
+end, { desc = "Select left hand side of an assignment" })
 
-      ["ai"] = { query = "@conditional.outer", desc = "Select outer part of a conditional" },
-      ["ii"] = { query = "@conditional.inner", desc = "Select inner part of a conditional" },
+map({ "x", "o" }, "r=", function()
+  nvto_select.select_textobject("@assignment.rhs")
+end, { desc = "Select right hand side of an assignment" })
 
-      ["al"] = { query = "@loop.outer", desc = "Select outer part of a loop" },
-      ["il"] = { query = "@loop.inner", desc = "Select inner part of a loop" },
+map({ "x", "o" }, "aa", function()
+  nvto_select.select_textobject("@parameter.outer")
+end, { desc = "Select outer part of a parameter/argument" })
 
-      ["af"] = { query = "@call.outer", desc = "Select outer part of a function call" },
-      ["if"] = { query = "@call.inner", desc = "Select inner part of a function call" },
+map({ "x", "o" }, "ia", function()
+  nvto_select.select_textobject("@parameter.inner")
+end, { desc = "Select inner part of a parameter/argument" })
 
-      ["am"] = { query = "@function.outer", desc = "Select outer part of a method/function definition" },
-      ["im"] = { query = "@function.inner", desc = "Select inner part of a method/function definition" },
+map({ "x", "o" }, "ai", function()
+  nvto_select.select_textobject("@conditional.outer")
+end, { desc = "Select outer part of a conditional" })
 
-      ["ab"] = { query = "@class.outer", desc = "Select outer part of a class" },
-      ["ib"] = { query = "@class.inner", desc = "Select inner part of a class" },
-    },
-  },
-  swap = {
-    enable = true,
-    swap_next = {
-      ["<leader>na"] = "@parameter.inner", -- swap parameters/argument with next
-      ["<leader>nm"] = "@function.outer", -- swap function with next
-    },
-    swap_previous = {
-      ["<leader>pa"] = "@parameter.inner", -- swap parameters/argument with prev
-      ["<leader>pm"] = "@function.outer", -- swap function with previous
-    },
-  },
-  move = {
-    enable = true,
-    set_jumps = true, -- whether to set jumps in the jumplist
-    goto_next_start = {
-      ["]a"] = { query = "@parameter.outer", desc = "Next parameter/argument start" },
-      ["]="] = { query = "@assignment.outer", desc = "Next assignment start" },
-      ["]f"] = { query = "@call.outer", desc = "Next function call start" },
-      ["]m"] = { query = "@function.outer", desc = "Next method/function def start" },
-      ["]b"] = { query = "@class.outer", desc = "Next class start" },
-      ["]i"] = { query = "@conditional.outer", desc = "Next conditional start" },
-      ["]l"] = { query = "@loop.outer", desc = "Next loop start" },
-    },
-    goto_next_end = {
-      ["]A"] = { query = "@parameter.outer", desc = "Next parameter/argument end" },
-      ["]F"] = { query = "@call.outer", desc = "Next function call end" },
-      ["]M"] = { query = "@function.outer", desc = "Next method/function def end" },
-      ["]B"] = { query = "@class.outer", desc = "Next class end" },
-      ["]I"] = { query = "@conditional.outer", desc = "Next conditional end" },
-      ["]L"] = { query = "@loop.outer", desc = "Next loop end" },
-    },
-    goto_previous_start = {
-      ["[a"] = { query = "@parameter.outer", desc = "Prev parameter/argument call start" },
-      ["[="] = { query = "@assignment.outer", desc = "Prev assignment start" },
-      ["[f"] = { query = "@call.outer", desc = "Prev function call start" },
-      ["[m"] = { query = "@function.outer", desc = "Prev method/function def start" },
-      ["[b"] = { query = "@class.outer", desc = "Prev class start" },
-      ["[i"] = { query = "@conditional.outer", desc = "Prev conditional start" },
-      ["[l"] = { query = "@loop.outer", desc = "Prev loop start" },
-    },
-    goto_previous_end = {
-      ["[A"] = { query = "@parameter.outer", desc = "Prev parameter/argument call end" },
-      ["[F"] = { query = "@call.outer", desc = "Prev function call end" },
-      ["[M"] = { query = "@function.outer", desc = "Prev method/function def end" },
-      ["[B"] = { query = "@class.outer", desc = "Prev class end" },
-      ["[I"] = { query = "@conditional.outer", desc = "Prev conditional end" },
-      ["[L"] = { query = "@loop.outer", desc = "Prev loop end" },
-    },
-  },
-}
+map({ "x", "o" }, "ii", function()
+  nvto_select.select_textobject("@conditional.inner")
+end, { desc = "Select inner part of a conditional" })
 
-------------- OPTS -------------
-function M.repeatable_move()
-  -- , and ; support for movements
-  local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
+map({ "x", "o" }, "al", function()
+  nvto_select.select_textobject("@loop.outer")
+end, { desc = "Select outer part of a loop" })
 
-  -- vim way: ; goes to the direction you were moving.
-  vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move)
-  vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_opposite)
+map({ "x", "o" }, "il", function()
+  nvto_select.select_textobject("@loop.inner")
+end, { desc = "Select inner part of a loop" })
 
-  -- Optionally, make builtin f, F, t, T also repeatable with ; and ,
-  vim.keymap.set({ "n", "x", "o" }, "f", ts_repeat_move.builtin_f)
-  vim.keymap.set({ "n", "x", "o" }, "F", ts_repeat_move.builtin_F)
-  vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t)
-  vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T)
-end
+map({ "x", "o" }, "af", function()
+  nvto_select.select_textobject("@call.outer")
+end, { desc = "Select outer part of a function call" })
 
-return M
+map({ "x", "o" }, "if", function()
+  nvto_select.select_textobject("@call.inner")
+end, { desc = "Select inner part of a function call" })
+
+map({ "x", "o" }, "am", function()
+  nvto_select.select_textobject("@function.outer")
+end, { desc = "Select outer part of a method/function definition" })
+
+map({ "x", "o" }, "im", function()
+  nvto_select.select_textobject("@function.inner")
+end, { desc = "Select inner part of a method/function definition" })
+
+map({ "x", "o" }, "ab", function()
+  nvto_select.select_textobject("@class.outer")
+end, { desc = "Select outer part of a class" })
+
+map({ "x", "o" }, "ib", function()
+  nvto_select.select_textobject("@class.inner")
+end, { desc = "Select inner part of a class" })
+
+map("n", "<leader>na", function()
+  nvto_swap.swap_next("@parameter.inner")
+end, { desc = "Swap with next @parameter.inner" })
+
+map("n", "<leader>nm", function()
+  nvto_swap.swap_next("@function.outer")
+end, { desc = "Swap with next @function.outer" })
+
+map("n", "<leader>pa", function()
+  nvto_swap.swap_previous("@parameter.inner")
+end, { desc = "Swap with previous @parameter.inner" })
+
+map("n", "<leader>pm", function()
+  nvto_swap.swap_previous("@function.outer")
+end, { desc = "Swap with previous @function.outer" })
+
+map({ "n", "x", "o" }, "]a",
+  function()
+    nvto_move.goto_next_start("@parameter.outer")
+  end, { desc = "Next parameter/argument start" })
+
+map({ "n", "x", "o" }, "]=", function()
+  nvto_move.goto_next_start("@assignment.outer")
+end, { desc = "Next assignment start" })
+
+map({ "n", "x", "o" }, "]f", function()
+  nvto_move.goto_next_start("@call.outer")
+end, { desc = "Next function call start" })
+
+map({ "n", "x", "o" }, "]m", function()
+  nvto_move.goto_next_start("@function.outer")
+end, { desc = "Next method/function def start" })
+
+map({ "n", "x", "o" }, "]b", function()
+  nvto_move.goto_next_start("@class.outer")
+end, { desc = "Next class start" })
+
+map({ "n", "x", "o" }, "]i", function()
+  nvto_move.goto_next_start("@conditional.outer")
+end, { desc = "Next conditional start" })
+
+map({ "n", "x", "o" }, "]l", function()
+  nvto_move.goto_next_start("@loop.outer")
+end, { desc = "Next loop start" })
+
+map({ "n", "x", "o" }, "]A", function()
+  nvto_move.goto_next_end("@parameter.outer")
+end, { desc = "Next parameter/argument end" })
+
+map({ "n", "x", "o" }, "]F", function()
+  nvto_move.goto_next_end("@call.outer")
+end, { desc = "Next function call end" })
+
+map({ "n", "x", "o" }, "]M", function()
+  nvto_move.goto_next_end("@function.outer")
+end, { desc = "Next method/function def end" })
+
+map({ "n", "x", "o" }, "]B", function()
+  nvto_move.goto_next_end("@class.outer")
+end, { desc = "Next class end" })
+
+map({ "n", "x", "o" }, "]I", function()
+  nvto_move.goto_next_end("@conditional.outer")
+end, { desc = "Next conditional end" })
+
+map({ "n", "x", "o" }, "]L", function()
+  nvto_move.goto_next_end("@loop.outer")
+end, { desc = "Next loop end" })
+
+map({ "n", "x", "o" }, "[a", function()
+  nvto_move.goto_previous_start("@parameter.outer")
+end, { desc = "Prev parameter/argument call start" })
+
+map({ "n", "x", "o" }, "[=", function()
+  nvto_move.goto_previous_start("@assignment.outer")
+end, { desc = "Prev assignment start" })
+
+map({ "n", "x", "o" }, "[f", function()
+  nvto_move.goto_previous_start("@call.outer")
+end, { desc = "Prev function call start" })
+
+map({ "n", "x", "o" }, "[m", function()
+  nvto_move.goto_previous_start("@function.outer")
+end, { desc = "Prev method/function def start" })
+
+map({ "n", "x", "o" }, "[b", function()
+  nvto_move.goto_previous_start("@class.outer")
+end, { desc = "Prev class start" })
+
+map({ "n", "x", "o" }, "[i", function()
+  nvto_move.goto_previous_start("@conditional.outer")
+end, { desc = "Prev conditional start" })
+
+map({ "n", "x", "o" }, "[l", function()
+  nvto_move.goto_previous_start("@loop.outer")
+end, { desc = "Prev loop start" })
+
+map({ "n", "x", "o" }, "[A", function()
+  nvto_move.goto_previous_end("@parameter.outer")
+end, { desc = "Prev parameter/argument call end" })
+
+map({ "n", "x", "o" }, "[F", function()
+  nvto_move.goto_previous_end("@call.outer")
+end, { desc = "Prev function call end" })
+
+map({ "n", "x", "o" }, "[M", function()
+  nvto_move.goto_previous_end("@function.outer")
+end, { desc = "Prev method/function def end" })
+
+map({ "n", "x", "o" }, "[B", function()
+  nvto_move.goto_previous_end("@class.outer")
+end, { desc = "Prev class end" })
+
+map({ "n", "x", "o" }, "[I", function()
+  nvto_move.goto_previous_end("@conditional.outer")
+end, { desc = "Prev conditional end" })
+
+map({ "n", "x", "o" }, "[L", function()
+  nvto_move.goto_previous_end("@loop.outer")
+end, { desc = "Prev loop end" })

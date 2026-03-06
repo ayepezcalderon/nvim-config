@@ -1,17 +1,23 @@
 ------------- OPTS -------------
 local function _opts()
   return {
-    -- mappings for textobjects and movements
-    textobjects = require("plugins.treesitter-text-objects.mappings").textobjects,
+    select = {
+      -- Automatically jump forward to textobj, similar to targets.vim
+      lookahead = true,
+
+    },
+    move = {
+      set_jumps = true, -- whether to set jumps in the jumplist
+    },
   }
 end
 
 ------------- CONFIG -------------
 local function _config(_, opts)
-  require("nvim-treesitter.configs").setup(opts)
+  require("nvim-treesitter-textobjects").setup(opts)
 
-  -- mappings for repeatable movements
-  require("plugins.treesitter-text-objects.mappings").repeatable_move()
+  -- mappings
+  require("plugins.treesitter-text-objects.mappings")
 end
 
 ------------- RETURN -------------

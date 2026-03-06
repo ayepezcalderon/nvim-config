@@ -1,6 +1,15 @@
 ---------- OPTS -----------
 local _opts = {
-  ensure_installed = {
+}
+
+---------- CONFIG -----------
+local _config = function(_, opts)
+  -- vim.treesitter.start()
+  -- vim.o.foldmethod = "expr"
+  -- vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+  -- vim.o.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+
+  require('nvim-treesitter').install {
     -- defaults
     "vim",
     "lua",
@@ -38,7 +47,7 @@ local _opts = {
 
     -- serialization
     "json",
-    "jsonc",
+    -- "jsonc",
     "yaml",
     "toml",
 
@@ -54,18 +63,8 @@ local _opts = {
 
     -- other
     "diff",
-  },
-
-  highlight = {
-    enable = true,
-    use_languagetree = true,
-    disable = {
-      "latex",
-    },
-  },
-
-  indent = { enable = true },
-}
+  }
+end
 
 ---------- RETURN -----------
 return {
@@ -77,12 +76,7 @@ return {
     "nvim-treesitter/nvim-treesitter-textobjects",
     "nvim-treesitter/nvim-treesitter-context",
   },
-  cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
-  build = ":TSUpdate",
+  -- build = ":TSUpdate",
   opts = _opts,
-  config = function(_, opts)
-    require("nvim-treesitter.configs").setup(opts)
-    vim.o.foldmethod = "expr"
-    vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-  end,
+  config = _config,
 }
