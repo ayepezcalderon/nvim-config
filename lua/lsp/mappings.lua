@@ -12,6 +12,10 @@ function M.load(buffer, inlay_hints)
     vim.diagnostic.config({ virtual_lines = new_config })
   end, { desc = 'Toggle diagnostic virtual_lines' })
 
+  map('n', 'gL', function()
+    vim.lsp.codelens.enable(not vim.lsp.codelens.is_enabled())
+  end, { desc = 'Toggle LSP codelens' })
+
   -- mappings
   map("n", "gD", function()
     vim.lsp.buf.declaration()
