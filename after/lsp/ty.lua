@@ -1,7 +1,7 @@
-vim.lsp.config('ty', {
+return {
   settings = {
     ty = {
       -- diagnosticMode = 'workspace',
     },
   },
-})
+}
