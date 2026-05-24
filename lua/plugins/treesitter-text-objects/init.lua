@@ -23,6 +23,7 @@ end
 ------------- RETURN -------------
 return {
   "nvim-treesitter/nvim-treesitter-textobjects",
+  branch = "main",
   opts = _opts,
   config = _config,
 }

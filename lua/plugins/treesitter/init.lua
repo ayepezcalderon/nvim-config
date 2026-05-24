@@ -69,6 +69,7 @@ end
 ---------- RETURN -----------
 return {
   "nvim-treesitter/nvim-treesitter",
+  branch = "main",
   init = function()
     require("utils.load_plugin").lazy_load("nvim-treesitter")
   end,
