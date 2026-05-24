@@ -2,6 +2,7 @@ return {
   "nvim-mini/mini.ai",
   event = "VeryLazy",
   dependencies = { "GCBallesteros/NotebookNavigator.nvim" },
+  enabled = false,
   opts = function()
     local nn = require "notebook-navigator"
 
