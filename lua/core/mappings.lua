@@ -10,6 +10,8 @@ map({ "v" }, "<leader>/", "gc", {
   remap = true,
 })
 
+map({ "n" }, "<leader>re", '<cmd> restart <CR>', { desc = "Restart Neovim" })
+
 map({ "n", "v" }, "<M-k>", "5k", { desc = "Move 5 up" })
 
 map({ "n", "v" }, "<M-j>", "5j", { desc = "Move 5 down" })
