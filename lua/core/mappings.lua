@@ -99,3 +99,7 @@ map('n', '<M-k>', ":m .-2<CR>==", { noremap = true, silent = true })
 map('v', '<M-k>', ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
 
 map({ 't' }, '<Esc>', [[<C-\><C-n>]], { desc = "Exit terminal mode" })
+
+-- Replace the word cursor is on globally
+map("n", "gs", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+  { desc = "Replace word cursor is on globally" })
