@@ -17,6 +17,9 @@ vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin" .. (is_windows and ";" or 
 -- (other parts load after in after/plugin)
 require("core")
 
+-- load plugins with vim.pack
+require("vimpack_plugins")
+
 -- bootstrap lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -31,7 +34,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- load plugins
+-- load plugins with lazy.nvim
 local lazy_config = require("config")["lazy"]
 require("lazy").setup(
   { { import = "plugins.__colorschemes__." .. colorscheme_plugin }, { import = "plugins" } },
