@@ -1,6 +1,7 @@
 ---------- OPTS ------------
 local _opts = {
   debug = true, -- Enable debugging
+  model = 'claude-sonnet-5',
 
   -- window = {
   --   layout = 'float',
