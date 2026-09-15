@@ -15,6 +15,7 @@ local _opts = {
     "rust-analyzer",
     "marksman",
     "bash-language-server",
+    "json-lsp",
   },
 
   PATH = "skip",
