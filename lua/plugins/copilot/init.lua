@@ -32,6 +32,7 @@ return {
   "zbirenbaum/copilot.lua",
   -- event = "InsertEnter",
   -- cmd = "Copilot",
+  enabled = false,
   lazy = false,
   build = ":Copilot auth",
   opts = _opts,

@@ -48,6 +48,7 @@ return {
     "CopilotC-Nvim/CopilotChat.nvim",
     branch = "main",
     -- cmd = "Copilot",
+    enabled = false,
     lazy = false,
     dependencies = {
       { "zbirenbaum/copilot.lua" },
